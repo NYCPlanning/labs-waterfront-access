@@ -9,6 +9,6 @@
 
 import DS from 'ember-data';
 
-export default DS.JSONSerializer.extend({
-  primaryKey: 'bbl'
+export default DS.JSONAPISerializer.extend({
+  // primaryKey: 'bbl'
 });
