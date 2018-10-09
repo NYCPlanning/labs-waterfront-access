@@ -5,8 +5,8 @@ const SQL = function(id) {
   return `SELECT 
     st_x(st_centroid(the_geom)) as lon, 
     st_y(st_centroid(the_geom)) as lat,
-    bbl AS id 
-    FROM mappluto_v18_1 WHERE bbl=${id}`;
+    paws_id AS id 
+    FROM wpaas_v201810 WHERE paws_id='${id}'`;
 };
 
 const { JSONAPIAdapter } = DS;
