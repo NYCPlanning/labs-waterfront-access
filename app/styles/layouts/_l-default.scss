@@ -1,0 +1,170 @@
+// --------------------------------------------------
+// Default Layout
+// --------------------------------------------------
+
+// Some elements need explicit sizes which are used to calculate the size of other components.
+$site-header-height: 6rem;
+$search-height: 3.25rem;
+$search-width: 17rem;
+
+// .site-main contains everything except the header. On large screens, it fills the remaining height of the window.
+.site-main {
+  position: relative;
+  z-index: 1;
+
+  @include breakpoint(large) {
+   height: calc(100vh - #{$site-header-height});
+  }
+}
+
+.search-container {
+  position: relative;
+  z-index: 3;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0.25rem 0.25rem;
+
+  // On medium screens, search is removed from the grid layout and positioned absolute at the top of the sidebar.
+  @include breakpoint(medium) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: $search-width;
+    height: $search-height; // subtracted from sidebar height
+    overflow: visible; // search results can overflow container
+    background-color: $off-white;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1),
+               -4px 0 0 rgba(0, 0, 0, 0.1);
+  }
+
+  // On large screens, search and sidebar move to the left.
+  @include breakpoint(large) {
+    right: auto;
+    left: 0;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1),
+                4px 0 0 rgba(0, 0, 0, 0.1);
+  }
+}
+
+.search { margin: 0; }
+
+.search-results {
+  display: none;
+  margin: 0;
+
+  @include breakpoint(medium) {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 100%;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  li {
+    border-top: 1px solid $light-gray;
+    padding: 0.25rem;
+  }
+}
+
+.search:focus + .search-results {
+  display: block;
+  background-color: $white;
+}
+
+.map-container {
+  height: 60vh;
+
+  @include breakpoint(large) {
+    height: 100%;
+  }
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+.map-sidebar {
+  z-index: 2;
+  background-color: $white;
+
+  // On medium screens, the sidebar is set to match the height of the map minus search.
+  @include breakpoint(medium) {
+    margin-top: $search-height;
+    height: calc(60vh - #{$search-height});
+    overflow-y: auto; // sidebar scrolls independently
+    box-shadow: -4px 0 0 0 rgba(0,0,0,0.1);
+    width: $search-width;
+  }
+
+  // On large screens, the sidebar is full-height
+  @include breakpoint(large) {
+    height: calc(100% - #{$search-height});
+    box-shadow: 4px 0 0 0 rgba(0,0,0,0.1);
+  }
+}
+
+.content-close-button-container {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.1);
+  background-color: $white;
+  text-align: right;
+  padding: 1rem 1rem 0;
+  margin-bottom: -1rem;
+
+  @include breakpoint(large) {
+    padding: 0;
+    margin-bottom: 0;
+  }
+}
+
+.content-close-button {
+  color: $light-gray;
+  font-size: 2rem;
+  line-height: 1;
+  position: relative;
+  margin: 0;
+  width: 1em;
+  transition: color 0.25s ease-out;
+
+  &:hover {
+    color: $red-muted;
+  }
+
+  // On large screens, the close button is positioned on the edge of the content area, overlapping the map.
+  @include breakpoint(large) {
+    display: block;
+    position: fixed;
+    z-index: 3;
+    top: 6.5rem;
+    right: 41.66667%;
+    background-color: $white;
+    margin-right: -4px;
+    padding: 0 0.375rem 0.1875rem;
+    box-shadow: -4px 4px 0 rgba(0, 0, 0, 0.1);
+  }
+}
+
+.content {
+  background-color: $white;
+  padding: 1rem;
+  z-index: 3;
+
+  // On medium screens, the content area is set to match the height of the map
+  @include breakpoint(medium) {
+    box-shadow: -4px 0 0 0 rgba(0,0,0,0.1);
+    height: calc(100%);
+    overflow-y: auto;
+  }
+}
+
+// On medium screens, if the content area is not open, make the map and sidebar full-height.
+@include breakpoint(medium) {
+  .site-main:not(.has-content-open) {
+    .map-container,
+    .sidebar {
+      height: calc(100vh - #{$site-header-height});
+    }
+  }
+}

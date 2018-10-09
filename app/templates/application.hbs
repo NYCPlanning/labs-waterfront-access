@@ -1,5 +1,62 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+{{#labs-ui/site-header
+  responsiveNav=true
+  responsiveSize='medium'
+  as |banner|
+}}
+  {{#banner.title}}
+    <a class='site-title'>Labs Map <small class="site-subtitle show-for-medium">Skeleton App</small></a>
+  {{/banner.title}}
+  {{#banner.nav}}
+    <ul class="menu vertical medium-horizontal">
+      <li><a>One</a></li>
+      <li><a>Two</a></li>
+      <li><a>Three</a></li>
+    </ul>
+  {{/banner.nav}}
+{{/labs-ui/site-header}}
+
+<div class="site-main grid-x has-content-open">
+
+  <div class="search-container cell">
+    <input type="text" placeholder="Search..." class="search" />
+    <ul class="search-results no-bullet">
+      <li>Search Result 1</li>
+      <li>Search Result 2</li>
+      <li>Search Result 3</li>
+    </ul>
+  </div>
+
+  <div class="map-container cell medium-auto large-order-2">
+    {{#labs-map id='map' as |map|}}
+      {{map.labs-layers layerGroups=model.layerGroups}}
+    {{/labs-map}}
+  </div>
+
+  <div class="map-sidebar cell large-order-1">
+    {{#labs-ui/layer-groups-container title='Layer Groups Container Title'}}
+
+      {{#labs-ui/layer-group-toggle
+        label='Layer Group Label'
+        tooltip='This is the layer group tooltip'
+        icon=model.exampleIcon
+        active=true
+      }}
+      {{/labs-ui/layer-group-toggle}}
+
+    {{/labs-ui/layer-groups-container}}
+  </div>
+
+  <div class="content-close-button-container">
+    <a href="#" class="content-close-button">×</a>
+  </div>
+
+  <div class="content cell large-5 large-order-3">
+    <h2>Get started quickly</h2>
+    <p class="lead">This is a starting point for creating mapping applications that combine the components and style from <a href="https://nycplanning.github.io/labs-ui/">Labs UI</a>, models and components from <a href="https://nycplanning.github.io/ember-mapbox-composer/">Ember Mapbox Composer</a>, and data from <a href="https://github.com/NYCPlanning/labs-layers-api">Labs Layers API</a>.</p>
+    <p>Just fork this repository and get started.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+
+</div>
 
 {{outlet}}

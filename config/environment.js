@@ -6,6 +6,7 @@ module.exports = function(environment) {
     environment,
     rootURL: '/',
     locationType: 'auto',
+    host: 'https://layers-api-staging.planninglabs.nyc',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -15,6 +16,20 @@ module.exports = function(environment) {
         // Prevent Ember Data from overriding Date.parse.
         Date: false
       }
+    },
+
+    'mapbox-gl': {
+      accessToken: '',
+      map: {
+        style: 'https://layers-api-staging.planninglabs.nyc/v1/base/style.json',
+      },
+    },
+
+    fontawesome: {
+      icons: {
+        'free-regular-svg-icons': 'all',
+        'free-solid-svg-icons': 'all',
+      },
     },
 
     APP: {
@@ -45,6 +60,11 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
+  }
+
+  if (environment === 'devlocal') {
+    ENV.host = 'http://localhost:3000';
+    ENV['mapbox-gl'].map.style = 'http://localhost:3000/v1/base/style.json';
   }
 
   return ENV;
