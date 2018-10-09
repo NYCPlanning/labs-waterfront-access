@@ -1,6 +1,5 @@
-# labs-map-skeleton-app
+# NYC Waterfront Access
 
-This is a starting point for creating mapping applications that combine the components and style from [Labs UI](https://nycplanning.github.io/labs-ui/) models and components from [Ember Mapbox Composer](https://nycplanning.github.io/ember-mapbox-composer/), and data from [Labs Layers API](https://github.com/NYCPlanning/labs-layers-api).
 
 ## Prerequisites
 
