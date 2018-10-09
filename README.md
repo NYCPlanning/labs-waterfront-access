@@ -1,38 +1,29 @@
 # NYC Waterfront Access
 
 
-## Prerequisites
+## Requirements
 
 You will need the following things properly installed on your computer.
 
 * [Git](https://git-scm.com/)
 * [Node.js](https://nodejs.org/) (with npm)
 * [Ember CLI](https://ember-cli.com/)
-* [Google Chrome](https://google.com/chrome/)
 
-## Installation
+## Local development
 
-* `git clone <repository-url>` this repository
-* `cd labs-map-skeleton-app`
-* `npm install`
-
-## Running / Development
-
-* `ember serve`
+* Clone this repo: `git clone git@github.com:NYCPlanning/labs-waterfront-access.git`
+* Navigate to the directory: `cd labs-waterfront-access`
+* Install dependencies: `yarn`
+* Start the server: `ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
 
-### Running Tests
 
-* `ember test`
-* `ember test --server`
+## Testing and checks
 
-### Linting
+- **ESLint** - We use ESLint with Airbnb's rules for JavaScript projects
+  - Add an ESLint plugin to your text editor to highlight broken rules while you code
+  - You can also run `eslint` at the command line with the `--fix` flag to automatically fix some errors.
 
-* `npm run lint:js`
-* `npm run lint:js -- --fix`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
+- **Testing**
+  - run `ember test --serve`
+  - Before creating a Pull Request, make sure your branch is updated with the latest `develop` and passes all tests
