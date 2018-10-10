@@ -7,6 +7,7 @@ export default class ApplicationRoute extends Route {
   async model() {
     const layerGroups = await this.store.query('layer-group', {
       'layer-groups': [
+        { id: 'tax-lots', visible: true },
         { id: 'subway', visible: true },
         { id: 'floodplain-efirm2007', visible: true },
       ],
