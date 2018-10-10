@@ -10,13 +10,13 @@ module('Integration | Component | lookup-layer-group', function(hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{lookup-layer-group}}`);
+    await render(hbs`{{lookup-layer-group for='foo'}}`);
 
     assert.equal(this.element.textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
-      {{#lookup-layer-group}}
+      {{#lookup-layer-group for='foo'}}
         template block text
       {{/lookup-layer-group}}
     `);
