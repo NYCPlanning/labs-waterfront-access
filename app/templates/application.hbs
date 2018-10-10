@@ -30,7 +30,10 @@
       mapLoaded=(action 'handleMapLoad')
       as |map|
     }}
-      {{map.labs-layers layerGroups=model.layerGroups}}
+      {{map.labs-layers
+        layerGroups=model.layerGroups
+        onLayerClick=(action 'handleLayerClick')
+      }}
     {{/labs-map}}
   </div>
 
