@@ -52,6 +52,7 @@
     "ember-welcome-page": "^3.0.0",
     "eslint-plugin-ember": "^5.0.0",
     "foundation-sites": "^6.4.3",
+    "labs-ember-search": "^2.4.2",
     "labs-ui": "^0.0.7",
     "loader.js": "^4.2.3",
     "qunit-dom": "^0.6.2"
