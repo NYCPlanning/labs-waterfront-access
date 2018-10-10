@@ -63,9 +63,6 @@ module.exports = function(environment) {
     ENV['mapbox-gl'].map.style = 'https://layers-api.planninglabs.nyc/v1/base/style.json';
   }
 
-  // if (environment === 'staging') {
-  // }
-
   if (environment === 'devlocal') {
     ENV.host = 'http://localhost:3000';
     ENV['mapbox-gl'].map.style = 'http://localhost:3000/v1/base/style.json';
