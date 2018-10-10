@@ -14,13 +14,14 @@
 {{/labs-ui/site-header}}
 
 <div class="site-main grid-x has-content-open">
-  <div class="search-container cell">
+  <div class="search-container">
     {{#labs-search
-      searchPlaceholder='Search for Address...'
+      searchPlaceholder='Search...'
       onSelect=(action 'selectSearchResult')
       typeTitleLookup=(hash
         lot='Addresses')
-      onClear=(action (mut geocodedFeature null)) as |search|}}
+      onClear=(action (mut geocodedFeature null))
+      as |search|}}
       <small class="dark-gray">{{search.result.label}}</small>
     {{/labs-search}}
   </div>
