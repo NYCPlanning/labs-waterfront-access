@@ -2,11 +2,18 @@ import DS from 'ember-data';
 import { buildSqlUrl } from 'cartobox-promises-utility/utils/carto';
 
 const SQL = function(id) {
-  return `SELECT 
-    st_x(st_centroid(the_geom)) as lon, 
-    st_y(st_centroid(the_geom)) as lat,
-    paws_id AS id 
-    FROM wpaas_v201810 WHERE paws_id='${id}'`;
+  return `
+    SELECT
+      paws_id AS id,
+      park_name,
+      address,
+      agency,
+      paws_id,
+      category,
+      status,
+      water_body
+    FROM wpaas_v201810 WHERE paws_id='${id}'
+  `;
 };
 
 const { JSONAPIAdapter } = DS;
