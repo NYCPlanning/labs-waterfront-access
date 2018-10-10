@@ -40,22 +40,26 @@
   <div class="map-sidebar cell large-order-1">
     {{#labs-ui/layer-groups-container title='Waterfront Access Spaces'}}
 
-{{!--       {{#labs-ui/layer-group-toggle
-        label='Layer Group Label'
-        tooltip='This is the layer group tooltip'
-        icon=model.exampleIcon
-        active=true
-      }}
-      {{/labs-ui/layer-group-toggle}} --}}
-
       {{#lookup-layer-group for='waterfront-access--wpaas' as |layerGroup|}}
+        {{log layerGroup.model}}
         {{#labs-ui/layer-group-toggle
           label=layerGroup.model.legend.label
           tooltip=layerGroup.model.legend.tooltip
           active=layerGroup.model.visible
+          icon=layerGroup.model.legend.icon
         }}
-          {{labs-ui/legend-items items=layerGroup.model.legend.items}}
-        {{/labs-ui/layer-group-toggle}}
+      {{/labs-ui/layer-group-toggle}}
+      {{/lookup-layer-group}}
+
+      {{#lookup-layer-group for='waterfront-access--publically-owned' as |layerGroup|}}
+        {{log layerGroup.model}}
+        {{#labs-ui/layer-group-toggle
+          label=layerGroup.model.legend.label
+          tooltip=layerGroup.model.legend.tooltip
+          active=layerGroup.model.visible
+          icon=layerGroup.model.legend.icon
+        }}
+      {{/labs-ui/layer-group-toggle}}
       {{/lookup-layer-group}}
 
     {{/labs-ui/layer-groups-container}}
