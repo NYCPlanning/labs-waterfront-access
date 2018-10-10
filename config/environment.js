@@ -59,12 +59,12 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.host = 'https://waterfront-access.planninglabs.nyc';
+    ENV.host = 'https://layers-api.planninglabs.nyc';
+    ENV['mapbox-gl'].map.style = 'https://layers-api.planninglabs.nyc/v1/base/style.json';
   }
 
-  if (environment === 'staging') {
-    ENV.host = 'https://waterfront-access-staging.planninglabs.nyc';
-  }
+  // if (environment === 'staging') {
+  // }
 
   if (environment === 'devlocal') {
     ENV.host = 'http://localhost:3000';
