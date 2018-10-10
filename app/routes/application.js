@@ -9,7 +9,8 @@ export default class ApplicationRoute extends Route {
       'layer-groups': [
         { id: 'tax-lots', visible: true },
         { id: 'subway', visible: true },
-        { id: 'floodplain-efirm2007', visible: true },
+        { id: 'waterfront-access--publically-owned', visible: true },
+        { id: 'waterfront-access--wpaas', visible: true },
       ],
     });
 

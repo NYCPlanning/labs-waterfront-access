@@ -25,7 +25,11 @@
   </div>
 
   <div class="map-container cell medium-auto large-order-2">
-    {{#labs-map id='map' as |map|}}
+    {{#labs-map
+      id='map'
+      mapLoaded=(action 'handleMapLoad')
+      as |map|
+    }}
       {{map.labs-layers layerGroups=model.layerGroups}}
     {{/labs-map}}
   </div>
