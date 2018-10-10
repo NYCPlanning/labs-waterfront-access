@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'labs-map-skeleton-app',
+    modulePrefix: 'labs-waterfront-access',
     environment,
     rootURL: '/',
     locationType: 'auto',
