@@ -59,7 +59,11 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    // here you can enable a production-specific feature
+    ENV.host = 'https://waterfront-access.planninglabs.nyc';
+  }
+
+  if (environment === 'staging') {
+    ENV.host = 'https://waterfront-access-staging.planninglabs.nyc';
   }
 
   if (environment === 'devlocal') {
