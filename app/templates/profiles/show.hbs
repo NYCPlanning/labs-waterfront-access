@@ -1,6 +1,8 @@
-<div class="content-close-button-container">{{#link-to 'index' classNames='close-button'}}<span aria-hidden="true">&times;</span>{{/link-to}}</div>
+<div class="content-close-button-container">
+  {{#link-to 'index' class="content-close-button"}}×{{/link-to}}
+</div>
 
-<div class="content-area cell large-5 large-cell-block-y xxlarge-4">
+<div class="content cell large-5 large-order-3">
   <h1>{{model.park_name}}</h1>
 
   {{model.paws_id}} <br>
