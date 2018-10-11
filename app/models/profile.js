@@ -4,7 +4,7 @@ import { attr } from '@ember-decorators/data';
 const { Model } = DS;
 
 export default class ProfileModel extends Model {
-  @attr('array') images;
+  @attr() images;
 
   @attr('string') park_name;
   @attr('string') paws_id;
