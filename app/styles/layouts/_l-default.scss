@@ -4,7 +4,7 @@
 
 // Some elements need explicit sizes which are used to calculate the size of other components.
 $site-header-height: 6rem;
-$search-height: 3.25rem;
+$search-height: rem-calc(48);
 $search-width: 17rem;
 
 // .site-main contains everything except the header. On large screens, it fills the remaining height of the window.
@@ -21,7 +21,8 @@ $search-width: 17rem;
   position: relative;
   z-index: 3;
   box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
-  padding: 0.5rem 0.25rem 0.25rem;
+  padding: rem-calc(9) rem-calc(6) rem-calc(6);
+  width: 100%;
 
   // On medium screens, search is removed from the grid layout and positioned absolute at the top of the sidebar.
   @include breakpoint(medium) {
@@ -43,31 +44,6 @@ $search-width: 17rem;
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1),
                 4px 0 0 rgba(0, 0, 0, 0.1);
   }
-}
-
-.search { margin: 0; }
-
-.search-results {
-  display: none;
-  margin: 0;
-
-  @include breakpoint(medium) {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    min-width: 100%;
-    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
-  }
-
-  li {
-    border-top: 1px solid $light-gray;
-    padding: 0.25rem;
-  }
-}
-
-.search:focus + .search-results {
-  display: block;
-  background-color: $white;
 }
 
 .map-container {
