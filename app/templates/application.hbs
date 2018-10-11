@@ -55,10 +55,9 @@
   </div>
 
   <div class="map-sidebar cell large-order-1">
-    {{#labs-ui/layer-groups-container title='Waterfront Access Spaces'}}
+    {{#labs-ui/layer-groups-container title='Publicly Accessible Waterfront'}}
 
       {{#lookup-layer-group for='waterfront-access--wpaas' as |layerGroup|}}
-        {{log layerGroup.model}}
         {{#labs-ui/layer-group-toggle
           label=layerGroup.model.legend.label
           tooltip=layerGroup.model.legend.tooltip
@@ -68,13 +67,46 @@
       {{/labs-ui/layer-group-toggle}}
       {{/lookup-layer-group}}
 
-      {{#lookup-layer-group for='waterfront-access--publically-owned' as |layerGroup|}}
-        {{log layerGroup.model}}
+      {{#lookup-layer-group for='waterfront-access--publicly-owned' as |layerGroup|}}
         {{#labs-ui/layer-group-toggle
           label=layerGroup.model.legend.label
           tooltip=layerGroup.model.legend.tooltip
           active=layerGroup.model.visible
           icon=layerGroup.model.legend.icon
+        }}
+      {{/labs-ui/layer-group-toggle}}
+      {{/lookup-layer-group}}
+
+      {{#lookup-layer-group for='waterfront-access--entry-points' as |layerGroup|}}
+        {{#labs-ui/layer-group-toggle
+          label=layerGroup.model.legend.label
+          active=layerGroup.model.visible
+          icon=layerGroup.model.legend.icon
+        }}
+      {{/labs-ui/layer-group-toggle}}
+      {{/lookup-layer-group}}
+
+    {{/labs-ui/layer-groups-container}}
+
+    {{#labs-ui/layer-groups-container title='Filter Spaces' open=false}}
+
+    {{/labs-ui/layer-groups-container}}
+
+    {{#labs-ui/layer-groups-container title='Wayfinding'}}
+
+      {{#lookup-layer-group for='bike-routes' as |layerGroup|}}
+        {{#labs-ui/layer-group-toggle
+          label=layerGroup.model.legend.label
+          active=layerGroup.model.visible
+          icon=layerGroup.model.legend.icon
+        }}
+      {{/labs-ui/layer-group-toggle}}
+      {{/lookup-layer-group}}
+
+      {{#lookup-layer-group for='subway' as |layerGroup|}}
+        {{#labs-ui/layer-group-toggle
+          label=layerGroup.model.legend.label
+          active=layerGroup.model.visible
         }}
       {{/labs-ui/layer-group-toggle}}
       {{/lookup-layer-group}}
