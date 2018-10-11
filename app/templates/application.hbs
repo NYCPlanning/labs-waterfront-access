@@ -14,26 +14,42 @@
 {{/labs-ui/site-header}}
 
 <div class="site-main grid-x has-content-open">
-
-  <div class="search-container cell">
-    <input type="text" placeholder="Search..." class="search" />
-    <ul class="search-results no-bullet">
-      <li>Search Result 1</li>
-      <li>Search Result 2</li>
-      <li>Search Result 3</li>
-    </ul>
-  </div>
+  {{#labs-search
+    searchPlaceholder='Search...'
+    onSelect=(action 'selectSearchResult')
+    typeTitleLookup=(hash
+      lot='Addresses')
+    onClear=(action (mut geocodedFeature null))
+    class="search-container"
+    as |search|}}
+    <small class="dark-gray">{{search.result.label}}</small>
+  {{/labs-search}}
 
   <div class="map-container cell medium-auto large-order-2">
     {{#labs-map
       id='map'
-      mapLoaded=(action 'handleMapLoad')
-      as |map|
+      initOptions=(hash
+        zoom=10
+        center=(array -73.96532400540775 40.709710016659386)
+      )
+      mapLoaded=(action 'handleMapLoad') as |map|
     }}
-      {{map.labs-layers
-        layerGroups=model.layerGroups
-        onLayerClick=(action 'handleLayerClick')
-      }}
+
+      {{#if geocodedFeature}}
+        {{#map.source options=geocodedFeature as |source|}}
+          {{source.layer layer=geocodedLayer}}
+        {{/map.source}}
+      {{/if}}
+
+        {{#map.labs-layers
+          layerGroups=model.layerGroups
+          onLayerClick=(action 'handleLayerClick')
+          as |layers|}}
+            {{#layers.tooltip as |tooltip|}}
+              {{tooltip-renderer feature=tooltip.feature template=tooltip.layer.tooltipTemplate}}
+            {{/layers.tooltip}}
+        {{/map.labs-layers}}
+
     {{/labs-map}}
   </div>
 

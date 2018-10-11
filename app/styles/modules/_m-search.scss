@@ -1,0 +1,120 @@
+// --------------------------------------------------
+// Module: Search
+// --------------------------------------------------
+
+.labs-geosearch {
+
+  .map-search-input {
+    margin: 0;
+    padding-right: 2rem;
+
+    $search-input-font-size: rem-calc(12);
+    $height: ($search-input-font-size * unitless-calc($input-line-height)) + (get-side($input-padding, 'top') + get-side($input-padding, 'bottom')) - rem-calc(1);
+
+    height: $height;
+    font-size: $search-input-font-size;
+    padding-right: 2rem;
+  }
+
+  .clear-button {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+  }
+
+  .search-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $medium-gray;
+    pointer-events: none;
+  }
+
+  .clear-button,
+  .search-icon {
+  }
+}
+
+.search-results {
+  background-color: rgba($white,0.94);
+  font-size: rem-calc(12);
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  right: auto;
+  bottom: auto;
+  left: -200vw; // hide by default
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0.5s, left 0;
+  transition-delay: 0.2s;
+  overflow: auto;
+  padding: rem-calc(6);
+
+  // Only show results when .focused
+  &.focused {
+    left: 0;
+  }
+
+  &.has-results {
+    opacity: 1;
+  }
+
+  .results-header {
+    margin: rem-calc(10) 0 0;
+  }
+
+  li:first-child .results-header {
+    margin-top: 0;
+  }
+
+  li {
+    padding: $global-margin/2;
+  }
+
+  li:not(:first-child) {
+    border-top: 1px solid $medium-gray;
+  }
+
+  .result {
+    color: $anchor-color;
+    cursor: pointer;
+    transition: $button-transition;
+
+    &:hover,
+    &.highlighted-result {
+      color: $anchor-color-hover;
+      background-color: $a11y-yellow;
+    }
+  }
+  li:not(.result) {
+    display: none;
+  }
+
+  .subdued {
+    color: $dark-gray;
+  }
+}
+
+.highlighted-result {
+  color: $anchor-color-hover;
+  background-color: $medium-gray;
+}
+
+.search-results--loading {
+  padding: rem-calc(6);
+  color: $body-font-color;
+  background-color: rgba($white,0.94);
+  font-size: rem-calc(12);
+  width: auto;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  bottom: auto;
+  left: 0;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.1);
+  font-weight: $global-weight-bold;
+}
