@@ -3,6 +3,7 @@
 </div>
 
 <div class="content cell large-5 large-order-3">
+
   {{#if model.images}}
     {{#slick-slider
       autoplay=true
@@ -16,47 +17,130 @@
   {{else}}
     <img src="https://via.placeholder.com/1500x1125">
   {{/if}}
-  <h1>{{model.park_name}}</h1>
+  
+  <div class="grid-x grid-margin-x-gutter-small">
+    <div class="cell medium-auto">
 
-  {{model.paws_id}} <br>
-  {{model.park_name}} <br>
-  {{model.address}} <br>
-  {{model.agency}} <br>
-  {{model.paws_id}} <br>
-  {{model.category}} <br>
-  {{model.status}} <br>
-  {{model.water_body}} <br>
-  {{model.cpc_report}} <br>
-  {{model.date_cpc_approval}} <br>
-  {{model.date_chair_certification}} <br>
-  {{model.date_lucats_completed}} <br>
-  {{model.date_received}} <br>
-  {{model.hours_of_operation}} <br>
-  {{model.construction_status}} <br>
-  {{model.restrictive_declaration_id}} <br>
-  {{model.description}} <br>
-  {{model.spw_in_ft}} <br>
-  {{model.spaa_total_in_sf}} <br>
+      <h1 class="header-large no-margin">{{model.park_name}}</h1>
+      <p class="header-medium dark-gray">{{model.address}}</p>
 
+    </div>
+    <div class="cell medium-shrink">
 
+      {{#if model.construction_status}}
+        <h5 class="{{if isConstructed 'green-dark' 'red'}}">
+          <span class="fa-layers">
+            {{#if isConstructed}}
+              {{fa-icon 'check' class="green-muted"}}
+            {{else}}
+              {{fa-icon 'screwdriver' transform='rotate-270' class='silver'}}
+              {{fa-icon 'wrench' class="light-gray"}}
+            {{/if}}
+          </span>
+          {{model.construction_status}}
+          {{!-- {{model.status}} --}}
+          {{!-- TODO: ^ These two are basically the same. Which should display? Are they chosen from a list or entered freeform? --}}
+        </h5>
+      {{/if}}
 
-  {{model.bike_racks}} <br>
-  {{model.boat_launch}} <br>
-  {{model.designated_bike_path}} <br>
-  {{model.emergency_access}} <br>
-  {{model.entry_gates}} <br>
-  {{model.ferry_watertaxi__service}} <br>
-  {{model.ground_cover}} <br>
-  {{model.ground_floor_retail}} <br>
-  {{model.guardrail}} <br>
-  {{model.handicapped_accessible}} <br>
-  {{model.lighting}} <br>
-  {{model.piers}} <br>
-  {{model.public_access_easement}} <br>
-  {{model.public_art}} <br>
-  {{model.publicly_accessible_walkway}} <br>
-  {{model.seating}} <br>
-  {{model.shore_public_walkway}} <br>
-  {{model.trash_receptacles}} <br>
-  {{model.trees}}
+    </div>
+  </div>
+
+  <div class="grid-x grid-margin-x-gutter-small">
+    <div class="cell medium-7">
+
+      {{#if model.hours_of_operation}}
+        <h6 class="gray no-margin">Hours</h6>
+        <p><strong>{{model.hours_of_operation}}</strong></p>
+      {{/if}}
+
+      {{#if model.description}}
+        <p>{{model.description}}</p>
+      {{/if}}
+
+      {{#if model.spw_in_ft}}
+        <h6 class="gray no-margin">Shore Public Walkway Linear Feet</h6>
+        <p><strong>{{model.spw_in_ft}}</strong></p>
+      {{/if}}
+
+      {{#if model.spaa_total_in_sf}}
+        <h6 class="gray no-margin">WPA(?) Total Access Area in sq ft</h6>
+        <p><strong>{{model.spaa_total_in_sf}}</strong></p>
+      {{/if}}
+
+      {{#if model.agency}}
+        <p>
+          <h6 class="gray no-margin">Agency</h6>
+          {{model.agency}}
+        </p>
+      {{/if}}
+
+      {{#if model.water_body}}
+        <p>
+          <h6 class="gray no-margin">Adjacent Waterway</h6>
+          {{model.water_body}}
+        </p>
+      {{/if}}
+
+      {{#if model.restrictive_declaration_id}}
+        <h6 class="gray no-margin">Restrictive Declaration ID</h6>
+        <p>{{model.restrictive_declaration_id}}</p>
+      {{/if}}
+
+    </div>
+    <div class="cell medium-5">
+
+      <h6 class="gray no-margin">Amenities</h6>
+      <p class="label-group">
+        {{~#if model.bike_racks}}<span class="label secondary">bike racks</span>{{/if~}}
+        {{~#if model.boat_launch}}<span class="label secondary">boat_launch</span>{{/if~}}
+        {{~#if model.designated_bike_path}}<span class="label secondary">designated bike path</span>{{/if~}}
+        {{~#if model.emergency_access}}<span class="label secondary">emergency access</span>{{/if~}}
+        {{~#if model.entry_gates}}<span class="label secondary">entry gates</span>{{/if~}}
+        {{~#if model.ferry_watertaxi__service}}<span class="label secondary">ferry watertaxi service</span>{{/if~}}
+        {{~#if model.ground_cover}}<span class="label secondary">ground cover</span>{{/if~}}
+        {{~#if model.ground_floor_retail}}<span class="label secondary">ground floor retail</span>{{/if~}}
+        {{~#if model.guardrail}}<span class="label secondary">guardrail</span>{{/if~}}
+        {{~#if model.handicapped_accessible}}<span class="label secondary">handicapped accessible</span>{{/if~}}
+        {{~#if model.lighting}}<span class="label secondary">lighting</span>{{/if~}}
+        {{~#if model.piers}}<span class="label secondary">piers</span>{{/if~}}
+        {{~#if model.public_access_easement}}<span class="label secondary">public access easement</span>{{/if~}}
+        {{~#if model.public_art}}<span class="label secondary">public art</span>{{/if~}}
+        {{~#if model.publicly_accessible_walkway}}<span class="label secondary">publicly accessible walkway</span>{{/if~}}
+        {{~#if model.seating}}<span class="label secondary">seating</span>{{/if~}}
+        {{~#if model.shore_public_walkway}}<span class="label secondary">shore public walkway</span>{{/if~}}
+        {{~#if model.trash_receptacles}}<span class="label secondary">trash receptacles</span>{{/if~}}
+        {{~#if model.trees}}<span class="label secondary">trees</span>{{/if~}}
+      </p>
+
+      {{#if model.cpc_report}}
+        <p><a class="button small gray expanded" href="{{model.cpc_report}}" target="_blank">{{fa-icon 'external-link-alt'}} CPC Report</a></p>
+      {{/if}}
+
+      {{#if model.date_cpc_approval}}
+        <h6 class="gray no-margin">CPC Approval</h6>
+        <p>{{model.date_cpc_approval}}</p>
+      {{/if}}
+
+      {{#if model.date_chair_certification}}
+        <h6 class="gray no-margin">Chair Certification</h6>
+        <p>{{model.date_chair_certification}}</p>
+      {{/if}}
+
+      {{#if model.date_lucats_completed}}
+        <h6 class="gray no-margin">LUCATS Completed</h6>
+        <p>{{model.date_lucats_completed}}</p>
+      {{/if}}
+
+      {{#if model.date_received}}
+        <h6 class="gray no-margin">Received</h6>
+        <p>{{model.date_received}}</p>
+      {{/if}}
+
+      {{!-- {{model.paws_id}} --}}
+      {{!-- {{model.category}} --}}
+
+    </div>
+  </div>
+
 </div>
