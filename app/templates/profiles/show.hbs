@@ -3,6 +3,19 @@
 </div>
 
 <div class="content cell large-5 large-order-3">
+  {{#if model.images}}
+    {{#slick-slider
+      autoplay=true
+      arrows=true
+      dots=true
+    }}
+      {{#each model.images as |image|}}
+        <div class="box"> <img src="{{image}}"> </div>
+      {{/each}}
+    {{/slick-slider}}
+  {{else}}
+    <img src="https://via.placeholder.com/1500x1125">
+  {{/if}}
   <h1>{{model.park_name}}</h1>
 
   {{model.paws_id}} <br>
