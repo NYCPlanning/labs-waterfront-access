@@ -16,13 +16,18 @@
 <div class="site-main grid-x has-content-open">
   {{#labs-search
     searchPlaceholder='Search...'
-    onSelect=(action 'selectSearchResult')
+    onSelect=(action 'handleSearchResult')
     typeTitleLookup=(hash
-      lot='Addresses')
+      lot='Addresses'
+      park-name='Park Name')
     onClear=(action (mut geocodedFeature null))
     class="search-container"
     as |search|}}
-    <small class="dark-gray">{{search.result.label}}</small>
+    {{#if (eq search.result.type 'lot')}}
+        <span class="icon tax-lot"></span> <span class="subdued">{{search.result.label}}</span>
+      {{else if (eq search.result.type 'city-street')}}
+        {{search.result.label}} ({{search.result.park_name}})
+    {{/if}}
   {{/labs-search}}
 
   <div class="map-container cell medium-auto large-order-2">

@@ -1,10 +1,15 @@
 import Controller from '@ember/controller';
 import { action } from '@ember-decorators/object';
 import mapboxgl from 'mapbox-gl';
+import turfBbox from 'npm:@turf/bbox';
 
 export default class ApplicationController extends Controller {
 
   geocodedFeature = null;
+
+  highlightedParkSource = null;
+
+  searchedAddressSource = null;
 
   geocodedLayer = {
   type: 'circle',
@@ -61,17 +66,59 @@ export default class ApplicationController extends Controller {
     basemapLayersToHide.forEach(layer => map.removeLayer(layer));
   }
 
-  @action
+  /*@action
   selectSearchResult({ geometry }) {
     const { coordinates } = geometry;
     const { mapInstance: map } = this;
 
     this.set('geocodedFeature', { type: 'geojson', data: geometry });
     map.flyTo({ center: coordinates, zoom: 16 });
+  }*/
+
+  @action
+  handleSearchSelect(result) {
+    const map = this.get('map');
+
+    // handle address search results
+    if (result.type === 'lot') {
+      const center = result.geometry.coordinates;
+      this.set('geocodedFeature', {
+        type: 'geojson',
+        data: {
+          type: 'Feature',
+          properties: {},
+          geometry: result.geometry,
+        },
+      });
+
+      // turn off geolocation if it is on
+      if (this.geoLocateControl._watchState !== 'OFF') {
+        this.geoLocateControl._onClickGeolocate();
+      }
+
+      if (map) {
+        map.flyTo({
+          center,
+          zoom: 15,
+        });
+      }
+    }
+
+    // handle park name search results
+    if (result.type === 'park-name') {
+      const bounds = turfBbox.default(result.the_geom);
+      map.fitBounds(bounds, { padding: 120 });
+
+      this.set(
+        'highlightedParkSource',
+        { type: 'geojson', data: result.the_geom },
+      );
+    }
   }
 
   @action
   handleSearchClear() {
+    this.set('highlightedParkSource', null);
     this.set('searchedAddressSource', null);
   }
 
