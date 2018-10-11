@@ -7,6 +7,7 @@ const { JSONAPIAdapter } = DS;
 
 export default class ApplicationAdapter extends JSONAPIAdapter {
   host = host;
+
   namespace = 'v1';
 
   async query(store, type, query = {}) {
@@ -19,6 +20,5 @@ export default class ApplicationAdapter extends JSONAPIAdapter {
       },
       body: JSON.stringify(query),
     }).then(blob => blob.json());
-
   }
 }

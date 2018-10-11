@@ -3,7 +3,6 @@ import { action } from '@ember-decorators/object'; // eslint-disable-line
 import { next } from '@ember/runloop';
 
 export default class ApplicationRoute extends Route {
-
   async model() {
     const layerGroups = await this.store.query('layer-group', {
       'layer-groups': [
@@ -15,18 +14,18 @@ export default class ApplicationRoute extends Route {
     });
 
     const exampleIcon = {
-      "type": "rectangle",
-      "layers": [{
-        "fill":"rgba(230, 50, 50, 0.2)",
-        "stroke":"rgba(230, 50, 50, 0.6)",
-        "stroke-dasharray":"1"
-      }]
+      type: 'rectangle',
+      layers: [{
+        fill: 'rgba(230, 50, 50, 0.2)',
+        stroke: 'rgba(230, 50, 50, 0.6)',
+        'stroke-dasharray': '1',
+      }],
     };
 
     return {
       layerGroups,
       exampleIcon,
-    }
+    };
   }
 
   @action

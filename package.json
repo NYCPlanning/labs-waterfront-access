@@ -22,7 +22,6 @@
     "@fortawesome/ember-fontawesome": "^0.1.5",
     "@fortawesome/free-regular-svg-icons": "^5.3.1",
     "@fortawesome/free-solid-svg-icons": "^5.3.1",
-    "babel-eslint": "^8.0.0",
     "broccoli-asset-rev": "^2.7.0",
     "broccoli-clean-css": "^1.1.0",
     "cartobox-promises-utility": "0.0.1",
@@ -31,7 +30,6 @@
     "ember-cli-app-version": "^3.0.0",
     "ember-cli-babel": "^6.6.0",
     "ember-cli-dependency-checker": "^2.0.0",
-    "ember-cli-eslint": "^4.2.1",
     "ember-cli-foundation-6-sass": "0.0.25",
     "ember-cli-htmlbars": "^2.0.1",
     "ember-cli-htmlbars-inline-precompile": "^1.0.0",
@@ -50,11 +48,6 @@
     "ember-resolver": "^4.0.0",
     "ember-source": "~3.3.0",
     "ember-welcome-page": "^3.0.0",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^13.0.0",
-    "eslint-plugin-ember": "^5.2.0",
-    "eslint-plugin-ember-best-practices": "^1.1.1",
-    "eslint-plugin-import": "^2.12.0",
     "foundation-sites": "^6.4.3",
     "labs-ui": "^0.0.7",
     "loader.js": "^4.2.3",
@@ -64,8 +57,14 @@
     "node": "6.* || 8.* || >= 10.*"
   },
   "dependencies": {
+    "babel-eslint": "^10.0.1",
     "ember-cli-browserstack": "^0.0.6",
+    "ember-cli-eslint": "^4.2.3",
+    "eslint": "^5.6.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-ember": "^5.2.0",
     "eslint-plugin-ember-best-practices": "^1.1.1",
+    "eslint-plugin-import": "^2.14.0",
     "mapbox-gl": "^0.48.0"
   }
 }
