@@ -27,6 +27,7 @@
     "broccoli-clean-css": "^1.1.0",
     "cartobox-promises-utility": "0.0.1",
     "ember-ajax": "^3.0.0",
+    "ember-auto-import": "^1.2.13",
     "ember-cli": "~3.3.0",
     "ember-cli-app-version": "^3.0.0",
     "ember-cli-babel": "^6.6.0",
@@ -62,6 +63,7 @@
   },
   "dependencies": {
     "ember-cli-browserstack": "^0.0.6",
-    "mapbox-gl": "^0.48.0"
+    "mapbox-gl": "^0.48.0",
+    "xml-js": "^1.6.8"
   }
 }
