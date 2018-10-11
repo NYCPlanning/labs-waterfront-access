@@ -18,6 +18,17 @@ module.exports = function(environment) {
       }
     },
 
+    'labs-search': {
+      host: 'https://search-api.planninglabs.nyc',
+      route: 'search',
+      helpers: ['geosearch'],
+    },
+
+    'ember-mapbox-composer': {
+      host: 'https://layers-api-staging.planninglabs.nyc',
+      namespace: 'v1',
+    },
+
     'mapbox-gl': {
       accessToken: '',
       map: {
