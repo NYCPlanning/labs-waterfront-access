@@ -4,7 +4,7 @@
   as |banner|
 }}
   {{#banner.title}}
-    <a class='site-title'>Waterfront Access Map</a>
+    {{link-to 'Waterfront Access Map' 'index' class="site-title"}}
   {{/banner.title}}
   {{#banner.nav}}
     <ul class="menu vertical medium-horizontal">
@@ -31,6 +31,7 @@
       initOptions=(hash
         zoom=10
         center=(array -73.96532400540775 40.709710016659386)
+        hash=true
       )
       mapLoaded=(action 'handleMapLoad') as |map|
     }}

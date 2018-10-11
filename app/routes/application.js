@@ -4,6 +4,13 @@ import { next } from '@ember/runloop';
 
 export default class ApplicationRoute extends Route {
 
+  beforeModel = (transition) => {
+    // only transition to about if index is loaded and there is no hash
+    if (transition.intent.url === '/' && window.location.href.split('#').length < 2) {
+      this.transitionTo('about');
+    }
+  }
+
   async model() {
     const layerGroups = await this.store.query('layer-group', {
       'layer-groups': [
