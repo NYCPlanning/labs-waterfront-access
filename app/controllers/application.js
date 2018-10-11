@@ -1,13 +1,19 @@
 import Controller from '@ember/controller';
 import { action } from '@ember-decorators/object';
 import mapboxgl from 'mapbox-gl';
-import turfBbox from 'npm:@turf/bbox';
+// import turfBbox from 'npm:@turf/bbox';
 
 export default class ApplicationController extends Controller {
 
   geocodedFeature = null;
 
   highlightedParkSource = null;
+
+  searchedAddressSource = null;
+
+  searchTerms = '';
+
+  highlightedStreetSource = null;
 
   searchedAddressSource = null;
 
@@ -105,9 +111,9 @@ export default class ApplicationController extends Controller {
     }
 
     // handle park name search results
-    if (result.type === 'park-name') {
-      const bounds = turfBbox.default(result.the_geom);
-      map.fitBounds(bounds, { padding: 120 });
+    if (result.type === 'waterfront-park-name') {
+      // const bounds = turfBbox.default(result.the_geom);
+      // map.fitBounds(bounds, { padding: 120 });
 
       this.set(
         'highlightedParkSource',

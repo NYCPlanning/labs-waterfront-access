@@ -17,16 +17,18 @@
   {{#labs-search
     searchPlaceholder='Search...'
     onSelect=(action 'handleSearchResult')
+    onHoverResult=(action 'handleSearchResultHover')
+    onHoverOut=(action 'handleSearchHoverOut')
+    searchTerms=searchTerms
+    onClear=(action 'handleSearchClear')
     typeTitleLookup=(hash
       lot='Addresses'
-      park-name='Park Name')
-    onClear=(action (mut geocodedFeature null))
-    class="search-container"
+      waterfront-park-name='Park Name')
     as |search|}}
     {{#if (eq search.result.type 'lot')}}
         <span class="icon tax-lot"></span> <span class="subdued">{{search.result.label}}</span>
-      {{else if (eq search.result.type 'city-street')}}
-        {{search.result.label}} ({{search.result.park_name}})
+      {{else if (eq search.result.type 'waterfront-park-name')}}
+        {{search.result.label}}
     {{/if}}
   {{/labs-search}}
 
