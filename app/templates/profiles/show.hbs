@@ -8,7 +8,10 @@
       {{#if model.images.lastSuccessful.value.length}}
         {{#slick-slider
           autoplay=true
-          arrows=true
+          autoplaySpeed=4000
+          pauseOnHover=true
+          pauseOnDotsHover=true
+          arrows=false
           dots=true
         }}
           {{#each model.images.lastSuccessful.value as |image|}}
