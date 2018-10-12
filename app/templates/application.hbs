@@ -84,7 +84,8 @@
           active=layerGroup.model.visible
           icon=layerGroup.model.legend.icon
         }}
-      {{/labs-ui/layer-group-toggle}}
+          {{labs-ui/legend-items items=layerGroup.model.legend.items}}
+        {{/labs-ui/layer-group-toggle}}
       {{/lookup-layer-group}}
 
       {{#lookup-layer-group for='waterfront-access--publicly-owned' as |layerGroup|}}
@@ -94,7 +95,7 @@
           active=layerGroup.model.visible
           icon=layerGroup.model.legend.icon
         }}
-      {{/labs-ui/layer-group-toggle}}
+        {{/labs-ui/layer-group-toggle}}
       {{/lookup-layer-group}}
 
       {{#lookup-layer-group for='waterfront-access--entry-points' as |layerGroup|}}
@@ -103,7 +104,7 @@
           active=layerGroup.model.visible
           icon=layerGroup.model.legend.icon
         }}
-      {{/labs-ui/layer-group-toggle}}
+        {{/labs-ui/layer-group-toggle}}
       {{/lookup-layer-group}}
 
     {{/labs-ui/layer-groups-container}}
@@ -120,7 +121,7 @@
           active=layerGroup.model.visible
           icon=layerGroup.model.legend.icon
         }}
-      {{/labs-ui/layer-group-toggle}}
+        {{/labs-ui/layer-group-toggle}}
       {{/lookup-layer-group}}
 
       {{#lookup-layer-group for='subway' as |layerGroup|}}
@@ -128,7 +129,7 @@
           label=layerGroup.model.legend.label
           active=layerGroup.model.visible
         }}
-      {{/labs-ui/layer-group-toggle}}
+        {{/labs-ui/layer-group-toggle}}
       {{/lookup-layer-group}}
 
     {{/labs-ui/layer-groups-container}}
