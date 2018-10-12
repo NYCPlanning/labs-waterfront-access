@@ -26,6 +26,7 @@
     "broccoli-clean-css": "^1.1.0",
     "cartobox-promises-utility": "0.0.1",
     "ember-ajax": "^3.0.0",
+    "ember-auto-import": "^1.2.13",
     "ember-cli": "~3.3.0",
     "ember-cli-app-version": "^3.0.0",
     "ember-cli-babel": "^6.6.0",
@@ -66,6 +67,7 @@
     "eslint-plugin-ember": "^5.2.0",
     "eslint-plugin-ember-best-practices": "^1.1.1",
     "eslint-plugin-import": "^2.14.0",
-    "mapbox-gl": "^0.48.0"
+    "mapbox-gl": "^0.48.0",
+    "mustache": "^3.0.0"
   }
 }

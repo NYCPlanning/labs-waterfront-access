@@ -12,6 +12,7 @@ const SQL = function(id) {
       a.category,
       a.status,
       a.water_body,
+      a.the_geom,
       b.cpc_report,
       b.date_cpc_approval,
       b.date_chair_certification,
@@ -59,6 +60,7 @@ export default class ProfileAdapter extends JSONAPIAdapter {
   urlForFindRecord(id) {
     return buildSqlUrl(
       SQL(id),
+      'geojson',
     );
   }
 }
