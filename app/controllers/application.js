@@ -76,7 +76,7 @@ export default class ApplicationController extends Controller {
 
   @action
   handleSearchSelect(result) {
-    const map = this.get('map');
+    const mapInstance = this.get('mapInstance');
 
     // handle address search results
     if (result.type === 'lot') {
@@ -90,13 +90,13 @@ export default class ApplicationController extends Controller {
         },
       });
 
-      // turn off geolocation if it is on
-      if (this.geoLocateControl._watchState !== 'OFF') {
-        this.geoLocateControl._onClickGeolocate();
-      }
+      // // turn off geolocation if it is on
+      // if (this.geoLocateControl._watchState !== 'OFF') {
+      //   this.geoLocateControl._onClickGeolocate();
+      // }
 
-      if (map) {
-        map.flyTo({
+      if (mapInstance) {
+        mapInstance.flyTo({
           center,
           zoom: 15,
         });
