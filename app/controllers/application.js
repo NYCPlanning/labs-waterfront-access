@@ -111,13 +111,7 @@ export default class ApplicationController extends Controller {
 
     // handle park name search results
     if (result.type === 'waterfront-park-name') {
-      // const bounds = turfBbox.default(result.the_geom);
-      // map.fitBounds(bounds, { padding: 120 });
-
-      this.set(
-        'highlightedParkSource',
-        { type: 'geojson', data: result.the_geom },
-      );
+      this.transitionToRoute('profiles.show', result.paws_id);
     }
   }
 

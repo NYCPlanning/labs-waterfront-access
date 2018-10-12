@@ -21,11 +21,13 @@
     typeTitleLookup=(hash
       lot='Addresses'
       waterfront-park-name='Park Name')
-    as |search|}}
+    onClear=(action (mut geocodedFeature null))
+    class="search-container"
+      as |search|}}
     {{#if (eq search.result.type 'lot')}}
-        <span class="icon tax-lot"></span> <span class="subdued">{{search.result.label}}</span>
-      {{else if (eq search.result.type 'waterfront-park-name')}}
-        {{search.result.label}}
+      <span class="icon tax-lot"></span> <span class="subdued">{{search.result.label}}</span>
+    {{else if (eq search.result.type 'waterfront-park-name')}}
+      {{search.result.label}}
     {{/if}}
   {{/labs-search}}
 
