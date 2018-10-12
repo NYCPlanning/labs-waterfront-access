@@ -19,9 +19,9 @@ module.exports = function(environment) {
     },
 
     'labs-search': {
-      host: 'https://search-api.planninglabs.nyc',
+      host: 'https://search-api-staging.planninglabs.nyc',
       route: 'search',
-      helpers: ['geosearch'],
+      helpers: ['geosearch', 'waterfront-park-name'],
     },
 
     'ember-mapbox-composer': {
@@ -72,6 +72,9 @@ module.exports = function(environment) {
   if (environment === 'production') {
     ENV.host = 'https://layers-api.planninglabs.nyc';
     ENV['mapbox-gl'].map.style = 'https://layers-api.planninglabs.nyc/v1/base/style.json';
+    ENV['labs-search'] = {
+      host: 'https://search-api.planninglabs.nyc'
+    };
   }
 
   // if (environment === 'staging') {

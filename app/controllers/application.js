@@ -72,12 +72,12 @@ export default class ApplicationController extends Controller {
   }
 
   /*@action
-  selectSearchResult({ geometry }) {
-    const { coordinates } = geometry;
-    const { mapInstance: map } = this;
+  // selectSearchResult({ geometry }) {
+  //   const { coordinates } = geometry;
+  //   const { mapInstance: map } = this;
 
-    this.set('geocodedFeature', { type: 'geojson', data: geometry });
-    map.flyTo({ center: coordinates, zoom: 16 });
+  //   this.set('geocodedFeature', { type: 'geojson', data: geometry });
+  //   map.flyTo({ center: coordinates, zoom: 16 });
   }*/
 
   @action

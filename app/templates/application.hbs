@@ -16,11 +16,8 @@
 <div class="site-main grid-x has-content-open">
   {{#labs-search
     searchPlaceholder='Search...'
-    onSelect=(action 'handleSearchResult')
-    onHoverResult=(action 'handleSearchResultHover')
-    onHoverOut=(action 'handleSearchHoverOut')
+    onSelect=(action 'handleSearchSelect')
     searchTerms=searchTerms
-    onClear=(action 'handleSearchClear')
     typeTitleLookup=(hash
       lot='Addresses'
       waterfront-park-name='Park Name')
@@ -42,22 +39,19 @@
       )
       mapLoaded=(action 'handleMapLoad') as |map|
     }}
-
       {{#if geocodedFeature}}
         {{#map.source options=geocodedFeature as |source|}}
           {{source.layer layer=geocodedLayer}}
         {{/map.source}}
       {{/if}}
-
-        {{#map.labs-layers
-          layerGroups=model.layerGroups
-          onLayerClick=(action 'handleLayerClick')
-          as |layers|}}
-            {{#layers.tooltip as |tooltip|}}
-              {{tooltip-renderer feature=tooltip.feature template=tooltip.layer.tooltipTemplate}}
-            {{/layers.tooltip}}
-        {{/map.labs-layers}}
-
+      {{#map.labs-layers
+        layerGroups=model.layerGroups
+        onLayerClick=(action 'handleLayerClick')
+        as |layers|}}
+          {{#layers.tooltip as |tooltip|}}
+            {{tooltip-renderer feature=tooltip.feature template=tooltip.layer.tooltipTemplate}}
+          {{/layers.tooltip}}
+      {{/map.labs-layers}}
     {{/labs-map}}
   </div>
 
