@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(environment) {
-  let ENV = {
+  const ENV = {
     modulePrefix: 'labs-waterfront-access',
     environment,
     rootURL: '/',
@@ -14,8 +14,19 @@ module.exports = function(environment) {
       },
       EXTEND_PROTOTYPES: {
         // Prevent Ember Data from overriding Date.parse.
-        Date: false
-      }
+        Date: false,
+      },
+    },
+
+    'labs-search': {
+      host: 'https://search-api.planninglabs.nyc',
+      route: 'search',
+      helpers: ['geosearch'],
+    },
+
+    'ember-mapbox-composer': {
+      host: 'https://layers-api-staging.planninglabs.nyc',
+      namespace: 'v1',
     },
 
     'mapbox-gl': {
@@ -35,7 +46,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
   };
 
   if (environment === 'development') {
