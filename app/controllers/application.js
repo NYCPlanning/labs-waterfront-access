@@ -4,7 +4,6 @@ import mapboxgl from 'mapbox-gl';
 // import turfBbox from 'npm:@turf/bbox';
 
 export default class ApplicationController extends Controller {
-
   geocodedFeature = null;
 
   highlightedParkSource = null;
@@ -18,38 +17,38 @@ export default class ApplicationController extends Controller {
   searchedAddressSource = null;
 
   geocodedLayer = {
-  type: 'circle',
-  paint: {
-    'circle-radius': {
-      stops: [
-        [
-          10,
-          5,
+    type: 'circle',
+    paint: {
+      'circle-radius': {
+        stops: [
+          [
+            10,
+            5,
+          ],
+          [
+            17,
+            12,
+          ],
         ],
-        [
-          17,
-          12,
+      },
+      'circle-color': 'rgba(199, 92, 92, 1)',
+      'circle-stroke-width': {
+        stops: [
+          [
+            10,
+            20,
+          ],
+          [
+            17,
+            18,
+          ],
         ],
-      ],
+      },
+      'circle-stroke-color': 'rgba(65, 73, 255, 1)',
+      'circle-opacity': 0,
+      'circle-stroke-opacity': 0.2,
     },
-    'circle-color': 'rgba(199, 92, 92, 1)',
-    'circle-stroke-width': {
-      stops: [
-        [
-          10,
-          20,
-        ],
-        [
-          17,
-          18,
-        ],
-      ],
-    },
-    'circle-stroke-color': 'rgba(65, 73, 255, 1)',
-    'circle-opacity': 0,
-    'circle-stroke-opacity': 0.2,
-  },
-}
+  }
 
   @action
   handleMapLoad(map) {
