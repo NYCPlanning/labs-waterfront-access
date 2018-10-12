@@ -7,8 +7,10 @@ import { action } from '@ember-decorators/object'; // eslint-disable-line
 import { next } from '@ember/runloop';
 
 export default class ShowProjectRoute extends Route {
-  model({ id }) {
-    return this.store.findRecord('profile', id, { reload: true });
+  async model({ id }) {
+    const profile = await this.store.findRecord('profile', id, { reload: true });
+    profile.images.perform();
+    return profile;
   }
 
   @restartableTask
