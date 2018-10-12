@@ -1,7 +1,12 @@
 import DS from 'ember-data';
 import { attr } from '@ember-decorators/data';
+import convert from 'xml-js';
+import { isArray } from '@ember/array';
+import { restartableTask } from 'ember-concurrency-decorators';
 
 const { Model } = DS;
+
+const S3_BUCKET_HOST = 'https://waterfront-access-photos.nyc3.digitaloceanspaces.com';
 
 export default class ProfileModel extends Model {
   @attr('string') park_name;
@@ -81,4 +86,23 @@ export default class ProfileModel extends Model {
   @attr('boolean') trash_receptacles;
 
   @attr('boolean') trees;
+
+  @restartableTask()
+  images = function* () { // eslint-disable-line
+    const id = this.get('paws_id');
+
+    return fetch(`${S3_BUCKET_HOST}/?prefix=${id}`)
+      .then(d => d.text())
+      .then((xml) => {
+        const json = convert.xml2js(xml, { compact: true });
+        const { Contents: contents = [] } = json.ListBucketResult;
+
+        const contentsArray = isArray(contents) ? contents : [contents];
+
+        return contentsArray.map((d) => {
+          const filename = d.Key._text;
+          return `${S3_BUCKET_HOST}/${filename}`;
+        });
+      });
+  }
 }
