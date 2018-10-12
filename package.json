@@ -53,7 +53,7 @@
     "ember-source": "~3.3.0",
     "ember-welcome-page": "^3.0.0",
     "foundation-sites": "^6.4.3",
-    "labs-ember-search": "^2.4.2",
+    "labs-ember-search": "^2.4.6",
     "labs-ui": "^0.0.7",
     "loader.js": "^4.2.3",
     "qunit-dom": "^0.6.2"
@@ -62,7 +62,10 @@
     "node": "6.* || 8.* || >= 10.*"
   },
   "dependencies": {
+    "@turf/bbox": "^6.0.1",
+    "@turf/buffer": "^5.1.5",
     "babel-eslint": "^10.0.1",
+    "ember-cli-babel-plugin-helpers": "1.0.0",
     "ember-cli-browserstack": "^0.0.6",
     "ember-cli-eslint": "^4.2.3",
     "eslint": "^5.6.1",

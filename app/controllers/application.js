@@ -5,6 +5,20 @@ import mapboxgl from 'mapbox-gl';
 export default class ApplicationController extends Controller {
   geocodedFeature = null;
 
+  highlightedParkSource = null;
+
+  searchedAddressSource = null;
+
+  searchTerms = '';
+
+  highlightedStreetSource = null;
+
+  highlightedFeature = null;
+
+  highlightedFeatureLayer = {
+    type: 'line',
+  }
+
   geocodedLayer = {
     type: 'circle',
     paint: {
@@ -61,16 +75,43 @@ export default class ApplicationController extends Controller {
   }
 
   @action
-  selectSearchResult({ geometry }) {
-    const { coordinates } = geometry;
-    const { mapInstance: map } = this;
+  handleSearchSelect(result) {
+    const mapInstance = this.get('mapInstance');
 
-    this.set('geocodedFeature', { type: 'geojson', data: geometry });
-    map.flyTo({ center: coordinates, zoom: 16 });
+    // handle address search results
+    if (result.type === 'lot') {
+      const center = result.geometry.coordinates;
+      this.set('geocodedFeature', {
+        type: 'geojson',
+        data: {
+          type: 'Feature',
+          properties: {},
+          geometry: result.geometry,
+        },
+      });
+
+      // // turn off geolocation if it is on
+      // if (this.geoLocateControl._watchState !== 'OFF') {
+      //   this.geoLocateControl._onClickGeolocate();
+      // }
+
+      if (mapInstance) {
+        mapInstance.flyTo({
+          center,
+          zoom: 15,
+        });
+      }
+    }
+
+    // handle park name search results
+    if (result.type === 'waterfront-park-name') {
+      this.transitionToRoute('profiles.show', result.paws_id);
+    }
   }
 
   @action
   handleSearchClear() {
+    this.set('highlightedParkSource', null);
     this.set('searchedAddressSource', null);
   }
 

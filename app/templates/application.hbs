@@ -18,13 +18,19 @@
 <div class="site-main grid-x has-content-open">
   {{#labs-search
     searchPlaceholder='Search...'
-    onSelect=(action 'selectSearchResult')
+    onSelect=(action 'handleSearchSelect')
+    searchTerms=searchTerms
     typeTitleLookup=(hash
-      lot='Addresses')
+      lot='Addresses'
+      waterfront-park-name='Park Name')
     onClear=(action (mut geocodedFeature null))
     class="search-container"
     as |search|}}
-    <small class="dark-gray">{{search.result.label}}</small>
+    {{#if (eq search.result.type 'lot')}}
+      <span class="icon tax-lot"></span> <span class="subdued">{{search.result.label}}</span>
+    {{else if (eq search.result.type 'waterfront-park-name')}}
+      {{search.result.label}}
+    {{/if}}
   {{/labs-search}}
 
   <div class="map-container cell medium-auto large-order-2">
@@ -37,22 +43,34 @@
       )
       mapLoaded=(action 'handleMapLoad') as |map|
     }}
-
       {{#if geocodedFeature}}
         {{#map.source options=geocodedFeature as |source|}}
           {{source.layer layer=geocodedLayer}}
         {{/map.source}}
       {{/if}}
 
-        {{#map.labs-layers
-          layerGroups=model.layerGroups
-          onLayerClick=(action 'handleLayerClick')
-          as |layers|}}
-            {{#layers.tooltip as |tooltip|}}
-              {{tooltip-renderer feature=tooltip.feature template=tooltip.layer.tooltipTemplate}}
-            {{/layers.tooltip}}
-        {{/map.labs-layers}}
+      {{#if shouldFitBounds}}
+        {{map.call 'fitBounds' mainMap.bounds mainMap.isSelectedBoundsOptions}}
+      {{/if}}
 
+      {{#map.labs-layers
+        layerGroups=model.layerGroups
+        onLayerClick=(action 'handleLayerClick')
+        as |layers|}}
+          {{#layers.tooltip as |tooltip|}}
+            {{tooltip-renderer feature=tooltip.feature template=tooltip.layer.tooltipTemplate}}
+          {{/layers.tooltip}}
+      {{/map.labs-layers}}
+
+      {{!-- Ad-hoc source and layer for developmentSite --}}
+      {{#if highlightedFeature}}
+        {{#map.source options=(mapbox-geojson-source highlightedFeature) as |source|}}
+          {{source.layer
+            layer=highlightedFeatureLayer
+            before='boundary_country'
+          }}
+        {{/map.source}}
+      {{/if}}
     {{/labs-map}}
   </div>
 
