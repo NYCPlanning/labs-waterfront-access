@@ -26,6 +26,7 @@
     "broccoli-clean-css": "^1.1.0",
     "cartobox-promises-utility": "0.0.1",
     "ember-ajax": "^3.0.0",
+    "ember-auto-import": "^1.2.13",
     "ember-cli": "~3.3.0",
     "ember-cli-app-version": "^3.0.0",
     "ember-cli-babel": "^6.6.0",
@@ -58,6 +59,8 @@
     "node": "6.* || 8.* || >= 10.*"
   },
   "dependencies": {
+    "@turf/bbox": "^6.0.1",
+    "@turf/buffer": "^5.1.5",
     "babel-eslint": "^10.0.1",
     "ember-cli-browserstack": "^0.0.6",
     "ember-cli-eslint": "^4.2.3",

@@ -42,14 +42,28 @@
         {{/map.source}}
       {{/if}}
 
-        {{#map.labs-layers
-          layerGroups=model.layerGroups
-          onLayerClick=(action 'handleLayerClick')
-          as |layers|}}
-            {{#layers.tooltip as |tooltip|}}
-              {{tooltip-renderer feature=tooltip.feature template=tooltip.layer.tooltipTemplate}}
-            {{/layers.tooltip}}
-        {{/map.labs-layers}}
+      {{#if shouldFitBounds}}
+        {{map.call 'fitBounds' mainMap.bounds mainMap.isSelectedBoundsOptions}}
+      {{/if}}
+
+      {{#map.labs-layers
+        layerGroups=model.layerGroups
+        onLayerClick=(action 'handleLayerClick')
+        as |layers|}}
+          {{#layers.tooltip as |tooltip|}}
+            {{tooltip-renderer feature=tooltip.feature template=tooltip.layer.tooltipTemplate}}
+          {{/layers.tooltip}}
+      {{/map.labs-layers}}
+
+      {{!-- Ad-hoc source and layer for developmentSite --}}
+      {{#if highlightedFeature}}
+        {{#map.source options=(mapbox-geojson-source highlightedFeature) as |source|}}
+          {{source.layer
+            layer=highlightedFeatureLayer
+            before='boundary_country'
+          }}
+        {{/map.source}}
+      {{/if}}
 
     {{/labs-map}}
   </div>

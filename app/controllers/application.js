@@ -1,9 +1,17 @@
 import Controller from '@ember/controller';
 import { action } from '@ember-decorators/object';
 import mapboxgl from 'mapbox-gl';
+import turfBbox from '@turf/bbox';
+import turfBuffer from '@turf/buffer';
 
 export default class ApplicationController extends Controller {
   geocodedFeature = null;
+
+  highlightedFeature = null;
+
+  highlightedFeatureLayer = {
+    type: 'line',
+  }
 
   geocodedLayer = {
     type: 'circle',
@@ -76,10 +84,18 @@ export default class ApplicationController extends Controller {
 
   @action
   handleLayerClick(feature) {
+    const map = this.get('mapInstance');
+    // application: service();
     if (feature) {
       const { paws_id } = feature.properties;
       if (paws_id) {
         this.transitionToRoute('profiles.show', paws_id);
+
+        map.fitBounds(turfBbox(turfBuffer(feature.geometry, 0.075)), {
+          padding: 200,
+        });
+
+        this.set('highlightedFeature', feature);
       } else {
         this.transitionToRoute('index');
       }
