@@ -25,7 +25,7 @@
       waterfront-park-name='Park Name')
     onClear=(action (mut geocodedFeature null))
     class="search-container"
-      as |search|}}
+    as |search|}}
     {{#if (eq search.result.type 'lot')}}
       <span class="icon tax-lot"></span> <span class="subdued">{{search.result.label}}</span>
     {{else if (eq search.result.type 'waterfront-park-name')}}
