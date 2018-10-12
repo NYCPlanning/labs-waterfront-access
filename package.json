@@ -69,6 +69,7 @@
     "eslint-plugin-ember": "^5.2.0",
     "eslint-plugin-ember-best-practices": "^1.1.1",
     "eslint-plugin-import": "^2.14.0",
-    "mapbox-gl": "^0.48.0"
+    "mapbox-gl": "^0.48.0",
+    "mustache": "^3.0.0"
   }
 }
