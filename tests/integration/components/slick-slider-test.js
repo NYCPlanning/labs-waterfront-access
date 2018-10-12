@@ -13,14 +13,5 @@ module('Integration | Component | slick-slider', function(hooks) {
     await render(hbs`{{slick-slider}}`);
 
     assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      {{#slick-slider}}
-        template block text
-      {{/slick-slider}}
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
   });
 });
