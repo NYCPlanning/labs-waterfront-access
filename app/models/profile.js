@@ -2,7 +2,6 @@ import DS from 'ember-data';
 import { attr } from '@ember-decorators/data';
 import convert from 'xml-js';
 import { isArray } from '@ember/array';
-import { computed } from '@ember-decorators/object';
 import { restartableTask } from 'ember-concurrency-decorators';
 
 const { Model } = DS;

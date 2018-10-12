@@ -3,21 +3,20 @@
 </div>
 
 <div class="content cell large-5 large-order-3">
-  {{log model.images.lastSuccessful.value}}
-  {{log model.images.state}}
-  {{log model.images.isIdle}}
   {{#if model.images.isIdle}}
-    {{#slick-slider
-      autoplay=true
-      arrows=true
-      dots=true
-    }}
-      {{#each model.images.lastSuccessful.value as |image|}}
-        <div class="box"> <img src="{{image}}"> </div>
-      {{/each}}
-    {{/slick-slider}}
-  {{else}}
-    <img src="https://via.placeholder.com/1500x1125">
+    {{#if model.images.lastSuccessful.value.length}}
+      {{#slick-slider
+        autoplay=true
+        arrows=true
+        dots=true
+      }}
+        {{#each model.images.lastSuccessful.value as |image|}}
+          {{background-image-div image=image}}
+        {{/each}}
+      {{/slick-slider}}
+    {{else}}
+      <img src="https://via.placeholder.com/1500x1125">
+    {{/if}}
   {{/if}}
 
   <div class="grid-x grid-margin-x-gutter-small">

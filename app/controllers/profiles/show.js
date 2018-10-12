@@ -2,7 +2,6 @@ import Controller from '@ember/controller';
 import { computed } from '@ember-decorators/object';
 
 export default class ProfileShowController extends Controller {
-  fakeImages = ["https://waterfront-access-photos.nyc3.digitaloceanspaces.com/5030011-PortRegalle.JPG", "https://waterfront-access-photos.nyc3.digitaloceanspaces.com/5030011-PortRegalle1.jpg"]
   @computed('model.construction_status')
   get isConstructed() {
     const status = this.get('model.construction_status');
