@@ -11,6 +11,8 @@ Router.map(function() { // eslint-disable-line
   this.route('profiles', function () {
     this.route('show', { path: ':id' });
   });
+  this.route('waterfront-zoning-for-public-access');
+  this.route('data');
 });
 
 export default Router;
