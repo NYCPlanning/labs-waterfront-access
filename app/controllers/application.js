@@ -1,7 +1,6 @@
 import Controller from '@ember/controller';
 import { action } from '@ember-decorators/object';
 import mapboxgl from 'mapbox-gl';
-// import turfBbox from 'npm:@turf/bbox';
 
 export default class ApplicationController extends Controller {
   geocodedFeature = null;
@@ -14,7 +13,11 @@ export default class ApplicationController extends Controller {
 
   highlightedStreetSource = null;
 
-  searchedAddressSource = null;
+  highlightedFeature = null;
+
+  highlightedFeatureLayer = {
+    type: 'line',
+  }
 
   geocodedLayer = {
     type: 'circle',
@@ -70,15 +73,6 @@ export default class ApplicationController extends Controller {
 
     basemapLayersToHide.forEach(layer => map.removeLayer(layer));
   }
-
-  /*@action
-  // selectSearchResult({ geometry }) {
-  //   const { coordinates } = geometry;
-  //   const { mapInstance: map } = this;
-
-  //   this.set('geocodedFeature', { type: 'geojson', data: geometry });
-  //   map.flyTo({ center: coordinates, zoom: 16 });
-  }*/
 
   @action
   handleSearchSelect(result) {

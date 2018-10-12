@@ -61,6 +61,8 @@
     "node": "6.* || 8.* || >= 10.*"
   },
   "dependencies": {
+    "@turf/bbox": "^6.0.1",
+    "@turf/buffer": "^5.1.5",
     "babel-eslint": "^10.0.1",
     "ember-cli-babel-plugin-helpers": "1.0.0",
     "ember-cli-browserstack": "^0.0.6",

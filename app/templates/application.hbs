@@ -9,6 +9,8 @@
   {{#banner.nav}}
     <ul class="menu vertical medium-horizontal">
       <li>{{link-to 'About' 'about'}}</li>
+      <li>{{link-to 'Waterfront Zoning' 'waterfront-zoning-for-public-access'}}</li>
+      <li>{{link-to 'Data' 'data'}}</li>
     </ul>
   {{/banner.nav}}
 {{/labs-ui/site-header}}
@@ -46,6 +48,11 @@
           {{source.layer layer=geocodedLayer}}
         {{/map.source}}
       {{/if}}
+
+      {{#if shouldFitBounds}}
+        {{map.call 'fitBounds' mainMap.bounds mainMap.isSelectedBoundsOptions}}
+      {{/if}}
+
       {{#map.labs-layers
         layerGroups=model.layerGroups
         onLayerClick=(action 'handleLayerClick')
@@ -54,6 +61,16 @@
             {{tooltip-renderer feature=tooltip.feature template=tooltip.layer.tooltipTemplate}}
           {{/layers.tooltip}}
       {{/map.labs-layers}}
+
+      {{!-- Ad-hoc source and layer for developmentSite --}}
+      {{#if highlightedFeature}}
+        {{#map.source options=(mapbox-geojson-source highlightedFeature) as |source|}}
+          {{source.layer
+            layer=highlightedFeatureLayer
+            before='boundary_country'
+          }}
+        {{/map.source}}
+      {{/if}}
     {{/labs-map}}
   </div>
 
