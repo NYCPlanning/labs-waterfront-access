@@ -3,21 +3,26 @@
 </div>
 
 <div class="content cell large-5 large-order-3">
-  {{#if model.images.isIdle}}
-    {{#if model.images.lastSuccessful.value.length}}
-      {{#slick-slider
-        autoplay=true
-        arrows=true
-        dots=true
-      }}
-        {{#each model.images.lastSuccessful.value as |image|}}
-          {{background-image-div image=image}}
-        {{/each}}
-      {{/slick-slider}}
-    {{else}}
-      <img src="https://via.placeholder.com/1500x1125">
+  <div class="profile-image-container">
+    {{#if model.images.isIdle}}
+      {{#if model.images.lastSuccessful.value.length}}
+        {{#slick-slider
+          autoplay=true
+          arrows=true
+          dots=true
+        }}
+          {{#each model.images.lastSuccessful.value as |image|}}
+            {{background-image-div image=image}}
+          {{/each}}
+        {{/slick-slider}}
+      {{else}}
+      {{log 'rootURL' rootURL}}
+        <div class="profile-image" style="background-image: url('/images/w.png');">
+          <div class="no-photo-message">This profile does not have a photo.</div>
+        </div>
+      {{/if}}
     {{/if}}
-  {{/if}}
+  </div>
 
   <div class="grid-x grid-margin-x-gutter-small">
     <div class="cell medium-auto">
