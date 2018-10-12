@@ -52,11 +52,11 @@ const SQL = function(id) {
 const { JSONAPIAdapter } = DS;
 
 export default class ProfileAdapter extends JSONAPIAdapter {
-  static keyForAttribute(key) {
+  keyForAttribute(key) {
     return key;
   }
 
-  static urlForFindRecord(id) {
+  urlForFindRecord(id) {
     return buildSqlUrl(
       SQL(id),
     );
