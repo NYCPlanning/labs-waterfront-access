@@ -11,8 +11,6 @@ const S3_BUCKET_HOST = 'https://waterfront-access-photos.nyc3.digitaloceanspaces
 export default class ProfileModel extends Model {
   @attr() geometry;
 
-  @attr('string') park_name;
-
   @attr('string') paws_id;
 
   @attr('string') park_name;
@@ -20,8 +18,6 @@ export default class ProfileModel extends Model {
   @attr('string') address;
 
   @attr('string') agency;
-
-  @attr('string') paws_id;
 
   @attr('string') category;
 
