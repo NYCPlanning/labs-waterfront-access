@@ -2727,7 +2727,7 @@ cartobox-promises-utility@nycplanning/cartobox-promises-utility#v1.0.2:
   resolved "https://codeload.github.com/nycplanning/cartobox-promises-utility/tar.gz/57f1c96a0bf03c47e048c30d202643cc49db3c69"
   dependencies:
     ember-cli-babel "^6.6.0"
-    ember-fetch "5.0.0"
+    ember-fetch "4.0.1"
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -4028,7 +4028,7 @@ ember-cli@~3.5.0:
     watch-detector "^0.1.0"
     yam "^0.0.24"
 
-ember-compatibility-helpers@1.1.2, ember-compatibility-helpers@^1.0.0, ember-compatibility-helpers@^1.0.0-beta.2, ember-compatibility-helpers@^1.0.2, ember-compatibility-helpers@^1.1.1:
+ember-compatibility-helpers@^1.0.0, ember-compatibility-helpers@^1.0.0-beta.2, ember-compatibility-helpers@^1.0.2, ember-compatibility-helpers@^1.1.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/ember-compatibility-helpers/-/ember-compatibility-helpers-1.1.2.tgz#ae0ee4a7a2858b5ffdf79b428c23aee85c47d93d"
   dependencies:
