@@ -18,6 +18,7 @@ export default class ApplicationRoute extends Route {
         { id: 'waterfront-access--publicly-owned', visible: true },
         { id: 'waterfront-access--wpaas', visible: true },
         { id: 'waterfront-access--entry-points', visible: true },
+        { id: 'ferries', visible: true },
       ],
     });
 
