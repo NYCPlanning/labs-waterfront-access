@@ -119,8 +119,11 @@ export default class ApplicationController extends Controller {
   handleLayerClick(feature) {
     if (feature) {
       const { paws_id } = feature.properties;
+      const { wf_park_id } = feature.properties;
       if (paws_id) {
         this.transitionToRoute('profiles.show', paws_id);
+      } else if (wf_park_id) {
+        this.transitionToRoute('profiles.external', wf_park_id);
       } else {
         this.transitionToRoute('index');
       }
