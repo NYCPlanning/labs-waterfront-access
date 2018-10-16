@@ -133,13 +133,21 @@
         {{/labs-ui/layer-group-toggle}}
       {{/lookup-layer-group}}
 
+      {{#lookup-layer-group for='aerials' as |layerGroup|}}
+        {{#labs-ui/layer-group-toggle
+          label='2016 Aerials'
+          active=layerGroup.model.visible
+        }}
+        {{/labs-ui/layer-group-toggle}}
+      {{/lookup-layer-group}}
+
       {{#lookup-layer-group for='ferries' as |layerGroup|}}
         {{#labs-ui/layer-group-toggle
           label=layerGroup.model.legend.label
           active=layerGroup.model.visible
           icon=layerGroup.model.legend.icon
         }}
-      {{/labs-ui/layer-group-toggle}}
+        {{/labs-ui/layer-group-toggle}}
       {{/lookup-layer-group}}
 
     {{/labs-ui/layer-groups-container}}
