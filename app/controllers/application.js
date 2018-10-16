@@ -124,6 +124,13 @@ export default class ApplicationController extends Controller {
       } else {
         this.transitionToRoute('index');
       }
+
+      if (feature.layer.id === 'wpaas-entry-points') {
+        const [lng, lat] = feature.geometry.coordinates;
+        const zoom = this.get('mapInstance').getZoom() + 2; // add 2 because google uses smaller tiles
+        const googleDirectionsUrl = `https://www.google.com/maps/dir//${lat},${lng}/@${lat},${lng},${zoom}z`;
+        window.open(googleDirectionsUrl, '_blank');
+      }
     }
   }
 }
