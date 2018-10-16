@@ -19,6 +19,7 @@ export default class ApplicationRoute extends Route {
         { id: 'bike-routes', visible: false },
         { id: 'subway', visible: false },
         { id: 'aerials', visible: false },
+        { id: 'ferries', visible: false },
       ],
     });
 
