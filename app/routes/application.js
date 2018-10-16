@@ -15,7 +15,13 @@ export default class ApplicationRoute extends Route {
       'layer-groups': [
         { id: 'waterfront-access--publicly-owned', visible: true },
         { id: 'waterfront-access--wpaas', visible: true },
-        { id: 'waterfront-access--entry-points', visible: true },
+        {
+          id: 'waterfront-access--entry-points',
+          visible: true,
+          layers: [{
+            tooltipTemplate: '{{{notes}}}<div class="gray">(click for directions)</div>',
+          }],
+        },
         { id: 'bike-routes', visible: false },
         { id: 'subway', visible: false },
         { id: 'aerials', visible: false },

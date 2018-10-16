@@ -4,7 +4,8 @@
   position: absolute;
   background-color: $white;
   z-index: 1000;
-  padding: rem-calc(2) rem-calc(6);
+  padding: rem-calc(4) rem-calc(6);
+  line-height: 1.5;
   color: $dark-gray;
   font-size: rem-calc(11);
   box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
