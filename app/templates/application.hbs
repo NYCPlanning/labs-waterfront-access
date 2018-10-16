@@ -22,14 +22,19 @@
     searchTerms=searchTerms
     typeTitleLookup=(hash
       lot='Addresses'
-      waterfront-park-name='Park Name')
+      waterfront-park-name='Waterfront Space Profiles')
     onClear=(action (mut geocodedFeature null))
     class="search-container"
     as |search|}}
     {{#if (eq search.result.type 'lot')}}
-      <span class="icon tax-lot"></span> <span class="subdued">{{search.result.label}}</span>
+      {{fa-icon 'map-pin' fixedWidth=true}} <span class="dark-gray">{{search.result.label}}</span>
     {{else if (eq search.result.type 'waterfront-park-name')}}
-      {{search.result.label}}
+      <span class="fa-layers">
+        {{fa-icon 'window-minimize' fixedWidth=true class="aqua-light"}}
+        {{fa-icon 'tree' fixedWidth=true transform='left-8 down-1 shrink-2' class="green-dark"}}
+        {{!-- {{fa-icon 'info-circle' fixedWidth=true transform='right-3 up-3 shrink-6' class="blue-dark"}} --}}
+      </span>
+      <span class="dark-gray">{{search.result.label}}</span>
     {{/if}}
   {{/labs-search}}
 
