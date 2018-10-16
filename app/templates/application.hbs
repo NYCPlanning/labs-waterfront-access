@@ -27,15 +27,14 @@
     class="search-container"
     as |search|}}
     {{#if (eq search.result.type 'lot')}}
-      {{fa-icon 'map-pin' fixedWidth=true}} <span class="dark-gray">{{search.result.label}}</span>
+      {{fa-icon 'map-pin' fixedWidth=true}}
     {{else if (eq search.result.type 'waterfront-park-name')}}
-      <span class="fa-layers">
-        {{fa-icon 'window-minimize' fixedWidth=true class="aqua-light"}}
-        {{fa-icon 'tree' fixedWidth=true transform='left-8 down-1 shrink-2' class="green-dark"}}
-        {{!-- {{fa-icon 'info-circle' fixedWidth=true transform='right-3 up-3 shrink-6' class="blue-dark"}} --}}
+      <span class="fa-layers" style="margin-right:0.25em;">
+        {{fa-icon 'window-minimize' class="aqua-light"}}
+        {{fa-icon 'tree' transform='left-7 shrink-1' class="green-dark"}}
       </span>
-      <span class="dark-gray">{{search.result.label}}</span>
     {{/if}}
+    <span class="dark-gray">{{search.result.label}}</span>
   {{/labs-search}}
 
   <div class="map-container cell medium-auto large-order-2">
