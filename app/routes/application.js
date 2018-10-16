@@ -13,8 +13,6 @@ export default class ApplicationRoute extends Route {
   async model() {
     const layerGroups = await this.store.query('layer-group', {
       'layer-groups': [
-        { id: 'bike-routes', visible: true },
-        { id: 'subway', visible: true },
         { id: 'waterfront-access--publicly-owned', visible: true },
         { id: 'waterfront-access--wpaas', visible: true },
         {
@@ -24,7 +22,10 @@ export default class ApplicationRoute extends Route {
             tooltipTemplate: '{{{notes}}}<div class="gray">(click for directions)</div>',
           }],
         },
-        { id: 'ferries', visible: true },
+        { id: 'bike-routes', visible: false },
+        { id: 'subway', visible: false },
+        { id: 'aerials', visible: false },
+        { id: 'ferries', visible: false },
       ],
     });
 
