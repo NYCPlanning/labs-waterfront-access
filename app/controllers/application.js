@@ -17,6 +17,21 @@ export default class ApplicationController extends Controller {
 
   highlightedFeatureLayer = {
     type: 'line',
+    paint: {
+      'line-color': 'rgba(6, 43, 99, 0.6)',
+      'line-width': {
+        stops: [
+          [
+            10,
+            0.5,
+          ],
+          [
+            15,
+            8,
+          ],
+        ],
+      },
+    },
   }
 
   geocodedLayer = {
