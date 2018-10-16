@@ -24,6 +24,7 @@ export default class ApplicationRoute extends Route {
             tooltipTemplate: '{{{notes}}}<br/><h6><small>Click for directions</small></h6>',
           }],
         },
+        { id: 'ferries', visible: true },
       ],
     });
 
