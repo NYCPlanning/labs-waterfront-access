@@ -140,6 +140,11 @@ export default class ApplicationController extends Controller {
         this.transitionToRoute('index');
       }
 
+      /*if (feature.layer.id === 'boat-launches') {
+        const launchInfo = '{link}';
+        window.open(launchInfo, '_blank');
+      }*/
+
       if (feature.layer.id === 'wpaas-entry-points') {
         const [lng, lat] = feature.geometry.coordinates;
         const zoom = this.get('mapInstance').getZoom() + 2; // add 2 because google uses smaller tiles
