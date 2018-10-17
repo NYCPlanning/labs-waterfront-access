@@ -110,7 +110,7 @@
     {{/labs-ui/layer-groups-container}}
 
     {{#labs-ui/layer-groups-container title='Filter Spaces' open=false}}
-
+      {{x-toggle value=myValue onToggle=(action (mut myValue))}}
     {{/labs-ui/layer-groups-container}}
 
     {{#labs-ui/layer-groups-container title='Wayfinding'}}
