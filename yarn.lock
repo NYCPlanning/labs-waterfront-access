@@ -3589,17 +3589,6 @@ ember-cli-sass@^7.1.7:
     broccoli-sass-source-maps "^2.1.0"
     ember-cli-version-checker "^2.1.0"
 
-ember-cli-slick@NYCPlanning/ember-cli-slick:
-  version "2.0.0"
-  resolved "https://codeload.github.com/NYCPlanning/ember-cli-slick/tar.gz/1f1a57568332e88dd68b0334a5f1651fe515ca31"
-  dependencies:
-    broccoli-funnel "^2.0.1"
-    broccoli-merge-trees "^3.0.0"
-    ember-cli-babel "^6.16.0"
-    ember-cli-htmlbars "^3.0.0"
-    fastboot-transform "^0.1.2"
-    slick-carousel "^1.8.1"
-
 ember-cli-sri@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ember-cli-sri/-/ember-cli-sri-2.1.1.tgz#971620934a4b9183cf7923cc03e178b83aa907fd"
@@ -6455,6 +6444,17 @@ klaw@^1.0.0:
   resolved "https://registry.yarnpkg.com/klaw/-/klaw-1.3.1.tgz#4088433b46b3b1ba259d78785d8e96f73ba02439"
   optionalDependencies:
     graceful-fs "^4.1.9"
+
+labs-ember-cli-slick@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/labs-ember-cli-slick/-/labs-ember-cli-slick-2.0.0.tgz#c324f754b9f4b7141e12077d98b7ebba61db999a"
+  dependencies:
+    broccoli-funnel "^2.0.1"
+    broccoli-merge-trees "^3.0.0"
+    ember-cli-babel "^6.16.0"
+    ember-cli-htmlbars "^3.0.0"
+    fastboot-transform "^0.1.2"
+    slick-carousel "^1.8.1"
 
 labs-ember-search@^2.4.6:
   version "2.4.8"
