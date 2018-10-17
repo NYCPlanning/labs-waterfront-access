@@ -1,0 +1,32 @@
+// Map Sidebar
+// --------------------------------------------------
+.map-sidebar-section {
+  padding: rem-calc(6) 0;
+  border-bottom: $hr-border;
+
+  .map-sidebar-title {
+    padding-right: rem-calc(6);
+    padding-left: rem-calc(6);
+    margin-bottom: rem-calc(6);
+  }
+
+  p {
+    font-size: rem-calc(12);
+    padding-right: rem-calc(6);
+    padding-left: rem-calc(6);
+    margin-bottom: rem-calc(6);
+  }
+
+  .legend-item {
+    margin-bottom: rem-calc(4);
+  }
+
+  .bold-legend-item {
+    font-weight: $global-weight-bold;
+  }
+}
+
+.map-sidebar-title {
+  margin: 0;
+  font-size: 1rem;
+}
