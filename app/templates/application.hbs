@@ -22,15 +22,19 @@
     searchTerms=searchTerms
     typeTitleLookup=(hash
       lot='Addresses'
-      waterfront-park-name='Park Name')
+      waterfront-park-name='Waterfront Space Profiles')
     onClear=(action (mut geocodedFeature null))
     class="search-container"
     as |search|}}
     {{#if (eq search.result.type 'lot')}}
-      <span class="icon tax-lot"></span> <span class="subdued">{{search.result.label}}</span>
+      {{fa-icon 'map-pin' fixedWidth=true}}
     {{else if (eq search.result.type 'waterfront-park-name')}}
-      {{search.result.label}}
+      <span class="fa-layers" style="margin-right:0.25em;">
+        {{fa-icon 'window-minimize' class="aqua-light"}}
+        {{fa-icon 'tree' transform='left-7 shrink-1' class="green-dark"}}
+      </span>
     {{/if}}
+    <span class="dark-gray">{{search.result.label}}</span>
   {{/labs-search}}
 
   <div class="map-container cell medium-auto large-order-2">
@@ -75,46 +79,35 @@
   </div>
 
   <div class="map-sidebar cell large-order-1">
-    {{#labs-ui/layer-groups-container title='Publicly Accessible Waterfront'}}
+
+    <section class="map-sidebar-section">
+      <h4 class="map-sidebar-title">Waterfront Public Access Areas</h4>
+      <p>{{!-- From https://www1.nyc.gov/site/planning/zoning/glossary.page#waterfront_public_access_area --}}
+        The portion of a waterfront zoning lot where publicly accessible open space is provided to and along the shoreline.
+      </p>
 
       {{#lookup-layer-group for='waterfront-access--wpaas' as |layerGroup|}}
-        {{#labs-ui/layer-group-toggle
-          label=layerGroup.model.legend.label
-          tooltip=layerGroup.model.legend.tooltip
-          active=layerGroup.model.visible
-          icon=layerGroup.model.legend.icon
-        }}
-          {{labs-ui/legend-items items=layerGroup.model.legend.items}}
-        {{/labs-ui/layer-group-toggle}}
-      {{/lookup-layer-group}}
-
-      {{#lookup-layer-group for='waterfront-access--publicly-owned' as |layerGroup|}}
-        {{#labs-ui/layer-group-toggle
-          label=layerGroup.model.legend.label
-          tooltip=layerGroup.model.legend.tooltip
-          active=layerGroup.model.visible
-          icon=layerGroup.model.legend.icon
-        }}
-        {{/labs-ui/layer-group-toggle}}
+        {{#each layerGroup.model.legend.items as |item|}}
+          {{labs-ui/legend-item item=item}}
+        {{/each}}
       {{/lookup-layer-group}}
 
       {{#lookup-layer-group for='waterfront-access--entry-points' as |layerGroup|}}
-        {{#labs-ui/layer-group-toggle
-          label=layerGroup.model.legend.label
-          active=layerGroup.model.visible
-          icon=layerGroup.model.legend.icon
-        }}
-        {{/labs-ui/layer-group-toggle}}
+        {{labs-ui/legend-item item=layerGroup.model.legend}}
       {{/lookup-layer-group}}
 
-    {{/labs-ui/layer-groups-container}}
+      <div class="text-center"><br/>[FILTERS GO HERE]<br/><br/></div>
 
-    {{#labs-ui/layer-groups-container title='Filter Spaces' open=false}}
+    </section>
 
-    {{/labs-ui/layer-groups-container}}
+    <section class="map-sidebar-section">
+      {{#lookup-layer-group for='waterfront-access--publicly-owned' as |layerGroup|}}
+        {{labs-ui/legend-item item=layerGroup.model.legend class="bold-legend-item"}}
+      {{/lookup-layer-group}}
+      <p>City, State, and Federally owned parks and facilities that provide waterfront parkland and open space for public enjoyment.</p>
+    </section>
 
-    {{#labs-ui/layer-groups-container title='Wayfinding'}}
-
+    <section class="map-sidebar-section">
       {{#lookup-layer-group for='bike-routes' as |layerGroup|}}
         {{#labs-ui/layer-group-toggle
           label=layerGroup.model.legend.label
@@ -149,8 +142,8 @@
         }}
         {{/labs-ui/layer-group-toggle}}
       {{/lookup-layer-group}}
+    </section>
 
-    {{/labs-ui/layer-groups-container}}
   </div>
 
   {{outlet}}

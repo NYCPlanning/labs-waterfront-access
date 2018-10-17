@@ -53,6 +53,7 @@
   transition-delay: 0.2s;
   overflow: auto;
   padding: rem-calc(6);
+  padding-top: 0;
 
   // Only show results when .focused
   &.focused {
@@ -64,6 +65,7 @@
   }
 
   .results-header {
+    font-size: rem-calc(14);
     margin: rem-calc(10) 0 0;
   }
 
@@ -89,13 +91,6 @@
       color: $anchor-color-hover;
       background-color: $a11y-yellow;
     }
-  }
-  li:not(.result) {
-    display: none;
-  }
-
-  .subdued {
-    color: $dark-gray;
   }
 }
 
