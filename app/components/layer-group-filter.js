@@ -4,6 +4,8 @@ import { argument } from '@ember-decorators/argument';
 import { required } from '@ember-decorators/argument/validation';
 import { assert } from '@ember/debug';
 
+const DECISION_TYPE = 'all'; // logical AND
+
 // setFilterForLayer
 export default class LayerGroupFilterComponent extends Component {
   init(...args) {
@@ -48,7 +50,7 @@ export default class LayerGroupFilterComponent extends Component {
       newSelections = selections.concat([['==', column, true]]);
     }
 
-    const newExpression = ['all'].concat(newSelections);
+    const newExpression = [DECISION_TYPE].concat(newSelections);
 
     this.delegateFilters(newExpression);
   }
