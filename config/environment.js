@@ -73,7 +73,7 @@ module.exports = function(environment) {
     ENV.host = 'https://layers-api.planninglabs.nyc';
     ENV['mapbox-gl'].map.style = 'https://layers-api.planninglabs.nyc/v1/base/style.json';
     ENV['labs-search'] = {
-      host: 'https://search-api.planninglabs.nyc'
+      host: 'https://search-api.planninglabs.nyc',
     };
   }
 

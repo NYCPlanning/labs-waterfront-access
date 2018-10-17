@@ -110,7 +110,27 @@
     {{/labs-ui/layer-groups-container}}
 
     {{#labs-ui/layer-groups-container title='Filter Spaces' open=false}}
-      {{x-toggle value=myValue onToggle=(action (mut myValue))}}
+      {{#lookup-layer-group
+        for='waterfront-access--wpaas'
+        as |layerGroup|}}
+        <ul>
+          {{#layer-group-filter 
+            lookupTable=(amenity-lookup)
+            layerGroup=layerGroup.model
+            as |lookupEntry checkedValues updateValue|}}
+            <li>
+              {{input
+                type="checkbox"
+                name=lookupEntry.column
+                checked=(contains checkedValues lookupEntry.column)
+                change=(action updateValue lookupEntry.column)}}
+              <label>
+                {{lookupEntry.label}}
+              </label>
+            </li>
+          {{/layer-group-filter}}
+        </ul>
+      {{/lookup-layer-group}}
     {{/labs-ui/layer-groups-container}}
 
     {{#labs-ui/layer-groups-container title='Wayfinding'}}

@@ -1,7 +1,6 @@
 import { helper } from '@ember/component/helper';
 
-const amenitiesMap = [
-  ['column_name', 'Checklist'],
+export const amenitiesMap = [
   ['lighting', 'lighting'],
   ['other_planting', 'unspecified plantings'],
   ['entry_gates', 'entry gates'],
@@ -19,7 +18,7 @@ const amenitiesMap = [
   ['trash_receptacles', 'trash receptacles'],
   ['handicapped_accessible', 'handicapped accessible'],
   ['emergency_access', 'emergency access'],
-].map((column, label) => ({ label, column }));
+].map(([column, label]) => ({ label, column }));
 
 export function amenityLookup([key]) {
   if (key) return amenitiesMap.find(({ column }) => (key === column));
