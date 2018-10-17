@@ -58,11 +58,12 @@ export default class ApplicationController extends Controller {
     this.set('mapInstance', map);
     window.map = map;
 
-    // setup controls
+    // Set up controls
     const navigationControl = new mapboxgl.NavigationControl();
 
     map.addControl(navigationControl, 'top-left');
 
+    // Hide some base map layers
     const basemapLayersToHide = [
       'place_city_large',
       'place_state',
@@ -70,8 +71,10 @@ export default class ApplicationController extends Controller {
       'place_country_minor',
       'place_country_major',
     ];
-
     basemapLayersToHide.forEach(layer => map.removeLayer(layer));
+
+    // Make the water blue
+    map.setPaintProperty('water', 'fill-color', '#ccddee');
   }
 
   @action
