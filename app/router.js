@@ -10,7 +10,6 @@ Router.map(function() { // eslint-disable-line
   this.route('about');
   this.route('profiles', function () {
     this.route('show', { path: ':id' });
-    this.route('external', { path: 'external/:id' });
   });
   this.route('waterfront-zoning-for-public-access');
   this.route('data');
