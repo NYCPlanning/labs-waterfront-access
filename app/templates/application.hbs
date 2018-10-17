@@ -96,8 +96,27 @@
         {{labs-ui/legend-item item=layerGroup.model.legend}}
       {{/lookup-layer-group}}
 
-      <div class="text-center"><br/>[FILTERS GO HERE]<br/><br/></div>
-
+      {{#lookup-layer-group
+        for='waterfront-access--wpaas'
+        as |layerGroup|}}
+        <ul>
+          {{#layer-group-filter 
+            lookupTable=(amenity-lookup)
+            layerGroup=layerGroup.model
+            as |lookupEntry checkedValues updateValue|}}
+            <li>
+              {{input
+                type="checkbox"
+                name=lookupEntry.column
+                checked=(contains checkedValues lookupEntry.column)
+                change=(action updateValue lookupEntry.column)}}
+              <label>
+                {{lookupEntry.label}}
+              </label>
+            </li>
+          {{/layer-group-filter}}
+        </ul>
+      {{/lookup-layer-group}}
     </section>
 
     <section class="map-sidebar-section">
@@ -124,28 +143,6 @@
           icon=layerGroup.model.legend.icon
         }}
         {{/labs-ui/layer-group-toggle}}
-      {{/lookup-layer-group}}
-
-      {{#lookup-layer-group
-        for='waterfront-access--wpaas'
-        as |layerGroup|}}
-        <ul>
-          {{#layer-group-filter 
-            lookupTable=(amenity-lookup)
-            layerGroup=layerGroup.model
-            as |lookupEntry checkedValues updateValue|}}
-            <li>
-              {{input
-                type="checkbox"
-                name=lookupEntry.column
-                checked=(contains checkedValues lookupEntry.column)
-                change=(action updateValue lookupEntry.column)}}
-              <label>
-                {{lookupEntry.label}}
-              </label>
-            </li>
-          {{/layer-group-filter}}
-        </ul>
       {{/lookup-layer-group}}
 
       {{#lookup-layer-group for='bike-routes' as |layerGroup|}}
