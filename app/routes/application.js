@@ -26,13 +26,7 @@ export default class ApplicationRoute extends Route {
         { id: 'subway', visible: false },
         { id: 'aerials', visible: false },
         { id: 'ferries', visible: false },
-        {
-          id: 'boat-launches',
-          visible: true,
-          layers: [{
-            tooltipTemplate: '{{{name}}}<div class="gray">(click for more info)</div>',
-          }],
-        },
+        { id: 'boat-launches', visible: false },
       ],
     });
 
