@@ -6445,9 +6445,9 @@ klaw@^1.0.0:
   optionalDependencies:
     graceful-fs "^4.1.9"
 
-labs-ember-cli-slick@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/labs-ember-cli-slick/-/labs-ember-cli-slick-2.0.0.tgz#c324f754b9f4b7141e12077d98b7ebba61db999a"
+labs-ember-cli-slick@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/labs-ember-cli-slick/-/labs-ember-cli-slick-2.0.1.tgz#c5d161df8549c3508492defecd7b73e849c0c1ee"
   dependencies:
     broccoli-funnel "^2.0.1"
     broccoli-merge-trees "^3.0.0"

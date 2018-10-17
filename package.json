@@ -58,7 +58,7 @@
     "ember-toggle": "5.3.1",
     "ember-welcome-page": "^3.2.0",
     "foundation-sites": "^6.4.3",
-    "labs-ember-cli-slick": "2.0.0",
+    "labs-ember-cli-slick": "2.0.1",
     "labs-ember-search": "^2.4.6",
     "labs-ui": "^0.0.8",
     "loader.js": "^4.7.0",
