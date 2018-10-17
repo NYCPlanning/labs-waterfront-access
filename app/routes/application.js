@@ -19,14 +19,20 @@ export default class ApplicationRoute extends Route {
           id: 'waterfront-access--entry-points',
           visible: true,
           layers: [{
-            tooltipTemplate: '{{{notes}}}<div class="gray">(click for directions)</div>',
+            tooltipTemplate: '<div class="gray">(click for directions)</div>',
           }],
         },
         { id: 'bike-routes', visible: false },
         { id: 'subway', visible: false },
         { id: 'aerials', visible: false },
         { id: 'ferries', visible: false },
-        { id: 'boat-launches', visible: false },
+        {
+          id: 'boat-launches',
+          visible: true,
+          layers: [{
+            tooltipTemplate: '{{name}}<div class="gray">(click for launch info)</div',
+          }],
+        },
       ],
     });
 
