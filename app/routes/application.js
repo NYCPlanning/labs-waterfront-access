@@ -19,7 +19,7 @@ export default class ApplicationRoute extends Route {
           id: 'waterfront-access--entry-points',
           visible: true,
           layers: [{
-            tooltipTemplate: '<div class="gray">(click for directions)</div>',
+            tooltipTemplate: '<div class="gray">click for directions</div>',
           }],
         },
         {
