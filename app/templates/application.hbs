@@ -79,38 +79,35 @@
   </div>
 
   <div class="map-sidebar cell large-order-1">
-    {{#labs-ui/layer-groups-container title='Publicly Accessible Waterfront'}}
+
+    <section class="map-sidebar-section">
+      <h4 class="map-sidebar-title">Waterfront Public Access Areas</h4>
+      <p>{{!-- From https://www1.nyc.gov/site/planning/zoning/glossary.page#waterfront_public_access_area --}}
+        The portion of a waterfront zoning lot where publicly accessible open space is provided to and along the shoreline.
+      </p>
 
       {{#lookup-layer-group for='waterfront-access--wpaas' as |layerGroup|}}
-        {{#labs-ui/layer-group-toggle
-          label=layerGroup.model.legend.label
-          tooltip=layerGroup.model.legend.tooltip
-          active=layerGroup.model.visible
-          icon=layerGroup.model.legend.icon
-        }}
-          {{labs-ui/legend-items items=layerGroup.model.legend.items}}
-        {{/labs-ui/layer-group-toggle}}
-      {{/lookup-layer-group}}
-
-      {{#lookup-layer-group for='waterfront-access--publicly-owned' as |layerGroup|}}
-        {{#labs-ui/layer-group-toggle
-          label=layerGroup.model.legend.label
-          tooltip=layerGroup.model.legend.tooltip
-          active=layerGroup.model.visible
-          icon=layerGroup.model.legend.icon
-        }}
-        {{/labs-ui/layer-group-toggle}}
+        {{#each layerGroup.model.legend.items as |item|}}
+          {{labs-ui/legend-item item=item}}
+        {{/each}}
       {{/lookup-layer-group}}
 
       {{#lookup-layer-group for='waterfront-access--entry-points' as |layerGroup|}}
-        {{#labs-ui/layer-group-toggle
-          label=layerGroup.model.legend.label
-          active=layerGroup.model.visible
-          icon=layerGroup.model.legend.icon
-        }}
-        {{/labs-ui/layer-group-toggle}}
+        {{labs-ui/legend-item item=layerGroup.model.legend}}
       {{/lookup-layer-group}}
 
+      <div class="text-center"><br/>[FILTERS GO HERE]<br/><br/></div>
+
+    </section>
+
+    <section class="map-sidebar-section">
+      {{#lookup-layer-group for='waterfront-access--publicly-owned' as |layerGroup|}}
+        {{labs-ui/legend-item item=layerGroup.model.legend class="bold-legend-item"}}
+      {{/lookup-layer-group}}
+      <p>City, State, and Federally owned parks and facilities that provide waterfront parkland and open space for public enjoyment.</p>
+    </section>
+
+    <section class="map-sidebar-section">
       {{#lookup-layer-group for='boat-launches' as |layerGroup|}}
         {{#labs-ui/layer-group-toggle
           label=layerGroup.model.legend.label
@@ -120,13 +117,14 @@
         {{/labs-ui/layer-group-toggle}}
       {{/lookup-layer-group}}
 
-    {{/labs-ui/layer-groups-container}}
-
-    {{#labs-ui/layer-groups-container title='Filter Spaces' open=false}}
-
-    {{/labs-ui/layer-groups-container}}
-
-    {{#labs-ui/layer-groups-container title='Wayfinding'}}
+      {{#lookup-layer-group for='ferries' as |layerGroup|}}
+        {{#labs-ui/layer-group-toggle
+          label=layerGroup.model.legend.label
+          active=layerGroup.model.visible
+          icon=layerGroup.model.legend.icon
+        }}
+        {{/labs-ui/layer-group-toggle}}
+      {{/lookup-layer-group}}
 
       {{#lookup-layer-group for='bike-routes' as |layerGroup|}}
         {{#labs-ui/layer-group-toggle
@@ -153,17 +151,8 @@
         }}
         {{/labs-ui/layer-group-toggle}}
       {{/lookup-layer-group}}
+    </section>
 
-      {{#lookup-layer-group for='ferries' as |layerGroup|}}
-        {{#labs-ui/layer-group-toggle
-          label=layerGroup.model.legend.label
-          active=layerGroup.model.visible
-          icon=layerGroup.model.legend.icon
-        }}
-        {{/labs-ui/layer-group-toggle}}
-      {{/lookup-layer-group}}
-
-    {{/labs-ui/layer-groups-container}}
   </div>
 
   {{outlet}}
