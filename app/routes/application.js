@@ -22,10 +22,6 @@ export default class ApplicationRoute extends Route {
             tooltipTemplate: '<div class="gray">(click for directions)</div>',
           }],
         },
-        { id: 'bike-routes', visible: false },
-        { id: 'subway', visible: false },
-        { id: 'aerials', visible: false },
-        { id: 'ferries', visible: false },
         {
           id: 'boat-launches',
           visible: true,
@@ -33,6 +29,10 @@ export default class ApplicationRoute extends Route {
             tooltipTemplate: '{{name}}<div class="gray">(click for launch info)</div',
           }],
         },
+        { id: 'bike-routes', visible: false },
+        { id: 'subway', visible: false },
+        { id: 'aerials', visible: false },
+        { id: 'ferries', visible: false },
       ],
     });
 
