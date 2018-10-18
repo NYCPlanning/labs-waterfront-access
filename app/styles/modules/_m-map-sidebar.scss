@@ -24,6 +24,11 @@
   .bold-legend-item {
     font-weight: $global-weight-bold;
   }
+
+  .amenity-filters-container {
+    padding-right: rem-calc(6);
+    padding-left: rem-calc(6);
+  }
 }
 
 .map-sidebar-title {

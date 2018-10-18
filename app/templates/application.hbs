@@ -96,25 +96,27 @@
         {{labs-ui/legend-item item=layerGroup.model.legend}}
       {{/lookup-layer-group}}
 
-      {{#lookup-layer-group
-        for='waterfront-access--wpaas'
-        as |layerGroup|}}
-          {{#layer-group-filter 
-            layerGroup=layerGroup.model
-            as |checkedValues updateValue|}}
-            {{log checkedValues}}
-            {{#power-select-multiple
-              options=(amenity-lookup)
-              selected=(filter-by (amenity-lookup) checkedValues)
-              placeholder="Select some actions..."
-              searchField='searchField'
-              onchange=(action updateValue)
-              as |action|
-            }}
-              {{action.label}}
-            {{/power-select-multiple}}
-          {{/layer-group-filter}}
-      {{/lookup-layer-group}}
+      <div class="amenity-filters-container">
+        {{#lookup-layer-group
+          for='waterfront-access--wpaas'
+          as |layerGroup|}}
+            {{#layer-group-filter
+              layerGroup=layerGroup.model
+              as |checkedValues updateValue|}}
+              {{log checkedValues}}
+              {{#power-select-multiple
+                options=(amenity-lookup)
+                selected=(filter-by (amenity-lookup) checkedValues)
+                placeholder="Select amenities..."
+                searchField='searchField'
+                onchange=(action updateValue)
+                as |action|
+              }}
+                {{action.label}}
+              {{/power-select-multiple}}
+            {{/layer-group-filter}}
+        {{/lookup-layer-group}}
+      </div>
     </section>
 
     <section class="map-sidebar-section">
