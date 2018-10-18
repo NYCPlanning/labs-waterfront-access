@@ -11,6 +11,20 @@ export default class ApplicationController extends Controller {
 
   searchTerms = '';
 
+  popupFeature = null;
+
+  popupLocation = null;
+
+  popupWfParkId = null;
+
+  popupParkName = null;
+
+  popupAgency = null;
+
+  popupStatus = null;
+
+  popupLink = null;
+
   highlightedStreetSource = null;
 
   highlightedFeature = null;
@@ -134,7 +148,14 @@ export default class ApplicationController extends Controller {
   }
 
   @action
+  mapClicked(e) {
+    this.set('popupLocation', e.lngLat);
+  }
+
+  @action
   handleLayerClick(feature) {
+    // this.set('popupFeature', null);
+    console.log(this.get('popupFeature'));
     if (feature) {
       const { paws_id } = feature.properties;
       if (paws_id) {
@@ -143,7 +164,16 @@ export default class ApplicationController extends Controller {
         this.transitionToRoute('index');
       }
 
-      if (feature.layer.id === 'publicly-owned-waterfront-fill') {
+      if (feature.layer.id === 'publicly-owned-waterfront-overlay') {
+        this.set('popupFeature', true);
+        this.set('popupWfParkId', feature.properties.wf_park_id);
+        this.set('popupParkName', feature.properties.park_name);
+        this.set('popupAgency', feature.properties.agency);
+        this.set('popupStatus', feature.properties.status);
+        this.set('popupLink', feature.properties.link);
+      }
+
+      if (feature.layer.id === 'boat-launches') {
         const launchInfo = feature.properties.link;
         window.open(launchInfo, '_blank');
       }

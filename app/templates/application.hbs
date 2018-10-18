@@ -75,6 +75,16 @@
           }}
         {{/map.source}}
       {{/if}}
+
+      {{map.on 'click' (action 'mapClicked')}}
+
+      {{#if (not-eq popupFeature null)}}
+        {{#map.popup lngLat=popupLocation}}
+          <div class="popup-content">
+              <h4 class="popup-header">{{popupParkName}}</h4>
+          </div>
+        {{/map.popup}}
+      {{/if}}
     {{/labs-map}}
   </div>
 
@@ -108,6 +118,24 @@
     </section>
 
     <section class="map-sidebar-section">
+      {{#lookup-layer-group for='boat-launches' as |layerGroup|}}
+        {{#labs-ui/layer-group-toggle
+          label=layerGroup.model.legend.label
+          active=layerGroup.model.visible
+          icon=layerGroup.model.legend.icon
+        }}
+        {{/labs-ui/layer-group-toggle}}
+      {{/lookup-layer-group}}
+
+      {{#lookup-layer-group for='ferries' as |layerGroup|}}
+        {{#labs-ui/layer-group-toggle
+          label=layerGroup.model.legend.label
+          active=layerGroup.model.visible
+          icon=layerGroup.model.legend.icon
+        }}
+        {{/labs-ui/layer-group-toggle}}
+      {{/lookup-layer-group}}
+
       {{#lookup-layer-group for='bike-routes' as |layerGroup|}}
         {{#labs-ui/layer-group-toggle
           label=layerGroup.model.legend.label
@@ -130,15 +158,6 @@
         {{#labs-ui/layer-group-toggle
           label='2016 Aerials'
           active=layerGroup.model.visible
-        }}
-        {{/labs-ui/layer-group-toggle}}
-      {{/lookup-layer-group}}
-
-      {{#lookup-layer-group for='ferries' as |layerGroup|}}
-        {{#labs-ui/layer-group-toggle
-          label=layerGroup.model.legend.label
-          active=layerGroup.model.visible
-          icon=layerGroup.model.legend.icon
         }}
         {{/labs-ui/layer-group-toggle}}
       {{/lookup-layer-group}}
