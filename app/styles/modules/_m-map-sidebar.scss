@@ -29,6 +29,26 @@
     padding-right: rem-calc(6);
     padding-left: rem-calc(6);
   }
+
+  .ember-power-select-multiple-trigger {
+    font-size: rem-calc(12);
+    margin-bottom: rem-calc(6);
+
+    input {
+      margin: 2px 0 2px 3px;
+      line-height: $global-lineheight;
+      height: auto;
+      box-shadow: none;
+
+      &:focus {
+        border: 0;
+      }
+    }
+  }
+
+  .ember-power-select-options {
+    font-size: rem-calc(12);
+  }
 }
 
 .map-sidebar-title {
