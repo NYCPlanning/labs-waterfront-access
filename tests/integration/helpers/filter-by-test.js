@@ -8,10 +8,13 @@ module('Integration | Helper | filter-by', function(hooks) {
 
   // Replace this with your real tests.
   test('it renders', async function(assert) {
-    this.set('inputValue', '1234');
+    this.set('objectList', [{ column: 'a' }, { column: 'b' }, { column: 'c' }]);
+    this.set('valueList', ['a', 'b']);
 
-    await render(hbs`{{filter-by inputValue}}`);
+    await render(hbs`
+      {{#each (filter-by objectList valueList) as |foundObject|}}{{foundObject.column}}{{/each}}
+    `);
 
-    assert.equal(this.element.textContent.trim(), '1234');
+    assert.equal(this.element.textContent.trim(), 'ab');
   });
 });
