@@ -87,6 +87,9 @@ export default class ApplicationController extends Controller {
     ];
 
     basemapLayersToHide.forEach(layer => map.removeLayer(layer));
+
+    // override water color
+    map.setPaintProperty('water', 'fill-color', 'rgba(186, 225, 242, 1)');
   }
 
   @action
