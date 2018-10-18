@@ -82,9 +82,7 @@
 
     <section class="map-sidebar-section">
       <h4 class="map-sidebar-title">Waterfront Public Access Areas</h4>
-      <p>{{!-- From https://www1.nyc.gov/site/planning/zoning/glossary.page#waterfront_public_access_area --}}
-        The portion of a waterfront zoning lot where publicly accessible open space is provided to and along the shoreline.
-      </p>
+      <p>The portion of privately owned waterfront zoning lots where publicly accessible open space is provided to and along the shoreline.</p>
 
       {{#lookup-layer-group for='waterfront-access--wpaas' as |layerGroup|}}
         {{#each layerGroup.model.legend.items as |item|}}
