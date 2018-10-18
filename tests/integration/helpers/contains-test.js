@@ -8,10 +8,11 @@ module('Integration | Helper | contains', function(hooks) {
 
   // Replace this with your real tests.
   test('it renders', async function(assert) {
-    this.set('inputValue', '1234');
+    this.set('array', ['a', 'b', 'c']);
+    this.set('value', 'a');
 
-    await render(hbs`{{contains inputValue}}`);
+    await render(hbs`{{contains array value}}`);
 
-    assert.equal(this.element.textContent.trim(), '1234');
+    assert.equal(this.element.textContent.trim(), 'true');
   });
 });

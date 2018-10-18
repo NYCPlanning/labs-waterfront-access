@@ -2,6 +2,9 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
+import EmberObject from '@ember/object';
+
+const o = EmberObject;
 
 module('Integration | Component | layer-group-filter', function(hooks) {
   setupRenderingTest(hooks);
@@ -10,17 +13,19 @@ module('Integration | Component | layer-group-filter', function(hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{layer-group-filter}}`);
+    this.set('layerGroupObject', o.create({
+      filter: ['all'],
+      layers: [o.create({ filter: ['all'] })],
+    }));
 
-    assert.equal(this.element.textContent.trim(), '');
+    this.set('lookupTable', []);
 
-    // Template block usage:
     await render(hbs`
-      {{#layer-group-filter}}
-        template block text
-      {{/layer-group-filter}}
+      {{layer-group-filter 
+        layerGroup=layerGroupObject 
+        lookupTable=lookupTable}}
     `);
 
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.equal(this.element.textContent.trim(), '');
   });
 });

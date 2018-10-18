@@ -8,10 +8,10 @@ module('Integration | Helper | amenity-lookup', function(hooks) {
 
   // Replace this with your real tests.
   test('it renders', async function(assert) {
-    this.set('inputValue', '1234');
+    this.set('inputValue', 'other_planting');
 
-    await render(hbs`{{amenity-lookup inputValue}}`);
+    await render(hbs`{{get (amenity-lookup inputValue) 'label'}}`);
 
-    assert.equal(this.element.textContent.trim(), '1234');
+    assert.equal(this.element.textContent.trim().toLowerCase(), 'unspecified plantings');
   });
 });

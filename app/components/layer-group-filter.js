@@ -6,7 +6,11 @@ import { assert } from '@ember/debug';
 
 const DECISION_TYPE = 'all'; // logical AND
 
-// setFilterForLayer
+/*
+  LayerGroupFilterComponent
+
+  Responsible for managing filter logic. Mutates a layerGroup model.
+*/
 export default class LayerGroupFilterComponent extends Component {
   init(...args) {
     super.init(...args);
@@ -25,6 +29,19 @@ export default class LayerGroupFilterComponent extends Component {
   @required
   @argument
   layerGroup;
+
+  /*
+    Lookup table structured as array of objects with two keys:
+    ```
+    [
+      { column: 'value', label: 'value' }
+      // more...
+    ]
+    ```
+  */
+  @argument
+  @required
+  lookupTable = null;
 
   delegateFilters(expression) {
     this.set('layerGroup.filter', expression);
@@ -54,18 +71,6 @@ export default class LayerGroupFilterComponent extends Component {
 
     this.delegateFilters(newExpression);
   }
-
-  /*
-    Lookup table structured as array of objects with two keys:
-    ```
-    [
-      { column: 'value', label: 'value' }
-      // more...
-    ]
-    ```
-  */
-  @argument
-  lookupTable = null;
 
   @action
   updateValue(column) {
