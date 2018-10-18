@@ -11,10 +11,15 @@ export default class ApplicationRoute extends Route {
   }
 
   async model() {
+    // const filter = ['any', ['==', true, true]];
+
     const layerGroups = await this.store.query('layer-group', {
       'layer-groups': [
         { id: 'waterfront-access--publicly-owned', visible: true },
-        { id: 'waterfront-access--wpaas', visible: true },
+        {
+          id: 'waterfront-access--wpaas',
+          visible: true,
+        },
         {
           id: 'waterfront-access--entry-points',
           visible: true,
