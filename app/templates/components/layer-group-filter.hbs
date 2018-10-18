@@ -1,3 +1,1 @@
-{{#each lookupTable as |lookupEntry|}}
-  {{yield lookupEntry checkedValues (action 'updateValue')}}
-{{/each}}
+{{yield checkedValues (action 'updateValue')}}

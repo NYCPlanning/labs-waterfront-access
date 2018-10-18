@@ -99,23 +99,21 @@
       {{#lookup-layer-group
         for='waterfront-access--wpaas'
         as |layerGroup|}}
-        <ul>
           {{#layer-group-filter 
-            lookupTable=(amenity-lookup)
             layerGroup=layerGroup.model
-            as |lookupEntry checkedValues updateValue|}}
-            <li>
-              {{input
-                type="checkbox"
-                name=lookupEntry.column
-                checked=(contains checkedValues lookupEntry.column)
-                change=(action updateValue lookupEntry.column)}}
-              <label>
-                {{lookupEntry.label}}
-              </label>
-            </li>
+            as |checkedValues updateValue|}}
+            {{log checkedValues}}
+            {{#power-select-multiple
+              options=(amenity-lookup)
+              selected=(filter-by (amenity-lookup) checkedValues)
+              placeholder="Select some actions..."
+              searchField='searchField'
+              onchange=(action updateValue)
+              as |action|
+            }}
+              {{action.label}}
+            {{/power-select-multiple}}
           {{/layer-group-filter}}
-        </ul>
       {{/lookup-layer-group}}
     </section>
 
