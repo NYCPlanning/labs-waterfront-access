@@ -101,12 +101,11 @@
             {{#layer-group-filter
               layerGroup=layerGroup.model
               as |checkedValues updateValue|}}
-              {{log checkedValues}}
               {{#power-select-multiple
                 options=(amenity-lookup)
                 selected=(filter-by (amenity-lookup) checkedValues)
                 placeholder="Select amenities..."
-                searchField='searchField'
+                searchField='label'
                 onchange=(action updateValue)
                 as |action|
               }}
