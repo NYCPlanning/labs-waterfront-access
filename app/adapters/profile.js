@@ -42,7 +42,26 @@ const SQL = function(id) {
       b.seating,
       b.shore_public_walkway,
       b.trash_receptacles,
-      b.trees
+      b.trees,
+      b.feature_promenade_esplanade,
+      b.feature_seating_lawn,
+      b.feature_pier,
+      b.feature_wetland_natural_edge,
+      b.feature_dog_run,
+      b.feature_educational_or_interpretive,
+      b.feature_public_restroom,
+      b.feature_shade_structure,
+      b.feature_outdoor_art,
+      b.feature_food_or_beverage_concessions,
+      b.feature_group_seating,
+      b.activity_volleyball_court,
+      b.activity_basketball_court,
+      b.activity_fishing,
+      b.activity_boating_access,
+      b.activity_tot_playground,
+      b.activity_splash_feature,
+      b.activity_other_recreational_facilities,
+      b.activity_swimming
     FROM wpaas_v201810 a
     LEFT JOIN pawsmastertable b
       ON a.paws_id = b.paws_id::text
