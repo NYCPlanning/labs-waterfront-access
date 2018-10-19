@@ -144,8 +144,10 @@ export default class ApplicationController extends Controller {
       }
 
       if (feature.layer.id === 'boat-launches') {
-        const launchInfo = feature.properties.link;
-        window.open(launchInfo, '_blank');
+        if (feature.layer.link != null) {
+          const launchInfo = feature.properties.link;
+          window.open(launchInfo, '_blank');
+        }
       }
 
       if (feature.layer.id === 'wpaas-entry-points') {
