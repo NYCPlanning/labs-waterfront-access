@@ -154,8 +154,7 @@ export default class ApplicationController extends Controller {
 
   @action
   handleLayerClick(feature) {
-    // this.set('popupFeature', null);
-    console.log(this.get('popupFeature'));
+    this.set('popupFeature', null);
     if (feature) {
       const { paws_id } = feature.properties;
       if (paws_id) {
@@ -165,6 +164,7 @@ export default class ApplicationController extends Controller {
       }
 
       if (feature.layer.id === 'publicly-owned-waterfront-overlay') {
+        this.set('popupFeature', null);
         this.set('popupFeature', true);
         this.set('popupWfParkId', feature.properties.wf_park_id);
         this.set('popupParkName', feature.properties.park_name);
