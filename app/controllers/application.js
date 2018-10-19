@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 import { action } from '@ember-decorators/object';
 import { alias } from '@ember-decorators/object/computed';
 import mapboxgl from 'mapbox-gl';
+import { next } from '@ember/runloop';
 import { service } from '@ember-decorators/service';
 
 export default class ApplicationController extends Controller {
@@ -22,6 +23,20 @@ export default class ApplicationController extends Controller {
   searchedAddressSource = null;
 
   searchTerms = '';
+
+  popupFeature = false;
+
+  popupLocation = null;
+
+  popupWfParkId = null;
+
+  popupParkName = null;
+
+  popupAgency = null;
+
+  popupStatus = null;
+
+  popupLink = null;
 
   highlightedStreetSource = null;
 
@@ -146,13 +161,41 @@ export default class ApplicationController extends Controller {
   }
 
   @action
+  mapClicked(e) {
+    this.set('popupLocation', e.lngLat);
+  }
+
+  @action
   handleLayerClick(feature) {
+    this.set('popupFeature', false);
+
     if (feature) {
       const { paws_id } = feature.properties;
+
       if (paws_id) {
         this.transitionToRoute('profiles.show', paws_id);
       } else {
         this.transitionToRoute('index');
+      }
+
+      if (feature.layer.id === 'publicly-owned-waterfront-overlay') {
+        // wait until the next tick in the renderer
+        next(() => {
+          const {
+            properties: {
+              wf_park_id: popupWfParkId,
+              park_name: popupParkName,
+              agency: popupAgency,
+              status: popupStatus,
+              link: popupLink,
+            },
+          } = feature;
+
+          this.set('popupFeature', true);
+          this.setProperties({
+            popupWfParkId, popupParkName, popupAgency, popupStatus, popupLink,
+          });
+        });
       }
 
       if (feature.layer.id === 'boat-launches') {

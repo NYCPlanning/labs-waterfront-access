@@ -3790,9 +3790,9 @@ ember-load-initializers@^1.1.0:
   dependencies:
     ember-cli-babel "^6.6.0"
 
-ember-mapbox-composer@^0.0.17:
-  version "0.0.17"
-  resolved "https://registry.yarnpkg.com/ember-mapbox-composer/-/ember-mapbox-composer-0.0.17.tgz#831acedfc45105b4602801e31d999fc066b442ca"
+ember-mapbox-composer@^0.0.18:
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/ember-mapbox-composer/-/ember-mapbox-composer-0.0.18.tgz#0e5d4ca68205ddae0b0650473141822c2c6a58f9"
   dependencies:
     "@ember-decorators/argument" "0.8.15"
     "@ember-decorators/babel-transforms" "^2.0.0"
