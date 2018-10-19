@@ -36,7 +36,7 @@
     "ember-cli-dependency-checker": "^3.0.0",
     "ember-cli-foundation-6-sass": "0.0.25",
     "ember-cli-htmlbars": "^3.0.0",
-    "ember-cli-htmlbars-inline-precompile": "^1.0.3",
+    "ember-cli-htmlbars-inline-precompile": "1.0.5",
     "ember-cli-inject-live-reload": "^1.8.2",
     "ember-cli-sass": "^6.2.0",
     "ember-cli-sri": "^2.1.1",
@@ -78,7 +78,6 @@
     "eslint-plugin-ember": "^5.2.0",
     "eslint-plugin-ember-best-practices": "^1.1.1",
     "eslint-plugin-import": "^2.14.0",
-    "mustache": "^3.0.0",
     "xml-js": "^1.6.8"
   }
 }
