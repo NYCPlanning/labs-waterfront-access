@@ -85,6 +85,44 @@ export default class ProfileModel extends Model {
 
   @attr('boolean') trees;
 
+  @attr('boolean') feature_promenade_esplanade;
+
+  @attr('boolean') feature_seating_lawn;
+
+  @attr('boolean') feature_pier;
+
+  @attr('boolean') feature_wetland_natural_edge;
+
+  @attr('boolean') feature_dog_run;
+
+  @attr('boolean') feature_educational_or_interpretive;
+
+  @attr('boolean') feature_public_restroom;
+
+  @attr('boolean') feature_shade_structure;
+
+  @attr('boolean') feature_outdoor_art;
+
+  @attr('boolean') feature_food_or_beverage_concessions;
+
+  @attr('boolean') feature_group_seating;
+
+  @attr('boolean') activity_volleyball_court;
+
+  @attr('boolean') activity_basketball_court;
+
+  @attr('boolean') activity_fishing;
+
+  @attr('boolean') activity_boating_access;
+
+  @attr('boolean') activity_tot_playground;
+
+  @attr('boolean') activity_splash_feature;
+
+  @attr('boolean') activity_other_recreational_facilities;
+
+  @attr('boolean') activity_swimming;
+
   @restartableTask()
   images = function* () { // eslint-disable-line
     const id = this.get('paws_id');
