@@ -8,4 +8,7 @@ export default class LayerGroupModel extends LayerGroup {
   @attr() legend
 
   @alias('legend.label') title
+
+  /* universal filter */
+  @attr() filter
 }
