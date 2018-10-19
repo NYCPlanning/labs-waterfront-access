@@ -1,23 +1,17 @@
 import { helper } from '@ember/component/helper';
 
 export const amenitiesMap = [
-  ['lighting', 'lighting'],
-  ['other_planting', 'unspecified plantings'],
-  ['entry_gates', 'entry gates'],
-  ['designated_bike_path', 'designated bike paths'],
-  ['bike_racks', 'bike racks'],
-  ['other_circulation_paths', 'other circulation paths'],
-  ['ground_floor_retail', 'ground floor retail'],
-  ['piers', 'piers'],
-  ['ferry_watertaxi__service', 'ferry/water taxi service'],
-  ['boat_launch', 'boat launch'],
-  ['public_access_easement', 'public access easement'],
-  ['guardrail', 'guardrails'],
-  ['public_art', 'public art'],
-  ['interpretive_displays', 'interpretive displays'],
-  ['trash_receptacles', 'trash receptacles'],
-  ['handicapped_accessible', 'handicapped accessible'],
-  ['emergency_access', 'emergency access'],
+  ['feature_Promenade_Esplanade', 'Promenade/Esplanade'],
+  ['feature_Seating_Lawn', 'Seating Lawn'],
+  ['feature_pier', 'Pier'],
+  ['feature_Wetland_Natural_Edge', 'Wetland/Natural Edge'],
+  ['feature_Dog_run', 'Dog run'],
+  ['feature_Educational_or_Interpretive', 'Educational or Interpretive features'],
+  ['feature_Public_restroom', 'Public restroom'],
+  ['feature_Shade_structure', 'Shade structure'],
+  ['feature_Outdoor_art', 'Outdoor art'],
+  ['feature_Food_or_Beverage_Concessions', 'Food or Beverage Concessions'],
+  ['feature_Group_Seating', 'Group Seating'],
 ].map(([column, label]) => ({ label, column }));
 
 export function amenityLookup([key]) {
