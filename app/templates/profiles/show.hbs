@@ -98,32 +98,36 @@
     </div>
     <div class="cell medium-5">
 
-      <h6 class="gray no-margin">Site Features</h6>
-      <p class="label-group">
-        {{~#if model.feature_promenade_esplanade}}<span class="label secondary">Promenade/Esplanade</span>{{/if~}}
-        {{~#if model.feature_seating_lawn}}<span class="label secondary">Seating Lawn</span>{{/if~}}
-        {{~#if model.feature_pier}}<span class="label secondary">Pier</span>{{/if~}}
-        {{~#if model.feature_wetland_natural_edge}}<span class="label secondary">Wetland/Natural Edge</span>{{/if~}}
-        {{~#if model.feature_dog_run}}<span class="label secondary">Dog run</span>{{/if~}}
-        {{~#if model.feature_educational_or_interpretive}}<span class="label secondary">Educational or Interpretive</span>{{/if~}}
-        {{~#if model.feature_public_restroom}}<span class="label secondary">Public restroom</span>{{/if~}}
-        {{~#if model.feature_shade_structure}}<span class="label secondary">Shade structure</span>{{/if~}}
-        {{~#if model.feature_outdoor_art}}<span class="label secondary">Outdoor art</span>{{/if~}}
-        {{~#if model.feature_food_or_beverage_concessions}}<span class="label secondary">Food or Beverage Concessions</span>{{/if~}}
-        {{~#if model.feature_group_seating}}<span class="label secondary">Group Seating</span>{{/if~}}
-      </p>
+      {{#if hasSiteFeatures}}
+        <h6 class="gray no-margin">Site Features</h6>
+        <p class="label-group">
+          {{~#if model.feature_promenade_esplanade}}<span class="label secondary">Promenade/Esplanade</span>{{/if~}}
+          {{~#if model.feature_seating_lawn}}<span class="label secondary">Seating Lawn</span>{{/if~}}
+          {{~#if model.feature_pier}}<span class="label secondary">Pier</span>{{/if~}}
+          {{~#if model.feature_wetland_natural_edge}}<span class="label secondary">Wetland/Natural Edge</span>{{/if~}}
+          {{~#if model.feature_dog_run}}<span class="label secondary">Dog run</span>{{/if~}}
+          {{~#if model.feature_educational_or_interpretive}}<span class="label secondary">Educational or Interpretive</span>{{/if~}}
+          {{~#if model.feature_public_restroom}}<span class="label secondary">Public restroom</span>{{/if~}}
+          {{~#if model.feature_shade_structure}}<span class="label secondary">Shade structure</span>{{/if~}}
+          {{~#if model.feature_outdoor_art}}<span class="label secondary">Outdoor art</span>{{/if~}}
+          {{~#if model.feature_food_or_beverage_concessions}}<span class="label secondary">Food or Beverage Concessions</span>{{/if~}}
+          {{~#if model.feature_group_seating}}<span class="label secondary">Group Seating</span>{{/if~}}
+        </p>
+      {{/if}}
 
-      <h6 class="gray no-margin">Active Use Amenities</h6>
-      <p class="label-group">
-        {{~#if model.activity_volleyball_court}}<span class="label secondary">Volleyball Court</span>{{/if~}}
-        {{~#if model.activity_basketball_court}}<span class="label secondary">Basketball Court</span>{{/if~}}
-        {{~#if model.activity_fishing}}<span class="label secondary">Fishing</span>{{/if~}}
-        {{~#if model.activity_boating_access}}<span class="label secondary">Boating/In-water Access</span>{{/if~}}
-        {{~#if model.activity_tot_playground}}<span class="label secondary">Tot Playground</span>{{/if~}}
-        {{~#if model.activity_splash_feature}}<span class="label secondary">Splash Feature</span>{{/if~}}
-        {{~#if model.activity_other_recreational_facilities}}<span class="label secondary">Other Recreational (Bocce, Skate Park, etc)</span>{{/if~}}
-        {{~#if model.activity_swimming}}<span class="label secondary">Swimming</span>{{/if~}}
-      </p>
+      {{#if hasActiveUseAmenities}}
+        <h6 class="gray no-margin">Active Use Amenities</h6>
+        <p class="label-group">
+          {{~#if model.activity_volleyball_court}}<span class="label secondary">Volleyball Court</span>{{/if~}}
+          {{~#if model.activity_basketball_court}}<span class="label secondary">Basketball Court</span>{{/if~}}
+          {{~#if model.activity_fishing}}<span class="label secondary">Fishing</span>{{/if~}}
+          {{~#if model.activity_boating_access}}<span class="label secondary">Boating/In-water Access</span>{{/if~}}
+          {{~#if model.activity_tot_playground}}<span class="label secondary">Tot Playground</span>{{/if~}}
+          {{~#if model.activity_splash_feature}}<span class="label secondary">Splash Feature</span>{{/if~}}
+          {{~#if model.activity_other_recreational_facilities}}<span class="label secondary">Other Recreational (Bocce, Skate Park, etc)</span>{{/if~}}
+          {{~#if model.activity_swimming}}<span class="label secondary">Swimming</span>{{/if~}}
+        </p>
+      {{/if}}
 
       {{#if model.cpc_report}}
         <p><a class="button small gray expanded" href="{{model.cpc_report}}" target="_blank">{{fa-icon 'external-link-alt'}} CPC Report</a></p>
