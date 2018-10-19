@@ -6,17 +6,19 @@
 
   <h2>Discover NYC’s publicly accessible waterfront spaces</h2>
 
-  <p class="lead">The Waterfront Access Map provides information about the City’s existing <strong>{{model.total_count}}</strong> publicly accessible waterfront spaces&mdash;including <strong>{{model.publiclyowned_count}}</strong> on public property and <strong>{{model.paws_count}}</strong> on private property&mdash;and spaces that have been approved by the City, but have yet to be constructed.</p>
+  <p class="lead">Find new waterfront spaces you may not have known were publicly accessible, learn about spaces with specific amenities, and report any issues with these spaces remaining accessible and well maintained.</p>
 
-  <p>Find new waterfront spaces you may not known were publicly accessible, learn about spaces with specific amenities, and report any issues with these spaces remaining accessible and well maintained.</p>
+  {{!-- <p class="lead">This map provides information about the City’s existing <strong>{{model.total_count}}</strong> publicly accessible waterfront spaces&mdash;including <strong>{{model.publiclyowned_count}}</strong> on public property and <strong>{{model.paws_count}}</strong> on private property&mdash;and spaces that have been approved by the City, but have yet to be constructed.</p> --}}
 
-  <h4 class="header-medium no-margin">Waterfront Public Access Areas</h4>
-  <p>Since 1993, zoning regulations have required public access to the City’s waterfronts and waterways as a condition of some forms of development on privately owned waterfront zoning lots, known as Waterfront Public Access Areas (WPAAs).</p>
+  <h4 class="header-medium small-margin-bottom">Waterfront Public Access Areas <small>(WPAAs)</small></h4>
+  <p class="text-small">Since <strong>{{link-to 'waterfront zoning for public access' 'waterfront-zoning-for-public-access'}}</strong> was introduced 25 years ago, over 1.25 million square feet of WPAAs have been constructed through coordination with private property owners, including the new <strong>{{link-to 'Domino Park' 'profiles.show' 1010003}}</strong> and <strong>{{link-to 'Pier 17' 'profiles.show' 1010003}}</strong>. Additionaly, 5.4 million square feet of publically accessible space has been approved by the City to be constructed.</p>
 
-  <strong>{{link-to 'Learn more about waterfront zoning...' 'waterfront-zoning-for-public-access' class="button gray expanded"}}</strong>
+  <h4 class="header-medium small-margin-bottom">Public Parks and Facilities</h4>
+  <p class="text-small">In addition to creating waterfront zoning, the City has invested significantly in waterfront parks. City Capital agencies like EDC, DOT, and DEP provide 6.2 million square feet of waterfront parkland, adding critically needed access in underserved communities such as Sunset Park, St. George, Greenpoint, and the South Bronx. Additionally, NYC Department of Parks and Recreation and State and Federal Parks agencies providing 180 existing waterfront parks&mdash;over 700 million square feet of public parks, beaches, and open space along the City’s 520 miles of waterfront.</p>
 
-  <h4 class="header-medium no-margin">Public Parks and Facilities</h4>
-  <p>For publicly accessible waterfront sites on public property, a link is provided to additional information on the website of the agency under whose jurisdiction that property falls.</p>
+  <hr />
+
+  <p>{{fa-icon 'info-circle' class="dark-gray"}} For more information, please contact <a href="mailto:NYC520@planning.nyc.gov">NYC520@planning.nyc.gov</a>.</p>
 
 </div>
 

@@ -1,8 +1,12 @@
 import Route from '@ember/routing/route';
+import { service } from '@ember-decorators/service';
 import { action } from '@ember-decorators/object'; // eslint-disable-line
 import { next } from '@ember/runloop';
+import { hash } from 'rsvp';
 
 export default class ApplicationRoute extends Route {
+  @service('layerGroups') layerGroupService
+
   beforeModel = (transition) => {
     // only transition to about if index is loaded and there is no hash
     if (transition.intent.url === '/' && window.location.href.split('#').length < 2) {
@@ -29,7 +33,7 @@ export default class ApplicationRoute extends Route {
         },
         {
           id: 'boat-launches',
-          visible: true,
+          visible: false,
           layers: [{
             tooltipTemplate: '{{name}}<div class="gray">(click for launch info)</div',
           }],
@@ -50,10 +54,18 @@ export default class ApplicationRoute extends Route {
       }],
     };
 
-    return {
+    return hash({
       layerGroups,
       exampleIcon,
-    };
+    });
+  }
+
+  setupController(controller, model) {
+    const { layerGroups } = model;
+
+    this.get('layerGroupService').initializeObservers(layerGroups, controller);
+
+    super.setupController(controller, model);
   }
 
   @action

@@ -83,6 +83,7 @@ module.exports = function(environment) {
   if (environment === 'devlocal') {
     ENV.host = 'http://localhost:3000';
     ENV['mapbox-gl'].map.style = 'http://localhost:3000/v1/base/style.json';
+    ENV['ember-mapbox-composer'].host = 'http://localhost:3000';
   }
 
   return ENV;

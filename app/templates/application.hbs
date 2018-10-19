@@ -45,6 +45,7 @@
         center=(array -73.96532400540775 40.709710016659386)
         hash=true
       )
+      layerGroups=model.layerGroups
       mapLoaded=(action 'handleMapLoad') as |map|
     }}
       {{#if geocodedFeature}}
@@ -58,12 +59,11 @@
       {{/if}}
 
       {{#map.labs-layers
-        layerGroups=model.layerGroups
         onLayerClick=(action 'handleLayerClick')
         as |layers|}}
-          {{#layers.tooltip as |tooltip|}}
-            {{tooltip-renderer feature=tooltip.feature template=tooltip.layer.tooltipTemplate}}
-          {{/layers.tooltip}}
+        {{#layers.tooltip as |tooltip|}}
+          {{tooltip-renderer feature=tooltip.feature template=tooltip.layer.tooltipTemplate}}
+        {{/layers.tooltip}}
       {{/map.labs-layers}}
 
       {{!-- Ad-hoc source and layer for developmentSite --}}
@@ -74,6 +74,27 @@
             before='boundary_country'
           }}
         {{/map.source}}
+      {{/if}}
+
+      {{map.on 'click' (action 'mapClicked')}}
+
+      {{#if popupFeature}}
+        {{#map.popup lngLat=popupLocation}}
+          <div class="popup-content">
+            {{#if popupParkName}}
+              <h3 class="header-medium small-margin-bottom">{{popupParkName}}</h3>
+            {{/if}}
+            {{#if popupAgency}}
+              <h5 class="header-small dark-gray small-margin-bottom">{{popupAgency}}</h5>
+            {{/if}}
+            {{#if popupStatus}}
+              <p class="small-margin-bottom">{{popupStatus}}</p>
+            {{/if}}
+            {{#if popupLink}}
+              <a href="{{popupLink}}" target="_blank" class="button small gray expanded no-margin">{{fa-icon 'external-link-alt'}} Learn more about this space</a>
+            {{/if}}
+          </div>
+        {{/map.popup}}
       {{/if}}
     {{/labs-map}}
   </div>

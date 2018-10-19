@@ -79,6 +79,22 @@ $search-width: 17rem;
   }
 }
 
+.popup-content {
+  width: 60vw;
+  max-width: 14rem;
+}
+
+.mapboxgl-popup-close-button {
+  padding: rem-calc(3) rem-calc(6);
+  font-size: rem-calc(16);
+  color: $red-muted;
+
+  &:hover {
+    color: $red-dark;
+    background-color: transparent;
+  }
+}
+
 .content-close-button-container {
   position: relative;
   z-index: 4;
