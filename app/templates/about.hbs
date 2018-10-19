@@ -3,17 +3,21 @@
 </div>
 
 <div class="content cell large-5 large-order-3">
-  <h2>About the Waterfront Access&nbsp;Map</h2>
 
-  <p class="lead">This interactive map allows visitors to access and learn more about the City’s collection of publicly-accessible waterfront spaces.</p>
+  <h2>Discover NYC’s publicly accessible waterfront spaces</h2>
 
-  <p>Parks, esplanades, and other publicly-accessible spaces on the waterfront provide opportunities for relaxation, recreation, boating, and other activities that allow visitors and residents alike to experience New York City’s 520 miles of waterfront. Public and private investments&mdash;as well as effective waterfront zoning regulations&mdash;have expanded the variety of waterfront parks and open spaces available for public use.</p>
+  <p class="lead">The Waterfront Access Map provides information about the City’s existing <strong>{{model.total_count}}</strong> publicly accessible waterfront spaces&mdash;including <strong>{{model.publiclyowned_count}}</strong> on public property and <strong>{{model.paws_count}}</strong> on private property&mdash;and spaces that have been approved by the City, but have yet to be constructed.</p>
 
-  <p><strong>{{link-to 'Learn more about waterfront zoning...' 'waterfront-zoning-for-public-access' class="button gray expanded"}}</strong></p>
+  <p>Find new waterfront spaces you may not known were publicly accessible, learn about spaces with specific amenities, and report any issues with these spaces remaining accessible and well maintained.</p>
 
-  <p>The public sites are a combination of City, State, and Federal waterfront parklands and open spaces, as well as private sites that provide public access down to the shoreline. These privately-owned sites are known as Waterfront Public Access Areas (WPAAs). Each WPAA profile here provides information and photos on the history and available amenities at each site. For publicly accessible waterfront sites on public property, there is a link to the agency’s website under whose jurisdiction that property falls, providing additional information. The map will also help you find new waterfront spaces you may not know about and report any issues with these public spaces remaining accessible and well-maintained.</p>
+  <h4 class="header-medium no-margin">Waterfront Public Access Areas</h4>
+  <p>Since 1993, zoning regulations have required public access to the City’s waterfronts and waterways as a condition of some forms of development on privately owned waterfront zoning lots, known as Waterfront Public Access Areas (WPAAs).</p>
 
-  <p>The interactive map includes <span class="red">_____</span> publicly accessible waterfront spaces that are constructed, including <span class="red">_____</span> on public property and <span class="red">_____</span> on private property. Also included are future public access sites that have been approved by the City, but are yet to be constructed.</p>
+  <strong>{{link-to 'Learn more about waterfront zoning...' 'waterfront-zoning-for-public-access' class="button gray expanded"}}</strong>
+
+  <h4 class="header-medium no-margin">Public Parks and Facilities</h4>
+  <p>For publicly accessible waterfront sites on public property, a link is provided to additional information on the website of the agency under whose jurisdiction that property falls.</p>
+
 </div>
 
 {{outlet}}

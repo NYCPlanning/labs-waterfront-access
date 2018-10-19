@@ -29,7 +29,6 @@ jobs:
           command: 'sudo npm install -g bower'
 
       - run: yarn install
-      - run: bower install
 
       - save_cache:
           paths:

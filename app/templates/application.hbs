@@ -17,7 +17,7 @@
 
 <div class="site-main grid-x has-content-open">
   {{#labs-search
-    searchPlaceholder='Search...'
+    searchPlaceholder='Enter location, name, or description...'
     onSelect=(action 'handleSearchSelect')
     searchTerms=searchTerms
     typeTitleLookup=(hash
@@ -92,9 +92,7 @@
 
     <section class="map-sidebar-section">
       <h4 class="map-sidebar-title">Waterfront Public Access Areas</h4>
-      <p>{{!-- From https://www1.nyc.gov/site/planning/zoning/glossary.page#waterfront_public_access_area --}}
-        The portion of a waterfront zoning lot where publicly accessible open space is provided to and along the shoreline.
-      </p>
+      <p>The portion of privately owned waterfront zoning lots where publicly accessible open space is provided to and along the shoreline.</p>
 
       {{#lookup-layer-group for='waterfront-access--wpaas' as |layerGroup|}}
         {{#each layerGroup.model.legend.items as |item|}}
@@ -106,8 +104,27 @@
         {{labs-ui/legend-item item=layerGroup.model.legend}}
       {{/lookup-layer-group}}
 
-      <div class="text-center"><br/>[FILTERS GO HERE]<br/><br/></div>
-
+      <div class="amenity-filters-container">
+        <p style="margin:0.5rem 0 0.25rem;padding:0;"><strong>Filter WPAAs by amenity</strong></p>
+        {{#lookup-layer-group
+          for='waterfront-access--wpaas'
+          as |layerGroup|}}
+            {{#layer-group-filter
+              layerGroup=layerGroup.model
+              as |checkedValues updateValue|}}
+              {{#power-select-multiple
+                options=(amenity-lookup)
+                selected=(filter-by (amenity-lookup) checkedValues)
+                placeholder="Select amenities..."
+                searchField='label'
+                onchange=(action updateValue)
+                as |action|
+              }}
+                {{action.label}}
+              {{/power-select-multiple}}
+            {{/layer-group-filter}}
+        {{/lookup-layer-group}}
+      </div>
     </section>
 
     <section class="map-sidebar-section">
