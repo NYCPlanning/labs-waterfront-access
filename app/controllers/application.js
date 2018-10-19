@@ -155,8 +155,10 @@ export default class ApplicationController extends Controller {
   @action
   handleLayerClick(feature) {
     this.set('popupFeature', null);
+
     if (feature) {
       const { paws_id } = feature.properties;
+
       if (paws_id) {
         this.transitionToRoute('profiles.show', paws_id);
       } else {

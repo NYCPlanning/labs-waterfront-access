@@ -81,10 +81,18 @@
       {{#if (not-eq popupFeature null)}}
         {{#map.popup lngLat=popupLocation}}
           <div class="popup-content">
-              <h4 class="popup-header">{{popupParkName}}</h4>
-              <p>Owned by {{popupAgency}}</p>
-              <p>{{popupStatus}}</p>
-              <p><a href="{{popupLink}}" target="_blank">{{fa-icon 'external-link-alt'}} View more info about this park on {{popupAgency}} website</a></p>
+            {{#if popupParkName}}
+              <h3 class="header-medium small-margin-bottom">{{popupParkName}}</h3>
+            {{/if}}
+            {{#if popupAgency}}
+              <h5 class="header-small dark-gray small-margin-bottom">{{popupAgency}}</h5>
+            {{/if}}
+            {{#if popupStatus}}
+              <p class="small-margin-bottom">{{popupStatus}}</p>
+            {{/if}}
+            {{#if popupLink}}
+              <a href="{{popupLink}}" target="_blank" class="button small gray expanded no-margin">{{fa-icon 'external-link-alt'}} Learn more about this space</a>
+            {{/if}}
           </div>
         {{/map.popup}}
       {{/if}}

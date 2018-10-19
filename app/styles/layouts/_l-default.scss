@@ -79,6 +79,11 @@ $search-width: 17rem;
   }
 }
 
+.popup-content {
+  width: 60vw;
+  max-width: 14rem;
+}
+
 .content-close-button-container {
   position: relative;
   z-index: 4;
