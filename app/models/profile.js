@@ -125,7 +125,7 @@ export default class ProfileModel extends Model {
 
   @attr('boolean') activity_other_recreational_facilities;
 
-  @attr('boolean') activity_swimming
+  @attr('boolean') activity_swimming;
 
   @restartableTask()
   images = function* () { // eslint-disable-line
