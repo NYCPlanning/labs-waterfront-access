@@ -1,8 +1,20 @@
 import Controller from '@ember/controller';
 import { action } from '@ember-decorators/object';
+import { alias } from '@ember-decorators/object/computed';
 import mapboxgl from 'mapbox-gl';
+import { service } from '@ember-decorators/service';
 
 export default class ApplicationController extends Controller {
+  constructor(...args) {
+    super(...args);
+
+    this.queryParams = ['visibleLayerGroups'];
+  }
+
+  @service('layerGroups') layerGroupService;
+
+  @alias('layerGroupService.visibleLayerGroups') visibleLayerGroups;
+
   geocodedFeature = null;
 
   highlightedParkSource = null;
