@@ -78,7 +78,6 @@
 
       {{map.on 'click' (action 'mapClicked')}}
 
-      {{log popupFeature}}
       {{#if popupFeature}}
         {{#map.popup lngLat=popupLocation}}
           <div class="popup-content">
