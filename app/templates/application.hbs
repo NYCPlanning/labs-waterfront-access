@@ -45,6 +45,7 @@
         center=(array -73.96532400540775 40.709710016659386)
         hash=true
       )
+      layerGroups=model.layerGroups
       mapLoaded=(action 'handleMapLoad') as |map|
     }}
       {{#if geocodedFeature}}
@@ -58,12 +59,11 @@
       {{/if}}
 
       {{#map.labs-layers
-        layerGroups=model.layerGroups
         onLayerClick=(action 'handleLayerClick')
         as |layers|}}
-          {{#layers.tooltip as |tooltip|}}
-            {{tooltip-renderer feature=tooltip.feature template=tooltip.layer.tooltipTemplate}}
-          {{/layers.tooltip}}
+        {{#layers.tooltip as |tooltip|}}
+          {{tooltip-renderer feature=tooltip.feature template=tooltip.layer.tooltipTemplate}}
+        {{/layers.tooltip}}
       {{/map.labs-layers}}
 
       {{!-- Ad-hoc source and layer for developmentSite --}}
@@ -78,7 +78,8 @@
 
       {{map.on 'click' (action 'mapClicked')}}
 
-      {{#if (not-eq popupFeature null)}}
+      {{log popupFeature}}
+      {{#if popupFeature}}
         {{#map.popup lngLat=popupLocation}}
           <div class="popup-content">
             {{#if popupParkName}}

@@ -1,6 +1,7 @@
 import Controller from '@ember/controller';
 import { action } from '@ember-decorators/object';
 import mapboxgl from 'mapbox-gl';
+import { next } from '@ember/runloop';
 
 export default class ApplicationController extends Controller {
   geocodedFeature = null;
@@ -11,7 +12,7 @@ export default class ApplicationController extends Controller {
 
   searchTerms = '';
 
-  popupFeature = null;
+  popupFeature = false;
 
   popupLocation = null;
 
@@ -154,7 +155,7 @@ export default class ApplicationController extends Controller {
 
   @action
   handleLayerClick(feature) {
-    this.set('popupFeature', null);
+    this.set('popupFeature', false);
 
     if (feature) {
       const { paws_id } = feature.properties;
@@ -166,13 +167,23 @@ export default class ApplicationController extends Controller {
       }
 
       if (feature.layer.id === 'publicly-owned-waterfront-overlay') {
-        this.set('popupFeature', null);
-        this.set('popupFeature', true);
-        this.set('popupWfParkId', feature.properties.wf_park_id);
-        this.set('popupParkName', feature.properties.park_name);
-        this.set('popupAgency', feature.properties.agency);
-        this.set('popupStatus', feature.properties.status);
-        this.set('popupLink', feature.properties.link);
+        // wait until the next tick in the renderer
+        next(() => {
+          const {
+            properties: {
+              wf_park_id: popupWfParkId,
+              park_name: popupParkName,
+              agency: popupAgency,
+              status: popupStatus,
+              link: popupLink,
+            },
+          } = feature;
+
+          this.set('popupFeature', true);
+          this.setProperties({
+            popupWfParkId, popupParkName, popupAgency, popupStatus, popupLink,
+          });
+        });
       }
 
       if (feature.layer.id === 'boat-launches') {
