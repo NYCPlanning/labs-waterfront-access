@@ -17,7 +17,7 @@
 
 <div class="site-main grid-x has-content-open">
   {{#labs-search
-    searchPlaceholder='Search...'
+    searchPlaceholder='Enter location, name, or description...'
     onSelect=(action 'handleSearchSelect')
     searchTerms=searchTerms
     typeTitleLookup=(hash
@@ -95,6 +95,7 @@
       {{/lookup-layer-group}}
 
       <div class="amenity-filters-container">
+        <p style="margin:0.5rem 0 0.25rem;padding:0;"><strong>Filter WPAAs by amenity</strong></p>
         {{#lookup-layer-group
           for='waterfront-access--wpaas'
           as |layerGroup|}}
