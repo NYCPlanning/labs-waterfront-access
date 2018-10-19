@@ -29,7 +29,7 @@ export default class ApplicationRoute extends Route {
         },
         {
           id: 'boat-launches',
-          visible: true,
+          visible: false,
           layers: [{
             tooltipTemplate: '{{name}}<div class="gray">(click for launch info)</div',
           }],
