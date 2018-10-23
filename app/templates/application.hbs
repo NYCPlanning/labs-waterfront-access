@@ -116,7 +116,7 @@
       {{/lookup-layer-group}}
 
       <div class="amenity-filters-container">
-        <p style="margin:0.5rem 0 0.25rem;padding:0;"><strong>Filter WPAAs by amenity</strong></p>
+        <p style="margin:0.5rem 0 0.25rem;padding:0;"><strong>Filter WPAAs by site feature</strong></p>
         {{#lookup-layer-group
           for='waterfront-access--wpaas'
           as |layerGroup|}}
@@ -124,8 +124,29 @@
               layerGroup=layerGroup.model
               as |checkedValues updateValue|}}
               {{#power-select-multiple
-                options=(amenity-lookup)
-                selected=(filter-by (amenity-lookup) checkedValues)
+                options=(site-feature-lookup)
+                selected=(filter-by (site-feature-lookup) checkedValues)
+                placeholder="Select amenities..."
+                searchField='label'
+                onchange=(action updateValue)
+                as |action|
+              }}
+                {{action.label}}
+              {{/power-select-multiple}}
+            {{/layer-group-filter}}
+        {{/lookup-layer-group}}
+      </div>
+      <div class="amenity-filters-container">
+        <p style="margin:0.5rem 0 0.25rem;padding:0;"><strong>Filter WPAAs by active use amenity</strong></p>
+        {{#lookup-layer-group
+          for='waterfront-access--wpaas'
+          as |layerGroup|}}
+            {{#layer-group-filter
+              layerGroup=layerGroup.model
+              as |checkedValues updateValue|}}
+              {{#power-select-multiple
+                options=(activity-lookup)
+                selected=(filter-by (activity-lookup) checkedValues)
                 placeholder="Select amenities..."
                 searchField='label'
                 onchange=(action updateValue)
