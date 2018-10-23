@@ -29,6 +29,7 @@ export default class ApplicationRoute extends Route {
           visible: true,
           layers: [{
             tooltipTemplate: '<div class="gray">click for directions</div>',
+            clickable: true,
           }],
         },
         {
@@ -36,6 +37,7 @@ export default class ApplicationRoute extends Route {
           visible: false,
           layers: [{
             tooltipTemplate: '{{name}}<div class="gray">(click for launch info)</div',
+            clickable: true,
           }],
         },
         { id: 'bike-routes', visible: false },

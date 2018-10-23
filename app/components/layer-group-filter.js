@@ -58,16 +58,8 @@ export default class LayerGroupFilterComponent extends Component {
   }
 
   set checkedValues(selections) {
-    // ['==', 'column', 'value']
-    // const [, ...selections] = this.get('layerGroup.filter') || [];
     const newSelections = selections
       .map(({ column }) => ['==', column, true]);
-    // if (selections.map(([, col]) => col).includes(column)) {
-    //   newSelections = selections.filter(([, col]) => col !== column);
-    // } else {
-    //   newSelections = selections.concat([['==', column, true]]);
-    // }
-
     const newExpression = [DECISION_TYPE].concat(newSelections);
 
     this.delegateFilters(newExpression);
