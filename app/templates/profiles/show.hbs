@@ -63,8 +63,10 @@
     <div class="cell medium-7">
 
       {{#if model.hours_of_operation}}
-        <h6 class="gray no-margin">Hours</h6>
-        <p><strong>{{model.hours_of_operation}}</strong></p>
+        {{#if isConstructed}}
+          <h6 class="gray no-margin">Hours</h6>
+          <p><strong>{{model.hours_of_operation}}</strong></p>
+        {{/if}}
       {{/if}}
 
       {{#if model.description}}
