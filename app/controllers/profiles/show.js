@@ -6,10 +6,8 @@ export default class ProfileShowController extends Controller {
   get isConstructed() {
     const status = this.get('model.construction_status');
 
-    if (status === 'Constructed') return true;
-    if (status === 'Constructed (full access)') return true;
-    if (status === 'Constructed (Access Limited)') return true;
-    if (status === 'Constructed (Access Restricted)') return true;
+    if (status === 'Open') return true;
+    if (status === 'Partially Open') return true;
 
     return false;
   }
