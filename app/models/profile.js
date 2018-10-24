@@ -31,10 +31,6 @@ export default class ProfileModel extends Model {
 
   @attr('string') date_chair_certification;
 
-  @attr('string') date_lucats_completed;
-
-  @attr('string') date_received;
-
   @attr('string') hours_of_operation;
 
   @attr('string') construction_status;
@@ -46,44 +42,6 @@ export default class ProfileModel extends Model {
   @attr('number') spw_in_ft;
 
   @attr('number') spaa_total_in_sf;
-
-  @attr('boolean') bike_racks;
-
-  @attr('boolean') boat_launch;
-
-  @attr('boolean') designated_bike_path;
-
-  @attr('boolean') emergency_access;
-
-  @attr('boolean') entry_gates;
-
-  @attr('boolean') ferry_watertaxi__service;
-
-  @attr('boolean') ground_cover;
-
-  @attr('boolean') ground_floor_retail;
-
-  @attr('boolean') guardrail;
-
-  @attr('boolean') handicapped_accessible;
-
-  @attr('boolean') lighting;
-
-  @attr('boolean') piers;
-
-  @attr('boolean') public_access_easement;
-
-  @attr('boolean') public_art;
-
-  @attr('boolean') publicly_accessible_walkway;
-
-  @attr('boolean') seating;
-
-  @attr('boolean') shore_public_walkway;
-
-  @attr('boolean') trash_receptacles;
-
-  @attr('boolean') trees;
 
   @attr('boolean') feature_promenade_esplanade;
 
