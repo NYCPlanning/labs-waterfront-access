@@ -46,6 +46,13 @@
             {{/if}}
           </span>
           {{model.construction_status}}
+          <sup>
+            {{icon-tooltip
+              tip='The construction status reflects the best available information at the time of website update. Please note that site status may have changed and sites may occasionally need to be temporarily partially or fully closed for maintenance or safety reasons.'
+              icon='exclamation-circle'
+              class="dark-gray"
+            }}
+          </sup>
           {{!-- {{model.status}} --}}
           {{!-- TODO: ^ These two are basically the same. Which should display? Are they chosen from a list or entered freeform? --}}
         </h5>
