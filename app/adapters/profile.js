@@ -5,8 +5,7 @@ const SQL = function(id) {
   return `
     SELECT
       paws_id AS id,
-      park_name,
-      address,
+      name,
       maintained,
       paws_id,
       constructi,
