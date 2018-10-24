@@ -7,14 +7,14 @@ const query = `
     SELECT
       count(*)
     FROM planninglabs.publiclyownedwaterfront_v201810
-    WHERE status ILIKE 'Constructed%25'
+    WHERE status LIKE 'Constructed%25'
   ),
 
   paws AS (
     SELECT
       count(*)
     FROM wpaas_v201810
-    WHERE status ILIKE 'Constructed%25'
+    WHERE constructi LIKE '%25Open'
   )
 
   SELECT
