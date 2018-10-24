@@ -1,6 +1,6 @@
 import { helper } from '@ember/component/helper';
 
-export const amenitiesMap = [
+export const siteFeaturesMap = [
   ['feature_promenade_esplanade', 'Promenade/Esplanade'],
   ['feature_seating_lawn', 'Seating Lawn'],
   ['feature_pier', 'Pier'],
@@ -14,9 +14,9 @@ export const amenitiesMap = [
   ['feature_group_seating', 'Group Seating'],
 ].map(([column, label]) => ({ label, column }));
 
-export function amenityLookup([key]) {
-  if (key) return amenitiesMap.find(({ column }) => (key === column));
-  return amenitiesMap;
+export function siteFeatureLookup([key]) {
+  if (key) return siteFeaturesMap.find(({ column }) => (key === column));
+  return siteFeaturesMap;
 }
 
-export default helper(amenityLookup);
+export default helper(siteFeatureLookup);

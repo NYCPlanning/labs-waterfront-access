@@ -1,6 +1,6 @@
 import { helper } from '@ember/component/helper';
 
-export const amenitiesMap = [
+export const activitiesMap = [
   ['activity_volleyball_court', 'Volleyball Court'],
   ['activity_basketball_court', 'Basketball Court'],
   ['activity_fishing', 'Fishing'],
@@ -11,9 +11,9 @@ export const amenitiesMap = [
   ['activity_swimming', 'Swimming'],
 ].map(([column, label]) => ({ label, column }));
 
-export function amenityLookup([key]) {
-  if (key) return amenitiesMap.find(({ column }) => (key === column));
-  return amenitiesMap;
+export function activityLookup([key]) {
+  if (key) return activitiesMap.find(({ column }) => (key === column));
+  return activitiesMap;
 }
 
-export default helper(amenityLookup);
+export default helper(activityLookup);
