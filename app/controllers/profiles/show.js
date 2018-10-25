@@ -1,7 +1,24 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember-decorators/object';
+import numeral from 'numeral';
 
 export default class ProfileShowController extends Controller {
+  @computed('model.spw_in_ft')
+  get formattedSpwFt() {
+    const spw_in_ft = this.get('model.spw_in_ft');
+    const formattedNumber = numeral(spw_in_ft).format('0,0');
+
+    return formattedNumber;
+  }
+
+  @computed('model.spaa_total_in_sf')
+  get formattedSpaaTotalSqFt() {
+    const spaa_total_in_sf = this.get('model.spaa_total_in_sf');
+    const formattedNumber = numeral(spaa_total_in_sf).format('0,0');
+
+    return formattedNumber;
+  }
+
   @computed('model.construction_status')
   get isConstructed() {
     const status = this.get('model.construction_status');
