@@ -36,14 +36,34 @@ export default class ApplicationRoute extends Route {
           id: 'boat-launches',
           visible: false,
           layers: [{
-            tooltipTemplate: '{{name}}<div class="gray">(click for launch info)</div',
+            tooltipTemplate: '{{name}}<div class="gray">click for launch info</div>',
+            clickable: true,
+          }],
+        },
+        {
+          id: 'citibike-stations',
+          visible: false,
+          layers: [{
+            tooltipTemplate: '{{name}}<div class="gray">click for citibike map</div>',
             clickable: true,
           }],
         },
         { id: 'bike-routes', visible: false },
         { id: 'subway', visible: false },
         { id: 'aerials', visible: false },
-        { id: 'ferries', visible: false },
+        {
+          id: 'ferries',
+          visible: false,
+          layers: [
+            {}, // ferry-routes
+            {
+              tooltipable: true,
+              tooltipTemplate: '<div class="gray">click for ferry schedule</div>',
+              clickable: true,
+            }, // ferry-landings
+            {}, // ferry_landings_labels
+          ],
+        },
       ],
     });
 
