@@ -75,14 +75,14 @@
         <p>{{model.description}}</p>
       {{/if}}
 
-      {{#if model.spw_in_ft}}
-        <h6 class="gray no-margin">Shore Public Walkway Linear Feet</h6>
-        <p><strong>{{formattedSpwFt}}</strong></p>
+      {{#if model.total_wpaa_sqft}}
+        <h6 class="gray no-margin">Total Waterfront Public Access Area (WPAA)</h6>
+        <p><strong>{{formattedTotalWpaaSqft}}</strong> sq ft</p>
       {{/if}}
 
-      {{#if model.spaa_total_in_sf}}
-        <h6 class="gray no-margin">WPA(?) Total Access Area in sq ft</h6>
-        <p><strong>{{formattedSpaaTotalSqFt}}</strong></p>
+      {{#if model.shore_walkway_ft}}
+        <h6 class="gray no-margin">Shore Public Walkway Linear Feet</h6>
+        <p><strong>{{formattedShoreWalkwayFt}}</strong> ft</p>
       {{/if}}
 
       {{#if model.agency}}

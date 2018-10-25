@@ -3,18 +3,18 @@ import { computed } from '@ember-decorators/object';
 import numeral from 'numeral';
 
 export default class ProfileShowController extends Controller {
-  @computed('model.spw_in_ft')
-  get formattedSpwFt() {
-    const spw_in_ft = this.get('model.spw_in_ft');
-    const formattedNumber = numeral(spw_in_ft).format('0,0');
+  @computed('model.shore_walkway_ft')
+  get formattedShoreWalkwayFt() {
+    const shore_walkway_ft = this.get('model.shore_walkway_ft');
+    const formattedNumber = numeral(shore_walkway_ft).format('0,0');
 
     return formattedNumber;
   }
 
-  @computed('model.spaa_total_in_sf')
-  get formattedSpaaTotalSqFt() {
-    const spaa_total_in_sf = this.get('model.spaa_total_in_sf');
-    const formattedNumber = numeral(spaa_total_in_sf).format('0,0');
+  @computed('model.total_wpaa_sqft')
+  get formattedTotalWpaaSqft() {
+    const total_wpaa_sqft = this.get('model.total_wpaa_sqft');
+    const formattedNumber = numeral(total_wpaa_sqft).format('0,0');
 
     return formattedNumber;
   }

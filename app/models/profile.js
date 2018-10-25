@@ -11,8 +11,6 @@ const S3_BUCKET_HOST = 'https://waterfront-access-photos.nyc3.digitaloceanspaces
 export default class ProfileModel extends Model {
   @attr() geometry;
 
-  @attr('string') paws_id;
-
   @attr('string') park_name;
 
   @attr('string') address;
@@ -41,9 +39,9 @@ export default class ProfileModel extends Model {
 
   @attr('string') description;
 
-  @attr('number') spw_in_ft;
+  @attr('number') shore_walkway_ft;
 
-  @attr('number') spaa_total_in_sf;
+  @attr('number') total_wpaa_sqft;
 
   @attr('boolean') feature_promenade_esplanade;
 
@@ -85,7 +83,7 @@ export default class ProfileModel extends Model {
 
   @restartableTask()
   images = function* () { // eslint-disable-line
-    const id = this.get('paws_id');
+    const id = this.get('id');
 
     return fetch(`${S3_BUCKET_HOST}/?prefix=${id}`)
       .then(d => d.text())
