@@ -21,8 +21,8 @@ export default class ShowProjectRoute extends Route {
     }
 
     applicationController.get('mapInstance')
-      .fitBounds(turfBbox(turfBuffer(geometry, 0.09)), {
-        padding: 200,
+      .fitBounds(turfBbox(turfBuffer(geometry, 0.05)), {
+        padding: 50,
       });
 
     applicationController.set('highlightedFeature', geometry);
