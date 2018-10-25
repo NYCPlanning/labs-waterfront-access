@@ -191,6 +191,15 @@
         {{/labs-ui/layer-group-toggle}}
       {{/lookup-layer-group}}
 
+      {{#lookup-layer-group for='citibike-stations' as |layerGroup|}}
+        {{#labs-ui/layer-group-toggle
+          label=layerGroup.model.legend.label
+          active=layerGroup.model.visible
+          icon=layerGroup.model.legend.icon
+        }}
+        {{/labs-ui/layer-group-toggle}}
+      {{/lookup-layer-group}}
+
       {{#lookup-layer-group for='subway' as |layerGroup|}}
         {{#labs-ui/layer-group-toggle
           label=layerGroup.model.legend.label
