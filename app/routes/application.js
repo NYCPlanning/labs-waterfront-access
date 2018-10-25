@@ -36,7 +36,7 @@ export default class ApplicationRoute extends Route {
           id: 'boat-launches',
           visible: false,
           layers: [{
-            tooltipTemplate: '{{name}}<div class="gray">(click for launch info)</div',
+            tooltipTemplate: '{{name}}<div class="gray">click for launch info</div>',
             clickable: true,
           }],
         },
@@ -46,10 +46,15 @@ export default class ApplicationRoute extends Route {
         {
           id: 'ferries',
           visible: false,
-          layers: [{
-            tooltipTemplate: '<div class="gray">(click on ferry landing for schedule)</div',
-            clickable: true,
-          }],
+          layers: [
+            {}, // ferry-routes
+            {
+              tooltipable: true,
+              tooltipTemplate: '<div class="gray">click for ferry schedule</div>',
+              clickable: true,
+            }, // ferry-landings
+            {}, // ferry_landings_labels
+          ],
         },
       ],
     });
