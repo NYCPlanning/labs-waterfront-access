@@ -53,8 +53,6 @@
               class="dark-gray"
             }}
           </sup>
-          {{!-- {{model.status}} --}}
-          {{!-- TODO: ^ These two are basically the same. Which should display? Are they chosen from a list or entered freeform? --}}
         </h5>
       {{/if}}
 
@@ -64,7 +62,7 @@
   <div class="grid-x grid-margin-x-gutter-small">
     <div class="cell medium-7">
 
-      {{#if model.hours_of_operation}}
+      {{#if (and model.hours_of_operation isConstructed)}}
         <h6 class="gray no-margin">Hours</h6>
         <p><strong>{{model.hours_of_operation}}</strong></p>
       {{/if}}
@@ -85,7 +83,7 @@
 
       {{#if model.agency}}
         <p>
-          <h6 class="gray no-margin">Agency</h6>
+          <h6 class="gray no-margin">Maintained By</h6>
           {{model.agency}}
         </p>
       {{/if}}
@@ -95,11 +93,6 @@
           <h6 class="gray no-margin">Adjacent Waterway</h6>
           {{model.water_body}}
         </p>
-      {{/if}}
-
-      {{#if model.restrictive_declaration_id}}
-        <h6 class="gray no-margin">Restrictive Declaration ID</h6>
-        <p>{{model.restrictive_declaration_id}}</p>
       {{/if}}
 
     </div>
@@ -137,7 +130,15 @@
       {{/if}}
 
       {{#if model.cpc_report}}
-        <p><a class="button small gray expanded" href="{{model.cpc_report}}" target="_blank">{{fa-icon 'external-link-alt'}} CPC Report</a></p>
+        <p><a class="button small gray expanded" href="{{model.cpc_report}}" target="_blank">{{fa-icon 'external-link-alt'}} City Planning Commission (CPC) Report</a></p>
+      {{/if}}
+
+      {{#if model.zap_link}}
+        <p><a class="button small gray expanded" href="{{model.zap_link}}" target="_blank">{{fa-icon 'external-link-alt'}} Zoning Application Portal (ZAP) Record</a></p>
+      {{/if}}
+
+      {{#if model.restrictive_declaration_link}}
+        <p><a class="button small gray expanded" href="{{model.restrictive_declaration_link}}" target="_blank">{{fa-icon 'external-link-alt'}} Restrictive Declaration (ACRIS)</a></p>
       {{/if}}
 
       {{#if model.date_cpc_approval}}

@@ -35,7 +35,9 @@ export default class ProfileModel extends Model {
 
   @attr('string') construction_status;
 
-  @attr('string') restrictive_declaration_id;
+  @attr('string') restrictive_declaration_link;
+
+  @attr('string') zap_link;
 
   @attr('string') description;
 
