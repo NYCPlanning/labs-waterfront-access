@@ -4,7 +4,7 @@
   as |banner|
 }}
   {{#banner.title}}
-    {{link-to 'Waterfront Access Map' 'index' class="site-title"}}
+    {{#link-to 'index' class="site-title"}}Waterfront Access <span class="show-for-medium">Map</span>{{/link-to}}
   {{/banner.title}}
   {{#banner.nav}}
     <ul class="menu vertical medium-horizontal">
@@ -15,6 +15,7 @@
   {{/banner.nav}}
 {{/labs-ui/site-header}}
 
+{{link-to '' 'index' class="index-active-detector"}}
 <div class="site-main grid-x has-content-open">
   {{#labs-search
     searchPlaceholder='Enter location, name, or description...'

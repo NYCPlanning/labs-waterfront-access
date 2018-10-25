@@ -47,7 +47,11 @@ $search-width: 17rem;
 }
 
 .map-container {
-  height: 60vh;
+  height: 50vh;
+
+  @include breakpoint(medium) {
+    height: 60vh;
+  }
 
   @include breakpoint(large) {
     height: 100%;
@@ -153,11 +157,9 @@ $search-width: 17rem;
 
 // On medium screens, if the content area is not open, make the map and sidebar full-height.
 @include breakpoint(medium) {
-  .site-main:not(.has-content-open) {
-    .map-container,
-    .sidebar {
-      height: calc(100vh - #{$site-header-height});
-    }
+  .index-active-detector.active + .site-main {
+    .map-container { height: calc(100vh - #{$site-header-height}); }
+    .map-sidebar { height: calc(100vh - #{$site-header-height} - #{$search-height}); }
   }
 }
 
