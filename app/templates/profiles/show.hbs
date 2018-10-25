@@ -33,10 +33,17 @@
       <p class="header-medium dark-gray">{{model.address}}</p>
 
     </div>
-    <div class="cell medium-shrink">
+    <div class="cell medium-shrink text-right" style="max-width:13em;">
 
       {{#if model.construction_status}}
         <h5 class="{{if isConstructed 'green-dark' 'red'}}">
+          <sup class="float-right">
+            {{icon-tooltip
+              tip='The construction status reflects the best available information at the time of website update. Please note that site status may have changed and sites may occasionally need to be temporarily partially or fully closed for maintenance or safety reasons.'
+              icon='exclamation-circle'
+              class="dark-gray"
+            }}
+          </sup>
           <span class="fa-layers">
             {{#if isConstructed}}
               {{fa-icon 'check' class="green-muted"}}
@@ -45,14 +52,11 @@
               {{fa-icon 'wrench' class="light-gray"}}
             {{/if}}
           </span>
-          {{model.construction_status}}
-          <sup>
-            {{icon-tooltip
-              tip='The construction status reflects the best available information at the time of website update. Please note that site status may have changed and sites may occasionally need to be temporarily partially or fully closed for maintenance or safety reasons.'
-              icon='exclamation-circle'
-              class="dark-gray"
-            }}
-          </sup>
+          {{#if (eq model.construction_status 'Approved (to be constructed)')}}
+            Approved <small class="nowrap">(to be constructed)</small>
+          {{else}}
+            {{model.construction_status}}
+          {{/if}}
         </h5>
       {{/if}}
 
