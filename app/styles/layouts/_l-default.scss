@@ -83,6 +83,15 @@ $search-width: 17rem;
   }
 }
 
+.map-sidebar-toggle {
+  margin: rem-calc(10) rem-calc(10) rem-calc(12);
+  width: calc(100% - #{rem-calc(20)});
+
+  &.open {
+    margin-bottom: rem-calc(5);
+  }
+}
+
 .popup-content {
   width: 60vw;
   max-width: 14rem;
@@ -106,7 +115,7 @@ $search-width: 17rem;
   box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.1);
   background-color: $white;
   text-align: right;
-  padding: 1rem 1rem 0;
+  padding: 0 0.5rem 0.25rem;
   margin-bottom: -1rem;
 
   @include breakpoint(large) {
@@ -156,8 +165,8 @@ $search-width: 17rem;
 }
 
 // On medium screens, if the content area is not open, make the map and sidebar full-height.
-@include breakpoint(medium) {
-  .index-active-detector.active + .site-main {
+.index-active-detector.active + .site-main {
+  @include breakpoint(medium) {
     .map-container { height: calc(100vh - #{$site-header-height}); }
     .map-sidebar { height: calc(100vh - #{$site-header-height} - #{$search-height}); }
   }
