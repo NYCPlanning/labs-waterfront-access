@@ -39,9 +39,9 @@ export default class ProfileModel extends Model {
 
   @attr('string') description;
 
-  @attr('number') spw_in_ft;
+  @attr('number') shore_walkway_ft;
 
-  @attr('number') spaa_total_in_sf;
+  @attr('number') total_wpaa_sqft;
 
   @attr('boolean') feature_promenade_esplanade;
 
