@@ -205,6 +205,13 @@ export default class ApplicationController extends Controller {
         }
       }
 
+      if (feature.layer.id === 'ferry-landings') {
+        if (feature.properties.link) {
+          const launchInfo = feature.properties.link;
+          window.open(launchInfo, '_blank');
+        }
+      }
+
       if (feature.layer.id === 'wpaas-entry-points') {
         const [lng, lat] = feature.geometry.coordinates;
         const zoom = this.get('mapInstance').getZoom() + 2; // add 2 because google uses smaller tiles
