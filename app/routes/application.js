@@ -40,6 +40,14 @@ export default class ApplicationRoute extends Route {
             clickable: true,
           }],
         },
+        {
+          id: 'citibike-stations',
+          visible: false,
+          layers: [{
+            tooltipTemplate: '{{name}} <br>(click for citibike map)',
+            clickable: true,
+          }],
+        },
         { id: 'bike-routes', visible: false },
         { id: 'subway', visible: false },
         { id: 'aerials', visible: false },
