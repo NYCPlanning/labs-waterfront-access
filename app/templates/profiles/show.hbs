@@ -147,17 +147,12 @@
 
       {{#if model.date_cpc_approval}}
         <h6 class="gray no-margin">CPC Approval</h6>
-        <p>{{model.date_cpc_approval}}</p>
+        <p>{{moment-format model.date_cpc_approval 'LL'}}</p>
       {{/if}}
 
       {{#if model.date_chair_certification}}
         <h6 class="gray no-margin">Chair Certification</h6>
-        <p>{{model.date_chair_certification}}</p>
-      {{/if}}
-
-      {{#if model.date_received}}
-        <h6 class="gray no-margin">Received</h6>
-        <p>{{model.date_received}}</p>
+        <p>{{moment-format model.date_chair_certification 'LL'}}</p>
       {{/if}}
 
     </div>
