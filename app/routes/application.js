@@ -92,6 +92,9 @@ export default class ApplicationRoute extends Route {
 
   @action
   didTransition() {
+    const applicationController = this.controllerFor('application');
+    applicationController.set('sidebarIsClosed', true);
+
     next(function() {
       // not supported in IE 11
       window.dispatchEvent(new Event('resize'));

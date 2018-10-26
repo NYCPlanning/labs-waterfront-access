@@ -30,6 +30,9 @@ export default class ShowProjectRoute extends Route {
 
   @action
   didTransition() {
+    const applicationController = this.controllerFor('application');
+    applicationController.set('sidebarIsClosed', true);
+
     const model = this.get('controller.model');
     next(() => {
       // not supported in IE 11

@@ -1,5 +1,6 @@
 import Route from '@ember/routing/route';
 import carto from 'cartobox-promises-utility/utils/carto';
+import { action } from '@ember-decorators/object'; // eslint-disable-line
 
 const query = `
   WITH
@@ -28,5 +29,11 @@ export default class ShowProjectRoute extends Route {
   async model() {
     const [data] = await carto.SQL(query);
     return data;
+  }
+
+  @action
+  didTransition() {
+    const applicationController = this.controllerFor('application');
+    applicationController.set('sidebarIsClosed', true);
   }
 }

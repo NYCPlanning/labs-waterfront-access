@@ -16,6 +16,8 @@ export default class ApplicationController extends Controller {
 
   @alias('layerGroupService.visibleLayerGroups') visibleLayerGroups;
 
+  sidebarIsClosed = true;
+
   geocodedFeature = null;
 
   highlightedParkSource = null;
