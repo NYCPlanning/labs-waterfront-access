@@ -6,6 +6,8 @@ export default class IndexRoute extends Route {
   @action
   didTransition() {
     const applicationController = this.controllerFor('application');
+    applicationController.set('sidebarIsClosed', true);
+
     next(() => {
       // not supported in IE 11
       window.dispatchEvent(new Event('resize'));

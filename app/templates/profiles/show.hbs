@@ -33,10 +33,17 @@
       <p class="header-medium dark-gray">{{model.address}}</p>
 
     </div>
-    <div class="cell medium-shrink">
+    <div class="cell medium-shrink text-right" style="max-width:13em;">
 
       {{#if model.construction_status}}
         <h5 class="{{if isConstructed 'green-dark' 'red'}}">
+          <sup class="float-right">
+            {{icon-tooltip
+              tip='The construction status reflects the best available information at the time of website update. Please note that site status may have changed and sites may occasionally need to be temporarily partially or fully closed for maintenance or safety reasons.'
+              icon='exclamation-circle'
+              class="dark-gray"
+            }}
+          </sup>
           <span class="fa-layers">
             {{#if isConstructed}}
               {{fa-icon 'check' class="green-muted"}}
@@ -45,9 +52,11 @@
               {{fa-icon 'wrench' class="light-gray"}}
             {{/if}}
           </span>
-          {{model.construction_status}}
-          {{!-- {{model.status}} --}}
-          {{!-- TODO: ^ These two are basically the same. Which should display? Are they chosen from a list or entered freeform? --}}
+          {{#if (eq model.construction_status 'Approved (to be constructed)')}}
+            Approved <small class="nowrap">(to be constructed)</small>
+          {{else}}
+            {{model.construction_status}}
+          {{/if}}
         </h5>
       {{/if}}
 
@@ -57,7 +66,7 @@
   <div class="grid-x grid-margin-x-gutter-small">
     <div class="cell medium-7">
 
-      {{#if model.hours_of_operation}}
+      {{#if (and model.hours_of_operation isConstructed)}}
         <h6 class="gray no-margin">Hours</h6>
         <p><strong>{{model.hours_of_operation}}</strong></p>
       {{/if}}
@@ -66,33 +75,24 @@
         <p>{{model.description}}</p>
       {{/if}}
 
-      {{#if model.spw_in_ft}}
-        <h6 class="gray no-margin">Shore Public Walkway Linear Feet</h6>
-        <p><strong>{{model.spw_in_ft}}</strong></p>
+      {{#if model.total_wpaa_sqft}}
+        <h6 class="gray no-margin">Total Waterfront Public Access Area (WPAA)</h6>
+        <p><strong>{{formattedTotalWpaaSqft}}</strong> sq ft</p>
       {{/if}}
 
-      {{#if model.spaa_total_in_sf}}
-        <h6 class="gray no-margin">WPA(?) Total Access Area in sq ft</h6>
-        <p><strong>{{model.spaa_total_in_sf}}</strong></p>
+      {{#if model.shore_walkway_ft}}
+        <h6 class="gray no-margin">Shore Public Walkway Linear Feet</h6>
+        <p><strong>{{formattedShoreWalkwayFt}}</strong> ft</p>
       {{/if}}
 
       {{#if model.agency}}
-        <p>
-          <h6 class="gray no-margin">Agency</h6>
-          {{model.agency}}
-        </p>
+        <h6 class="gray no-margin">Maintained By</h6>
+        <p><strong>{{model.agency}}</strong></p>
       {{/if}}
 
       {{#if model.water_body}}
-        <p>
-          <h6 class="gray no-margin">Adjacent Waterway</h6>
-          {{model.water_body}}
-        </p>
-      {{/if}}
-
-      {{#if model.restrictive_declaration_id}}
-        <h6 class="gray no-margin">Restrictive Declaration ID</h6>
-        <p>{{model.restrictive_declaration_id}}</p>
+        <h6 class="gray no-margin">Adjacent Waterway</h6>
+        <p><strong>{{model.water_body}}</strong></p>
       {{/if}}
 
     </div>
@@ -130,31 +130,26 @@
       {{/if}}
 
       {{#if model.cpc_report}}
-        <p><a class="button small gray expanded" href="{{model.cpc_report}}" target="_blank">{{fa-icon 'external-link-alt'}} CPC Report</a></p>
+        <p><a class="button small gray expanded" href="{{model.cpc_report}}" target="_blank">{{fa-icon 'external-link-alt'}} City Planning Commission (CPC) Report</a></p>
+      {{/if}}
+
+      {{#if model.zap_link}}
+        <p><a class="button small gray expanded" href="{{model.zap_link}}" target="_blank">{{fa-icon 'external-link-alt'}} Zoning Application Portal (ZAP) Record</a></p>
+      {{/if}}
+
+      {{#if model.restrictive_declaration_link}}
+        <p><a class="button small gray expanded" href="{{model.restrictive_declaration_link}}" target="_blank">{{fa-icon 'external-link-alt'}} Restrictive Declaration (ACRIS)</a></p>
       {{/if}}
 
       {{#if model.date_cpc_approval}}
         <h6 class="gray no-margin">CPC Approval</h6>
-        <p>{{model.date_cpc_approval}}</p>
+        <p>{{moment-format model.date_cpc_approval 'LL'}}</p>
       {{/if}}
 
       {{#if model.date_chair_certification}}
         <h6 class="gray no-margin">Chair Certification</h6>
-        <p>{{model.date_chair_certification}}</p>
+        <p>{{moment-format model.date_chair_certification 'LL'}}</p>
       {{/if}}
-
-      {{#if model.date_lucats_completed}}
-        <h6 class="gray no-margin">LUCATS Completed</h6>
-        <p>{{model.date_lucats_completed}}</p>
-      {{/if}}
-
-      {{#if model.date_received}}
-        <h6 class="gray no-margin">Received</h6>
-        <p>{{model.date_received}}</p>
-      {{/if}}
-
-      {{!-- {{model.paws_id}} --}}
-      {{!-- {{model.category}} --}}
 
     </div>
   </div>

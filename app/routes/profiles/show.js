@@ -21,8 +21,8 @@ export default class ShowProjectRoute extends Route {
     }
 
     applicationController.get('mapInstance')
-      .fitBounds(turfBbox(turfBuffer(geometry, 0.09)), {
-        padding: 200,
+      .fitBounds(turfBbox(turfBuffer(geometry, 0.05)), {
+        padding: 50,
       });
 
     applicationController.set('highlightedFeature', geometry);
@@ -30,6 +30,9 @@ export default class ShowProjectRoute extends Route {
 
   @action
   didTransition() {
+    const applicationController = this.controllerFor('application');
+    applicationController.set('sidebarIsClosed', true);
+
     const model = this.get('controller.model');
     next(() => {
       // not supported in IE 11

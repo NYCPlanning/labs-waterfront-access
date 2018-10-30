@@ -1,15 +1,30 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember-decorators/object';
+import numeral from 'numeral';
 
 export default class ProfileShowController extends Controller {
+  @computed('model.shore_walkway_ft')
+  get formattedShoreWalkwayFt() {
+    const shore_walkway_ft = this.get('model.shore_walkway_ft');
+    const formattedNumber = numeral(shore_walkway_ft).format('0,0');
+
+    return formattedNumber;
+  }
+
+  @computed('model.total_wpaa_sqft')
+  get formattedTotalWpaaSqft() {
+    const total_wpaa_sqft = this.get('model.total_wpaa_sqft');
+    const formattedNumber = numeral(total_wpaa_sqft).format('0,0');
+
+    return formattedNumber;
+  }
+
   @computed('model.construction_status')
   get isConstructed() {
     const status = this.get('model.construction_status');
 
-    if (status === 'Constructed') return true;
-    if (status === 'Constructed (full access)') return true;
-    if (status === 'Constructed (Access Limited)') return true;
-    if (status === 'Constructed (Access Restricted)') return true;
+    if (status === 'Open') return true;
+    if (status === 'Partially Open') return true;
 
     return false;
   }

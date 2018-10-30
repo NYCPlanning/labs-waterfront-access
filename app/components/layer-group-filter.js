@@ -61,7 +61,6 @@ export default class LayerGroupFilterComponent extends Component {
     const newSelections = selections
       .map(({ column }) => ['==', column, true]);
     const newExpression = [DECISION_TYPE].concat(newSelections);
-
     this.delegateFilters(newExpression);
   }
 
