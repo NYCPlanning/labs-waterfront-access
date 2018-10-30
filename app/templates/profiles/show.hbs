@@ -85,7 +85,7 @@
         <p><strong>{{formattedShoreWalkwayFt}}</strong> ft</p>
       {{/if}}
 
-      {{#if model.agency}}
+      {{#if (and model.agency isConstructed)}}
         <h6 class="gray no-margin">Maintained By</h6>
         <p><strong>{{model.agency}}</strong></p>
       {{/if}}
