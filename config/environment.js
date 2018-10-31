@@ -75,6 +75,9 @@ module.exports = function(environment) {
     ENV['labs-search'] = {
       host: 'https://search-api.planninglabs.nyc',
     };
+    ENV['ember-mapbox-composer'] = {
+      host: 'https://layers-api.planninglabs.nyc',
+    };
   }
 
   // if (environment === 'staging') {
