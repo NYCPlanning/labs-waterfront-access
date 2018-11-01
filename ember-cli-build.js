@@ -8,6 +8,9 @@ module.exports = function(defaults) {
     'ember-cli-foundation-6-sass': {
       foundationJs: 'all',
     },
+    'ember-cli-babel': {
+      includePolyfill: true,
+    },
   });
 
   app.import('vendor/ember/ember-template-compiler.js');
