@@ -33,17 +33,10 @@
       <p class="header-medium dark-gray">{{model.address}}</p>
 
     </div>
-    <div class="cell medium-shrink text-right" style="max-width:13em;">
+    <div class="cell medium-shrink" style="max-width:13em;">
 
       {{#if model.construction_status}}
         <h5 class="{{if isConstructed 'green-dark' 'red'}}">
-          <sup class="float-right">
-            {{icon-tooltip
-              tip='The construction status reflects the best available information at the time of website update. Please note that site status may have changed and sites may occasionally need to be temporarily partially or fully closed for maintenance or safety reasons.'
-              icon='exclamation-circle'
-              class="dark-gray"
-            }}
-          </sup>
           <span class="fa-layers">
             {{#if isConstructed}}
               {{fa-icon 'check' class="green-muted"}}
@@ -56,7 +49,11 @@
             Approved <small class="nowrap">(to be constructed)</small>
           {{else}}
             {{model.construction_status}}
-          {{/if}}
+          {{~/if~}}
+          {{fa-icon 'exclamation-circle' class="dark-gray" transform='shrink-4 up-4'}}
+          {{#ember-tooltip side='left'}}
+            The construction status reflects the best available information at the time of website update. Please note that site status may have changed and sites may occasionally need to be temporarily partially or fully closed for maintenance or safety reasons.
+          {{/ember-tooltip}}
         </h5>
       {{/if}}
 
