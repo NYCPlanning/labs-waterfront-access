@@ -10,6 +10,9 @@ export default class BackgroundImageDivComponent extends Component {
   @computed('image')
   get style() {
     const image = this.get('image');
-    return htmlSafe(`background-image: url('${image}');`);
+    if (image) {
+      return htmlSafe(`background-image: url('${image}');`);
+    }
+    return null;
   }
 }
