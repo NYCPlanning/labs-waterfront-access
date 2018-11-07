@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import fetch from 'fetch';
 import { attr } from '@ember-decorators/data';
 import convert from 'xml-js';
 import { isArray } from '@ember/array';
