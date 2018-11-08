@@ -36,7 +36,11 @@ export default class ShowProjectRoute extends Route {
     const model = this.get('controller.model');
     next(() => {
       // not supported in IE 11
-      window.dispatchEvent(new Event('resize'));
+      // window.dispatchEvent(new Event('resize'));
+
+      const resizeEvent = window.document.createEvent('UIEvents');
+      resizeEvent.initUIEvent('resize', true, false, window, 0);
+      window.dispatchEvent(resizeEvent);
 
       this.get('fitBoundsWhenReady').perform(model.get('geometry'));
     });

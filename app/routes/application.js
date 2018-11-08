@@ -97,7 +97,11 @@ export default class ApplicationRoute extends Route {
 
     next(function() {
       // not supported in IE 11
-      window.dispatchEvent(new Event('resize'));
+      // window.dispatchEvent(new Event('resize'));
+
+      const resizeEvent = window.document.createEvent('UIEvents');
+      resizeEvent.initUIEvent('resize', true, false, window, 0);
+      window.dispatchEvent(resizeEvent);
     });
   }
 }
