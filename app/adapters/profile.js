@@ -38,7 +38,7 @@ const SQL = function(id) {
       activity_splash_feature,
       activity_other_recreational_facilities,
       activity_swimming
-    FROM wpaas_v201810
+    FROM wpaas_v201811
     WHERE paws_id='${id}'
   `;
 };
