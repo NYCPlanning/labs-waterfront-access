@@ -88,6 +88,8 @@ module.exports = function(environment) {
     ENV['mapbox-gl'].map.style = 'https://layers-api.planninglabs.nyc/v1/base/style.json';
     ENV['labs-search'] = {
       host: 'https://search-api.planninglabs.nyc',
+      route: 'search',
+      helpers: ['geosearch', 'waterfront-park-name'],
     };
     ENV['ember-mapbox-composer'] = {
       host: 'https://layers-api.planninglabs.nyc',
