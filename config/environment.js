@@ -43,6 +43,20 @@ module.exports = function(environment) {
       },
     },
 
+    metricsAdapters: [
+      {
+        name: 'GoogleAnalytics',
+        environments: ['development', 'production'],
+        config: {
+          id: 'UA-84250233-15',
+          debug: environment === 'development',
+          trace: environment === 'development',
+          // Ensure development env hits aren't sent to GA
+          sendHitTask: (environment !== 'development' && environment !== 'devlocal'),
+        },
+      },
+    ],
+
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
@@ -74,6 +88,8 @@ module.exports = function(environment) {
     ENV['mapbox-gl'].map.style = 'https://layers-api.planninglabs.nyc/v1/base/style.json';
     ENV['labs-search'] = {
       host: 'https://search-api.planninglabs.nyc',
+      route: 'search',
+      helpers: ['geosearch', 'waterfront-park-name'],
     };
     ENV['ember-mapbox-composer'] = {
       host: 'https://layers-api.planninglabs.nyc',
