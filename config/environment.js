@@ -48,7 +48,7 @@ module.exports = function(environment) {
         name: 'GoogleAnalytics',
         environments: ['development', 'production'],
         config: {
-          id: 'UA-84250233-13',
+          id: 'UA-84250233-15',
           debug: environment === 'development',
           trace: environment === 'development',
           // Ensure development env hits aren't sent to GA
