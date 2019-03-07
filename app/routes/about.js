@@ -7,14 +7,14 @@ const query = `
   publiclyowned AS (
     SELECT
       count(*)
-    FROM planninglabs.publiclyownedwaterfront_v201810
+    FROM planninglabs.publiclyownedwaterfront
     WHERE status LIKE 'Constructed%25'
   ),
 
   paws AS (
     SELECT
       count(*)
-    FROM wpaas_v201811
+    FROM wpaas
     WHERE constructi LIKE '%25Open'
   )
 
