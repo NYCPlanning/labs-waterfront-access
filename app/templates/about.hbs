@@ -6,9 +6,26 @@
 
   <h2>Discover NYC’s 520 Miles of Waterfront</h2>
 
-{{!--   <p class="lead">Find new waterfront spaces you may not have known were publicly accessible, learn about spaces with specific amenities, and report any issues with these spaces remaining accessible and well maintained.</p> --}}
-
   <p class="lead">This interactive map is designed to help NYC residents and visitors locate and learn more about the diverse mix of publicly-accessible waterfront space available throughout the City. You can also learn where specific amenities are available, locate boating and in-water recreation opportunities, and get more information on how these spaces are created and maintained.</p>
+
+  <h4>Recent Map Updates:</h4>
+  <div class="grid-x grid-margin-x">
+    <p class="cell medium-6">
+      {{#link-to 'profiles.show' 3010006}}
+        <div style="background-image: url('{{rootURL}}images/420kent_WAM.jpg'); padding-top: 60%; background-size: cover;">
+          <strong style="color:White; background-color: rgba(0,0,0,0.4); display: block; padding: 1rem;">420 Kent (WPAA)</strong>
+        </div>
+      {{/link-to}}
+    </p>
+
+    <p class="cell medium-6">
+      <a href="https://www.nycedc.com/project/east-river-waterfront-esplanade" target="_blank">
+        <div style="background-image: url('{{rootURL}}images/EDCPier35.jpg'); padding-top: 60%; background-size: cover;">
+          <strong style="color:White; background-color: rgba(0,0,0,0.4); display: block; padding: 1rem;">Pier 35 (NYCEDC park) {{fa-icon 'external-link-alt'}}</strong>
+        </div>
+      </a>
+    </p>
+  </div>
 
   <h4 class="header-medium small-margin-bottom">Waterfront Public Access Areas <small>(WPAAs)</small></h4>
   <p class="text-small">Since <strong>{{link-to 'waterfront zoning' 'waterfront-zoning-for-public-access'}}</strong> introduced public access requirements 25 years ago, over 1.25 million square feet of WPAAs have been constructed through the City's coordination with private property owners, including the new <strong>{{link-to 'Domino Park' 'profiles.show' 3010011}}</strong> and <strong>{{link-to 'Pier 17' 'profiles.show' 1010003}}</strong>. Additionally, 5.4 million square feet of publicly accessible space has been approved by the City to be constructed.</p>
