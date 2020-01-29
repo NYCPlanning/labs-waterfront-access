@@ -30,13 +30,9 @@ export default class ApplicationController extends Controller {
 
   popupLocation = null;
 
-  popupWfParkId = null;
-
   popupParkName = null;
 
   popupAgency = null;
-
-  popupStatus = null;
 
   popupLink = null;
 
@@ -172,10 +168,10 @@ export default class ApplicationController extends Controller {
     this.set('popupFeature', false);
 
     if (feature) {
-      const { paws_id } = feature.properties;
+      const { wpaa_id } = feature.properties;
 
-      if (paws_id) {
-        this.transitionToRoute('profiles.show', paws_id);
+      if (wpaa_id) {
+        this.transitionToRoute('profiles.show', wpaa_id);
       } else {
         this.transitionToRoute('index');
       }
@@ -185,17 +181,15 @@ export default class ApplicationController extends Controller {
         next(() => {
           const {
             properties: {
-              wf_park_id: popupWfParkId,
               park_name: popupParkName,
               agency: popupAgency,
-              status: popupStatus,
               link: popupLink,
             },
           } = feature;
 
           this.set('popupFeature', true);
           this.setProperties({
-            popupWfParkId, popupParkName, popupAgency, popupStatus, popupLink,
+            popupParkName, popupAgency, popupLink,
           });
         });
       }
