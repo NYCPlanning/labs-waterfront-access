@@ -14,8 +14,8 @@ const query = `
   paws AS (
     SELECT
       count(*)
-    FROM wpaas
-    WHERE constructi LIKE '%25Open'
+    FROM wam_wpaas
+    WHERE status LIKE '%25Open'
   )
 
   SELECT
