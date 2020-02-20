@@ -25,7 +25,7 @@ const query = `
   FROM publiclyowned, paws
 `;
 
-export default class ShowProjectRoute extends Route {
+export default class AboutRoute extends Route {
   async model() {
     const [data] = await carto.SQL(query);
     return data;
