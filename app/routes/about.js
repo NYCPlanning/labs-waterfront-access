@@ -14,8 +14,8 @@ const query = `
   paws AS (
     SELECT
       count(*)
-    FROM wpaas
-    WHERE constructi LIKE '%25Open'
+    FROM wam_wpaas
+    WHERE status LIKE '%25Open'
   )
 
   SELECT
@@ -25,7 +25,7 @@ const query = `
   FROM publiclyowned, paws
 `;
 
-export default class ShowProjectRoute extends Route {
+export default class AboutRoute extends Route {
   async model() {
     const [data] = await carto.SQL(query);
     return data;
