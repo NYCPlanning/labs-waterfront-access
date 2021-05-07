@@ -15,7 +15,8 @@
     "lint:js": "eslint .",
     "start": "ember serve",
     "test": "ember test",
-    "browserstack-connect": "ember browserstack:connect"
+    "browserstack-connect": "ember browserstack:connect",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@ember-decorators/argument": "0.8.21",
@@ -67,7 +68,8 @@
     "labs-ember-search": "^2.4.9",
     "labs-ui": "^0.0.11",
     "loader.js": "^4.7.0",
-    "qunit-dom": "^0.8.0"
+    "qunit-dom": "^0.8.0",
+    "husky": "^6.0.0"
   },
   "engines": {
     "node": "6.* || 8.* || >= 10.*"

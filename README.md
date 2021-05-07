@@ -7,7 +7,9 @@ You will need the following things properly installed on your computer.
 
 * [Git](https://git-scm.com/)
 * [Node.js](https://nodejs.org/) (with npm)
+  - This installation was tested using Node v10.24.1
 * [Ember CLI](https://ember-cli.com/)
+* [Yarn](https://yarnpkg.com/)
 
 ## Local development
 
@@ -16,6 +18,7 @@ You will need the following things properly installed on your computer.
 * Install dependencies: `yarn`
 * Start the server: `ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
+* If the app fails to load, create an empty .env file in the root directory.
 
 
 ## Testing and checks
