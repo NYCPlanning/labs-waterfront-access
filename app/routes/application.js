@@ -47,6 +47,7 @@ export default class ApplicationRoute extends Route {
             clickable: true,
           }],
         },
+        { id: 'waterfront-access-plan', visible: false },
         { id: 'bike-routes', visible: false },
         { id: 'subway', visible: false },
         { id: 'aerials', visible: false },

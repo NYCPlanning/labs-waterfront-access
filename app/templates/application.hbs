@@ -169,6 +169,15 @@
       </section>
 
       <section class="map-sidebar-section">
+        {{#lookup-layer-group for='waterfront-access-plan' as |layerGroup|}}
+          {{#labs-ui/layer-group-toggle
+            label=layerGroup.model.legend.label
+            active=layerGroup.model.visible
+            icon=layerGroup.model.legend.icon
+          }}
+          {{/labs-ui/layer-group-toggle}}
+        {{/lookup-layer-group}}
+
         {{#lookup-layer-group for='boat-launches' as |layerGroup|}}
           {{#labs-ui/layer-group-toggle
             label=layerGroup.model.legend.label
