@@ -27,7 +27,7 @@ export default class ApplicationRoute extends Route {
           id: 'waterfront-access--entry-points',
           visible: true,
           layers: [{
-            tooltipTemplate: '<div class="gray">click for directions</div>',
+            tooltipTemplate: 'click for directions',
             clickable: true,
           }],
         },
@@ -35,7 +35,7 @@ export default class ApplicationRoute extends Route {
           id: 'boat-launches',
           visible: false,
           layers: [{
-            tooltipTemplate: '{{name}}<div class="gray">click for launch info</div>',
+            tooltipTemplate: '{{name}} click for launch info',
             clickable: true,
           }],
         },
@@ -43,7 +43,7 @@ export default class ApplicationRoute extends Route {
           id: 'citibike-stations',
           visible: false,
           layers: [{
-            tooltipTemplate: '{{name}}<div class="gray">click for citibike map</div>',
+            tooltipTemplate: '{{name}} click for citibike map',
             clickable: true,
           }],
         },
@@ -58,7 +58,7 @@ export default class ApplicationRoute extends Route {
             {}, // ferry-routes
             {
               tooltipable: true,
-              tooltipTemplate: '<div class="gray">click for ferry schedule</div>',
+              tooltipTemplate: 'click for ferry schedule',
               clickable: true,
             }, // ferry-landings
             {}, // ferry_landings_labels
