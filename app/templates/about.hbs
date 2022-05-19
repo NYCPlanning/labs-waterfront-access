@@ -7,8 +7,27 @@
   <h2>Discover NYC’s 520 Miles of Waterfront</h2>
 
   <p class="lead">This interactive map is designed to help NYC residents and visitors locate and learn more about the diverse mix of publicly-accessible waterfront space available throughout the City. You can also learn where specific amenities are available, locate boating and in-water recreation opportunities, and get more information on how these spaces are created and maintained.</p>
-
   <h4>Recent Map Updates:</h4>
+
+  <div class="grid-x grid-margin-x">
+    <p class="cell medium-6">
+      {{#link-to 'profiles.show' 3060010}}
+        <div style="background-image: url('{{rootURL}}images/450_Union_Street_WPAA.jpg'); padding-top: 60%; background-size: cover;">
+          <strong style="color:White; background-color: rgba(0,0,0,0.4); display: block; padding: 1rem;">450 Union Street Waterfront</strong>
+        </div>
+      {{/link-to}}
+    </p>
+
+    <p class="cell medium-6">
+      {{#link-to 'profiles.show' 3130005}}
+        <div style="background-image: url('{{rootURL}}images/OceanDrive_WPAA.jpg'); padding-top: 60%; background-size: cover;">
+          <strong style="color:White; background-color: rgba(0,0,0,0.4); display: block; padding: 1rem;">Ocean Drive</strong>
+        </div>
+      {{/link-to}}
+    </p>
+  </div>
+
+  <h4>Previous Map Updates:</h4>
   <div class="grid-x grid-margin-x">
     <p class="cell medium-6">
       <a {{ action 'flyTo' 17.69 40.63734 -74.153696}}>
