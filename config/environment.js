@@ -19,7 +19,7 @@ module.exports = function(environment) {
     },
 
     'labs-search': {
-      host: 'https://search-api-staging.planninglabs.nyc',
+      host: 'https://search-api-production.herokuapp.com',
       route: 'search',
       helpers: ['geosearch', 'waterfront-park-name'],
     },
