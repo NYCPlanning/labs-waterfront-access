@@ -21,7 +21,7 @@ module.exports = function(environment) {
     'labs-search': {
       host: 'https://search-api-production.herokuapp.com',
       route: 'search',
-      helpers: ['geosearch', 'waterfront-park-name'],
+      helpers: ['geosearch-v2', 'waterfront-park-name'],
     },
 
     'ember-mapbox-composer': {
