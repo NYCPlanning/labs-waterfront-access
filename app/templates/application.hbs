@@ -132,9 +132,9 @@
                   placeholder="Select features..."
                   searchField='label'
                   onchange=(action updateValue)
-                  as |action|
+                  as |select-multiple-action|
                 }}
-                  {{action.label}}
+                  {{select-multiple-action.label}}
                 {{/power-select-multiple}}
               {{/layer-group-filter}}
           {{/lookup-layer-group}}
@@ -153,9 +153,9 @@
                   placeholder="Select activities..."
                   searchField='label'
                   onchange=(action updateValue)
-                  as |action|
+                  as |select-multiple-action|
                 }}
-                  {{action.label}}
+                  {{select-multiple-action.label}}
                 {{/power-select-multiple}}
               {{/layer-group-filter}}
           {{/lookup-layer-group}}
