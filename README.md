@@ -6,8 +6,7 @@
 You will need the following things properly installed on your computer.
 
 * [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with npm)
-  - This installation was tested using Node v12.22.1
+* [Node.js](https://nodejs.org/) (with npm) **version listed in .nvmrc**
 * [Ember CLI](https://ember-cli.com/)
 * [Yarn](https://yarnpkg.com/)
 
