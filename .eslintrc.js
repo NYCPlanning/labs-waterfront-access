@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
   globals: {
     server: true,
@@ -43,6 +45,9 @@ module.exports = {
     // node files
     {
       files: [
+        '.eslintrc.js',
+        '.template-lintrc.js',
+        'ember-cli-build.js',
         'testem.js',
         'ember-cli-build.js',
         '.template-lintrc.js',
