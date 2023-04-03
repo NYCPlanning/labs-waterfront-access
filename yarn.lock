@@ -6333,7 +6333,7 @@ ember-cli-what-input@^1.0.0:
     broccoli-merge-trees "^2.0.0"
     what-input "^5.0.2"
 
-ember-cli@~3.7.0:
+ember-cli@~3.7.1:
   version "3.7.1"
   resolved "https://registry.yarnpkg.com/ember-cli/-/ember-cli-3.7.1.tgz#f307bcd68aaf083612717ab32133120272d89170"
   integrity sha512-hlQK32xZEubHRdAo8s6JKvDTBB41wKghW3m0IewS+sZTV92Z6DJoZXlH5taETcnc5qMR1Ifml25Z2ezyNL/OBA==
