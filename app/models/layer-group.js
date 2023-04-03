@@ -1,6 +1,8 @@
-import { attr } from '@ember-decorators/data';
-import { alias } from '@ember-decorators/object/computed';
+import DS from 'ember-data';
+import { alias } from '@ember/object/computed';
 import LayerGroup from 'ember-mapbox-composer/models/layer-group';
+
+const { attr } = DS;
 
 export default class LayerGroupModel extends LayerGroup {
   @attr() meta
