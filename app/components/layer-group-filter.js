@@ -15,12 +15,10 @@ export default class LayerGroupFilterComponent extends Component {
   init(...args) {
     super.init(...args);
 
-    
     const isSingleSource = this.get('layerGroup.layers')
-    console.log("isSingleSource", isSingleSource);
-      // .mapBy('style.source')
-      // .uniq()
-      // .length === 1;
+      .mapBy('style.source')
+      .uniq()
+      .length === 1;
     const filter = this.get('layerGroup.filter');
 
     assert('Layer Groups layers must all use the same source', isSingleSource);

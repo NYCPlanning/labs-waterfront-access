@@ -54,7 +54,8 @@
     "ember-export-application-global": "^2.0.0",
     "ember-fetch": "5.1.3",
     "ember-load-initializers": "^1.1.0",
-    "ember-mapbox-composer": "^0.0.18",
+    "ember-mapbox-composer": "^0.1.2",
+    "ember-mapbox-gl": "0.12.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-metrics": "^2.0.0-beta.2",
     "ember-moment": "^7.8.0",
@@ -87,6 +88,7 @@
     "eslint-plugin-ember": "^5.2.0",
     "eslint-plugin-ember-best-practices": "^1.1.1",
     "eslint-plugin-import": "^2.14.0",
+    "mapbox-gl": "0.52.0",
     "mustache": "^4.0.0",
     "xml-js": "^1.6.8"
   },
