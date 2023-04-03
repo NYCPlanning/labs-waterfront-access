@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { computed, action } from '@ember-decorators/object';
+import { computed, action } from '@ember/object';
 import { argument } from '@ember-decorators/argument';
 import { required } from '@ember-decorators/argument/validation';
 import { assert } from '@ember/debug';
