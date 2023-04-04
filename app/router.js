@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service';
 import config from './config/environment';
 
 export default class Router extends EmberRouter {
-  metrics = service();
+  @service metrics;
 
   location = config.locationType;
 
