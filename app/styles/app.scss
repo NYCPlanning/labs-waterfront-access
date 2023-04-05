@@ -1,7 +1,7 @@
 //
 // Labs UI variables
 // --------------------------------------------------
-@import 'labs-ui/variables';
+@import '@nycplanning/ember/components/labs-ui/variables';
 
 //
 // Foundation
@@ -12,7 +12,7 @@
 //
 // Labs UI Modules
 // --------------------------------------------------
-@import 'labs-ui/all-modules';
+@import '@nycplanning/ember/components/labs-ui/all-modules';
 
 //
 // Custom App Modules
