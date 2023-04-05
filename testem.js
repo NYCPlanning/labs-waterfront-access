@@ -1,32 +1,11 @@
 'use strict';
 
-const fs = require('fs');
-const path = require('path');
-
-const browserstackPid = path.join(process.env.PWD, 'browserstack-local.pid');
-const hasBrowserstackConnection = !!fs.existsSync(browserstackPid);
-
-// eslint-disable-next-line no-console
-if (!hasBrowserstackConnection) console.warn('No Browserstack connection detected. Run `ember browserstack:connect` to include cross-browser testing.');
-
-const hasBrowserstackKeys = (!!process.env.BROWSERSTACK_USERNAME
-  && !!process.env.BROWSERSTACK_ACCESS_KEY
-  && hasBrowserstackConnection);
-
-const crossBrowserTargets = [
-  'BS_Firefox_Current',
-  'BS_Safari_Current',
-  'BS_MS_Edge',
-  // 'BS_IE_11', // can't do this yet
-];
-
 module.exports = {
   test_page: 'tests/index.html?hidepassed',
   disable_watching: true,
   launch_in_ci: [
     'Chrome',
     // enable when ready
-    ...(hasBrowserstackKeys ? crossBrowserTargets : []),
   ],
   launch_in_dev: [
     'Chrome',
