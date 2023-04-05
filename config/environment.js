@@ -1,7 +1,7 @@
 'use strict';
 
-module.exports = function(environment) {
-  const ENV = {
+module.exports = function (environment) {
+  let ENV = {
     modulePrefix: 'labs-waterfront-access',
     environment,
     rootURL: '/',
