@@ -28,6 +28,8 @@
     "@ember/jquery": "^0.6.0",
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^2.6.0",
+    "ember-composable-helpers": "3.2.0",
+    "ember-promise-helpers": "^1.0.9",
     "@fortawesome/ember-fontawesome": "0.3.0",
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
