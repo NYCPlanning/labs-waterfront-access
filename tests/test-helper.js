@@ -1,8 +1,12 @@
-import { setApplication } from '@ember/test-helpers';
-import { start } from 'ember-qunit';
 import Application from 'labs-waterfront-access/app';
 import config from 'labs-waterfront-access/config/environment';
+import * as QUnit from 'qunit';
+import { setApplication } from '@ember/test-helpers';
+import { setup } from 'qunit-dom';
+import { start } from 'ember-qunit';
 
 setApplication(Application.create(config.APP));
+
+setup(QUnit.assert);
 
 start();
