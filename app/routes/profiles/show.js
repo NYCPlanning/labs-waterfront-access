@@ -12,22 +12,36 @@ export default class ShowProjectRoute extends Route {
     return profile;
   }
 
-  @task(
-    function* (geometry) {
-      const applicationController = this.controllerFor('application');
-      while (!applicationController.get('mapInstance')) {
-        yield timeout(100);
-      }
+  @task *fitBoundsWhenReady(geometry) { //eslint-disable-line
+    const applicationController = this.controllerFor('application');
+    while (!applicationController.get('mapInstance')) {
+      yield timeout(100);
+    }
 
-      applicationController.get('mapInstance')
-        .fitBounds(turfBbox(turfBuffer(geometry, 0.05)), {
-          padding: 50,
-        });
+    applicationController.get('mapInstance')
+      .fitBounds(turfBbox(turfBuffer(geometry, 0.05)), {
+        padding: 50,
+      });
 
-      applicationController.set('highlightedFeature', geometry);
-    },
-  )
-  fitBoundsWhenReady;
+    applicationController.set('highlightedFeature', geometry);
+  }
+
+  // @(task(
+  //   function* (geometry) {
+  //     const applicationController = this.controllerFor('application');
+  //     while (!applicationController.get('mapInstance')) {
+  //       yield timeout(100);
+  //     }
+
+  //     applicationController.get('mapInstance')
+  //       .fitBounds(turfBbox(turfBuffer(geometry, 0.05)), {
+  //         padding: 50,
+  //       });
+
+  //     applicationController.set('highlightedFeature', geometry);
+  //   },
+  // ).restartable())
+  // fitBoundsWhenReady;
 
 
   @action
