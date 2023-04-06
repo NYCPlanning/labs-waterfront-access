@@ -81,7 +81,7 @@ export default class ProfileModel extends Model {
 
   @attr('boolean') activity_swimming;
 
-  @task(function* () {
+  @task *images() { //eslint-disable-line
     const id = this.get('id');
 
     return yield fetch(`${S3_BUCKET_HOST}/?prefix=${id}`)
@@ -97,6 +97,23 @@ export default class ProfileModel extends Model {
           return `${S3_BUCKET_HOST}/${filename}`;
         });
       });
-  })
-  images;
+  }
+  // @(task(function* () {
+  //   const id = this.get('id');
+
+  //   return yield fetch(`${S3_BUCKET_HOST}/?prefix=${id}`)
+  //     .then(d => d.text())
+  //     .then((xml) => {
+  //       const json = convert.xml2js(xml, { compact: true });
+  //       const { Contents: contents = [] } = json.ListBucketResult;
+
+  //       const contentsArray = isArray(contents) ? contents : [contents];
+
+  //       return contentsArray.map((d) => {
+  //         const filename = d.Key._text;
+  //         return `${S3_BUCKET_HOST}/${filename}`;
+  //       });
+  //     });
+  // }).restartable())
+  // images;
 }
