@@ -1,33 +1,20 @@
-{{#deprecated/site-header
-  responsiveNav=true
-  responsiveSize='medium'
-  betaNotice=false
-  as |banner|
-}}
-  {{#banner.title}}
+<Deprecated::SiteHeader @responsiveNav={{true}} @responsiveSize="medium" @betaNotice={{false}} as |banner|>
+  <banner.title>
     {{#link-to 'index' class="site-title"}}Waterfront Access <span class="show-for-medium">Map</span>{{/link-to}}
-  {{/banner.title}}
-  {{#banner.nav}}
+  </banner.title>
+  <banner.nav>
     <ul class="menu vertical medium-horizontal">
       <li>{{link-to 'About' 'about'}}</li>
       <li>{{link-to 'Waterfront Zoning' 'waterfront-zoning-for-public-access'}}</li>
       <li>{{link-to 'Data' 'data'}}</li>
     </ul>
-  {{/banner.nav}}
-{{/deprecated/site-header}}
+  </banner.nav>
+</Deprecated::SiteHeader>
 
 {{link-to '' 'index' class="index-active-detector {{if sidebarIsClosed 'sidebar-is-closed' }}"}}
 <div class="site-main grid-x">
-  {{#labs-search
-    searchPlaceholder='Enter location, name, or description...'
-    onSelect=(action 'handleSearchSelect')
-    searchTerms=searchTerms
-    typeTitleLookup=(hash
-      lot='Addresses'
-      waterfront-park-name='Waterfront Access Profiles')
-    onClear=(action (mut geocodedFeature null))
-    class="search-container"
-    as |search|}}
+  <LabsSearch @searchPlaceholder="Enter location, name, or description..." @onSelect={{action 'handleSearchSelect'}} @searchTerms={{searchTerms}} @typeTitleLookup={{hash lot='Addresses'
+      waterfront-park-name='Waterfront Access Profiles'}} @onClear={{action (mut geocodedFeature null)}} @class="search-container" as |search|>
     {{#if (eq search.result.type 'lot')}}
       {{fa-icon 'map-pin' fixedWidth=true}}
     {{else if (eq search.result.type 'waterfront-park-name')}}
@@ -37,51 +24,42 @@
       </span>
     {{/if}}
     <span class="dark-gray">{{search.result.label}}</span>
-  {{/labs-search}}
+  </LabsSearch>
 
   <div class="map-container cell medium-auto large-order-2">
-    {{#labs-map
-      id='map'
-      initOptions=(hash
-        zoom=10
+    <LabsMap @id="map" @initOptions={{hash zoom=10
         center=(array -73.96532400540775 40.709710016659386)
-        hash=true
-      )
-      layerGroups=model.layerGroups
-      mapLoaded=(action 'handleMapLoad') as |map|
-    }}
+        hash=true}} @layerGroups={{model.layerGroups}} @mapLoaded={{action 'handleMapLoad'}} as |map|>
       {{#if geocodedFeature}}
-        {{#map.source options=geocodedFeature as |source|}}
+        <map.source @options={{geocodedFeature}} as |source|>
           {{source.layer layer=geocodedLayer}}
-        {{/map.source}}
+        </map.source>
       {{/if}}
 
       {{#if shouldFitBounds}}
         {{map.call 'fitBounds' mainMap.bounds mainMap.isSelectedBoundsOptions}}
       {{/if}}
 
-      {{#map.labs-layers
-        onLayerClick=(action 'handleLayerClick')
-        as |layers|}}
-        {{#layers.tooltip as |tooltip|}}
+      <map.labs-layers @onLayerClick={{action 'handleLayerClick'}} as |layers|>
+        <layers.tooltip as |tooltip|>
           {{tooltip-renderer feature=tooltip.feature template=tooltip.layer.tooltipTemplate}}
-        {{/layers.tooltip}}
-      {{/map.labs-layers}}
+        </layers.tooltip>
+      </map.labs-layers>
 
       {{!-- Ad-hoc source and layer for developmentSite --}}
       {{#if highlightedFeature}}
-        {{#map.source options=(mapbox-geojson-source highlightedFeature) as |source|}}
+        <map.source @options={{mapbox-geojson-source highlightedFeature}} as |source|>
           {{source.layer
             layer=highlightedFeatureLayer
             before='boundary_country'
           }}
-        {{/map.source}}
+        </map.source>
       {{/if}}
 
       {{map.on 'click' (action 'mapClicked')}}
 
       {{#if popupFeature}}
-        {{#map.popup lngLat=popupLocation}}
+        <map.popup @lngLat={{popupLocation}}>
           <div class="popup-content">
             {{#if popupParkName}}
               <h3 class="header-medium small-margin-bottom">{{popupParkName}}</h3>
@@ -90,16 +68,16 @@
               <h5 class="header-small dark-gray small-margin-bottom">{{popupAgency}}</h5>
             {{/if}}
             {{#if popupLink}}
-              <a href="{{popupLink}}" target="_blank" class="button small gray expanded no-margin">{{fa-icon 'external-link-alt'}} Learn more about this space</a>
+              <a href="{{popupLink}}" target="_blank" class="button small gray expanded no-margin" rel="noopener noreferrer">{{fa-icon 'external-link-alt'}} Learn more about this space</a>
             {{/if}}
           </div>
-        {{/map.popup}}
+        </map.popup>
       {{/if}}
-    {{/labs-map}}
+    </LabsMap>
   </div>
 
   <div class="map-sidebar cell large-order-1">
-    <button {{action (mut sidebarIsClosed) (not sidebarIsClosed)}} class="map-sidebar-toggle button tiny gray hide-for-medium {{unless sidebarIsClosed 'open'}}">
+    <button class="map-sidebar-toggle button tiny gray hide-for-medium {{unless sidebarIsClosed 'open'}}" type="button" {{action (mut sidebarIsClosed) (not sidebarIsClosed)}}>
       {{fa-icon (if sidebarIsClosed 'caret-down' 'caret-up')}}
       Map Legend
     </button>
@@ -108,129 +86,80 @@
         <h4 class="map-sidebar-title">Waterfront Public Access Areas</h4>
         <p>The portion of privately owned waterfront zoning lots where publicly accessible open space is provided to and along the shoreline.</p>
 
-        {{#lookup-layer-group for='waterfront-access--wpaas' as |layerGroup|}}
+        <LookupLayerGroup @for="waterfront-access--wpaas" as |layerGroup|>
           {{#each layerGroup.model.legend.items as |item|}}
             {{labs-ui/legend-item item=item}}
           {{/each}}
-        {{/lookup-layer-group}}
+        </LookupLayerGroup>
 
-        {{#lookup-layer-group for='waterfront-access--entry-points' as |layerGroup|}}
+        <LookupLayerGroup @for="waterfront-access--entry-points" as |layerGroup|>
           {{labs-ui/legend-item item=layerGroup.model.legend}}
-        {{/lookup-layer-group}}
+        </LookupLayerGroup>
 
         <div class="amenity-filters-container">
           <p style="margin:0.5rem 0 0.25rem;padding:0;"><strong>Filter WPAAs by site feature</strong></p>
-          {{#lookup-layer-group
-            for='waterfront-access--wpaas'
-            as |layerGroup|}}
-              {{#layer-group-filter
-                layerGroup=layerGroup.model
-                as |checkedValues updateValue|}}
-                {{#power-select-multiple
-                  options=(site-feature-lookup)
-                  selected=(filter-by (site-feature-lookup) checkedValues)
-                  placeholder="Select features..."
-                  searchField='label'
-                  onchange=(action updateValue)
-                  as |select-multiple-action|
-                }}
+          <LookupLayerGroup @for="waterfront-access--wpaas" as |layerGroup|>
+              <LayerGroupFilter @layerGroup={{layerGroup.model}} as |checkedValues updateValue|>
+                <PowerSelectMultiple @options={{site-feature-lookup}} @selected={{filter-by (site-feature-lookup) checkedValues}} @placeholder="Select features..." @searchField="label" @onChange={{action updateValue}} as |select-multiple-action|>
                   {{select-multiple-action.label}}
-                {{/power-select-multiple}}
-              {{/layer-group-filter}}
-          {{/lookup-layer-group}}
+                </PowerSelectMultiple>
+              </LayerGroupFilter>
+          </LookupLayerGroup>
         </div>
         <div class="amenity-filters-container">
           <p style="margin:0.5rem 0 0.25rem;padding:0;"><strong>Filter WPAAs by active use amenity</strong></p>
-          {{#lookup-layer-group
-            for='waterfront-access--wpaas'
-            as |layerGroup|}}
-              {{#layer-group-filter
-                layerGroup=layerGroup.model
-                as |checkedValues updateValue|}}
-                {{#power-select-multiple
-                  options=(activity-lookup)
-                  selected=(filter-by (activity-lookup) checkedValues)
-                  placeholder="Select activities..."
-                  searchField='label'
-                  onchange=(action updateValue)
-                  as |select-multiple-action|
-                }}
+          <LookupLayerGroup @for="waterfront-access--wpaas" as |layerGroup|>
+              <LayerGroupFilter @layerGroup={{layerGroup.model}} as |checkedValues updateValue|>
+                <PowerSelectMultiple @options={{activity-lookup}} @selected={{filter-by (activity-lookup) checkedValues}} @placeholder="Select activities..." @searchField="label" @onChange={{action updateValue}} as |select-multiple-action|>
                   {{select-multiple-action.label}}
-                {{/power-select-multiple}}
-              {{/layer-group-filter}}
-          {{/lookup-layer-group}}
+                </PowerSelectMultiple>
+              </LayerGroupFilter>
+          </LookupLayerGroup>
         </div>
       </section>
 
       <section class="map-sidebar-section">
-        {{#lookup-layer-group for='waterfront-access--publicly-owned' as |layerGroup|}}
+        <LookupLayerGroup @for="waterfront-access--publicly-owned" as |layerGroup|>
           {{labs-ui/legend-item item=layerGroup.model.legend class="bold-legend-item"}}
-        {{/lookup-layer-group}}
+        </LookupLayerGroup>
         <p>City, State, and Federally owned parks and facilities that provide waterfront parkland and open space for public enjoyment.</p>
       </section>
 
       <section class="map-sidebar-section">
-        {{#lookup-layer-group for='waterfront-access-plan' as |layerGroup|}}
-          {{#labs-ui/layer-group-toggle
-            label=layerGroup.model.legend.label
-            active=layerGroup.model.visible
-            icon=layerGroup.model.legend.icon
-          }}
-          {{/labs-ui/layer-group-toggle}}
-        {{/lookup-layer-group}}
+        <LookupLayerGroup @for="waterfront-access-plan" as |layerGroup|>
+          <LabsUi::LayerGroupToggle @label={{layerGroup.model.legend.label}} @active={{layerGroup.model.visible}} @icon={{layerGroup.model.legend.icon}}>
+          </LabsUi::LayerGroupToggle>
+        </LookupLayerGroup>
 
-        {{#lookup-layer-group for='boat-launches' as |layerGroup|}}
-          {{#labs-ui/layer-group-toggle
-            label=layerGroup.model.legend.label
-            active=layerGroup.model.visible
-            icon=layerGroup.model.legend.icon
-          }}
-          {{/labs-ui/layer-group-toggle}}
-        {{/lookup-layer-group}}
+        <LookupLayerGroup @for="boat-launches" as |layerGroup|>
+          <LabsUi::LayerGroupToggle @label={{layerGroup.model.legend.label}} @active={{layerGroup.model.visible}} @icon={{layerGroup.model.legend.icon}}>
+          </LabsUi::LayerGroupToggle>
+        </LookupLayerGroup>
 
-        {{#lookup-layer-group for='ferries' as |layerGroup|}}
-          {{#labs-ui/layer-group-toggle
-            label=layerGroup.model.legend.label
-            active=layerGroup.model.visible
-            icon=layerGroup.model.legend.icon
-          }}
-          {{/labs-ui/layer-group-toggle}}
-        {{/lookup-layer-group}}
+        <LookupLayerGroup @for="ferries" as |layerGroup|>
+          <LabsUi::LayerGroupToggle @label={{layerGroup.model.legend.label}} @active={{layerGroup.model.visible}} @icon={{layerGroup.model.legend.icon}}>
+          </LabsUi::LayerGroupToggle>
+        </LookupLayerGroup>
 
-        {{#lookup-layer-group for='bike-routes' as |layerGroup|}}
-          {{#labs-ui/layer-group-toggle
-            label=layerGroup.model.legend.label
-            active=layerGroup.model.visible
-            icon=layerGroup.model.legend.icon
-          }}
-          {{/labs-ui/layer-group-toggle}}
-        {{/lookup-layer-group}}
+        <LookupLayerGroup @for="bike-routes" as |layerGroup|>
+          <LabsUi::LayerGroupToggle @label={{layerGroup.model.legend.label}} @active={{layerGroup.model.visible}} @icon={{layerGroup.model.legend.icon}}>
+          </LabsUi::LayerGroupToggle>
+        </LookupLayerGroup>
 
-        {{#lookup-layer-group for='citibike-stations' as |layerGroup|}}
-          {{#labs-ui/layer-group-toggle
-            label=layerGroup.model.legend.label
-            active=layerGroup.model.visible
-            icon=layerGroup.model.legend.icon
-          }}
-          {{/labs-ui/layer-group-toggle}}
-        {{/lookup-layer-group}}
+        <LookupLayerGroup @for="citibike-stations" as |layerGroup|>
+          <LabsUi::LayerGroupToggle @label={{layerGroup.model.legend.label}} @active={{layerGroup.model.visible}} @icon={{layerGroup.model.legend.icon}}>
+          </LabsUi::LayerGroupToggle>
+        </LookupLayerGroup>
 
-        {{#lookup-layer-group for='subway' as |layerGroup|}}
-          {{#labs-ui/layer-group-toggle
-            label=layerGroup.model.legend.label
-            active=layerGroup.model.visible
-            icon=layerGroup.model.legend.icon
-          }}
-          {{/labs-ui/layer-group-toggle}}
-        {{/lookup-layer-group}}
+        <LookupLayerGroup @for="subway" as |layerGroup|>
+          <LabsUi::LayerGroupToggle @label={{layerGroup.model.legend.label}} @active={{layerGroup.model.visible}} @icon={{layerGroup.model.legend.icon}}>
+          </LabsUi::LayerGroupToggle>
+        </LookupLayerGroup>
 
-        {{#lookup-layer-group for='aerials' as |layerGroup|}}
-          {{#labs-ui/layer-group-toggle
-            label='2016 Aerials'
-            active=layerGroup.model.visible
-          }}
-          {{/labs-ui/layer-group-toggle}}
-        {{/lookup-layer-group}}
+        <LookupLayerGroup @for="aerials" as |layerGroup|>
+          <LabsUi::LayerGroupToggle @label="2016 Aerials" @active={{layerGroup.model.visible}}>
+          </LabsUi::LayerGroupToggle>
+        </LookupLayerGroup>
       </section>
     </div>
   </div>
