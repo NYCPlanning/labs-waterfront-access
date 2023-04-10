@@ -34,7 +34,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
-    "@nycplanning/ember": "https://github.com/nycplanning/ose-ember-addons#a59f97ceb5b6e6acddec280e41a9dc6c00af8862",
+    "@nycplanning/ember": "https://github.com/nycplanning/ose-ember-addons#2518d70bad52d12f81d3069f6113fd844d296908",
     "babel-eslint": "^10.1.0",
     "broccoli-asset-rev": "^3.0.0",
     "broccoli-clean-css": "^1.1.0",
