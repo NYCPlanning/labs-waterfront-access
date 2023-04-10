@@ -1774,9 +1774,9 @@
     read-package-json-fast "^2.0.3"
     which "^2.0.2"
 
-"@nycplanning/ember@https://github.com/nycplanning/ose-ember-addons#2518d70bad52d12f81d3069f6113fd844d296908":
+"@nycplanning/ember@https://github.com/nycplanning/ose-ember-addons#4e77bc2357e368d963477608cddf2cbe0299a2c2":
   version "2.0.0"
-  resolved "https://github.com/nycplanning/ose-ember-addons#2518d70bad52d12f81d3069f6113fd844d296908"
+  resolved "https://github.com/nycplanning/ose-ember-addons#4e77bc2357e368d963477608cddf2cbe0299a2c2"
   dependencies:
     "@turf/union" "^6.0.0"
     ember-auto-import "^1.11.3"
