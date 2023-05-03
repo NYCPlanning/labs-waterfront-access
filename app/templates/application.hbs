@@ -81,7 +81,7 @@
       {{map.on 'click' (action 'mapClicked')}}
 
       {{#if popupFeature}}
-        {{#map.popup lngLat=popupLocation}}
+        {{#map.popup lngLat=popupLocation onClose=(action 'popupClosed')}}
           <div class="popup-content">
             {{#if popupParkName}}
               <h3 class="header-medium small-margin-bottom">{{popupParkName}}</h3>
