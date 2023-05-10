@@ -39,10 +39,10 @@
         <h5 class="{{if isConstructed 'green-dark' 'red'}}">
           <span class="fa-layers">
             {{#if isConstructed}}
-              {{fa-icon 'check' class="green-muted"}}
+              <FaIcon @icon="check" class="green-muted" />
             {{else}}
-              {{fa-icon 'screwdriver' transform='rotate-270' class='silver'}}
-              {{fa-icon 'wrench' class="light-gray"}}
+              <FaIcon @icon="screwdriver" @transform="rotate-270" class="silver" />
+              <FaIcon @icon="wrench" class="light-gray" />
             {{/if}}
           </span>
           {{#if (eq model.construction_status 'Approved (to be constructed)')}}
@@ -50,7 +50,7 @@
           {{else}}
             {{model.construction_status}}
           {{~/if~}}
-          {{fa-icon 'exclamation-circle' class="dark-gray" transform='shrink-4 up-4'}}
+          <FaIcon @icon="exclamation-circle" @transform="silver" class="dark-gray" />
           {{#ember-tooltip side='left'}}
             The construction status reflects the best available information at the time of website update. Please note that site status may have changed and sites may occasionally need to be temporarily partially or fully closed for maintenance or safety reasons.
           {{/ember-tooltip}}
@@ -127,15 +127,15 @@
       {{/if}}
 
       {{#if model.cpc_report}}
-        <p><a class="button small gray expanded" href="{{model.cpc_report}}" target="_blank">{{fa-icon 'external-link-alt'}} City Planning Commission (CPC) Report</a></p>
+        <p><a class="button small gray expanded" href="{{model.cpc_report}}" target="_blank"><FaIcon @icon="external-link-alt" /> City Planning Commission (CPC) Report</a></p>
       {{/if}}
 
       {{#if model.zap_link}}
-        <p><a class="button small gray expanded" href="{{model.zap_link}}" target="_blank">{{fa-icon 'external-link-alt'}} Zoning Application Portal (ZAP) Record</a></p>
+        <p><a class="button small gray expanded" href="{{model.zap_link}}" target="_blank"><FaIcon @icon="external-link-alt" /> Zoning Application Portal (ZAP) Record</a></p>
       {{/if}}
 
       {{#if model.restrictive_declaration_link}}
-        <p><a class="button small gray expanded" href="{{model.restrictive_declaration_link}}" target="_blank">{{fa-icon 'external-link-alt'}} Restrictive Declaration (ACRIS)</a></p>
+        <p><a class="button small gray expanded" href="{{model.restrictive_declaration_link}}" target="_blank"><FaIcon @icon="external-link-alt" /> Restrictive Declaration (ACRIS)</a></p>
       {{/if}}
 
       {{#if model.date_cpc_approval}}

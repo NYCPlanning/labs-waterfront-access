@@ -29,11 +29,11 @@
     class="search-container"
     as |search|}}
     {{#if (eq search.result.type 'lot')}}
-      {{fa-icon 'map-pin' fixedWidth=true}}
+      <FaIcon @icon="map-pin" @fixedWidth={{true}}/>
     {{else if (eq search.result.type 'waterfront-park-name')}}
       <span class="fa-layers" style="margin-right:0.25em;">
-        {{fa-icon 'window-minimize' class="aqua-light"}}
-        {{fa-icon 'tree' transform='left-7 shrink-1' class="green-dark"}}
+        <FaIcon @icon="window-minimize" class="aqua-light" />
+        <FaIcon @icon="tree" @transform="left-7 shrink-1" class="green-dark" />
       </span>
     {{/if}}
     <span class="dark-gray">{{search.result.label}}</span>
@@ -90,7 +90,7 @@
               <h5 class="header-small dark-gray small-margin-bottom">{{popupAgency}}</h5>
             {{/if}}
             {{#if popupLink}}
-              <a href="{{popupLink}}" target="_blank" class="button small gray expanded no-margin">{{fa-icon 'external-link-alt'}} Learn more about this space</a>
+              <a href="{{popupLink}}" target="_blank" class="button small gray expanded no-margin"><FaIcon @icon="external-link-alt" /> Learn more about this space</a>
             {{/if}}
           </div>
         {{/map.popup}}
@@ -100,7 +100,7 @@
 
   <div class="map-sidebar cell large-order-1">
     <button {{action (mut sidebarIsClosed) (not sidebarIsClosed)}} class="map-sidebar-toggle button tiny gray hide-for-medium {{unless sidebarIsClosed 'open'}}">
-      {{fa-icon (if sidebarIsClosed 'caret-down' 'caret-up')}}
+      <FaIcon @icon={{(if sidebarIsClosed 'caret-down' 'caret-up')}} />
       Map Legend
     </button>
     <div class="{{if sidebarIsClosed 'show-for-medium'}}">
