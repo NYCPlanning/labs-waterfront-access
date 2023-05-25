@@ -24,7 +24,6 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "ember-tooltips": "^3.6.0",
     "@ember-decorators/argument": "0.8.21",
     "@ember/jquery": "^0.6.0",
     "@ember/optional-features": "^2.0.0",
