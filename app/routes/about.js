@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import carto from '@nycplanning/ember/utils/carto';
+import carto from 'cartobox-promises-utility/utils/carto';
 import { action } from '@ember/object';
 
 const query = `

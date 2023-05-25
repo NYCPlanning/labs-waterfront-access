@@ -1,5 +1,5 @@
 import DS from 'ember-data';
-import { buildSqlUrl } from '@nycplanning/ember/utils/carto';
+import { buildSqlUrl } from 'cartobox-promises-utility/utils/carto';
 
 const SQL = function(id) {
   return `
