@@ -1,8 +1,9 @@
 import Route from '@ember/routing/route';
-import { timeout, task } from 'ember-concurrency';
+import { timeout } from 'ember-concurrency';
+import { restartableTask } from 'ember-concurrency-decorators';
 import turfBbox from '@turf/bbox';
 import turfBuffer from '@turf/buffer';
-import { action } from '@ember/object';
+import { action } from '@ember-decorators/object'; // eslint-disable-line
 import { next } from '@ember/runloop';
 
 export default class ShowProjectRoute extends Route {
@@ -12,23 +13,20 @@ export default class ShowProjectRoute extends Route {
     return profile;
   }
 
-  @task(
-    function* (geometry) {
-      const applicationController = this.controllerFor('application');
-      while (!applicationController.get('mapInstance')) {
-        yield timeout(100);
-      }
+  @restartableTask
+  fitBoundsWhenReady = function* (geometry) {
+    const applicationController = this.controllerFor('application');
+    while (!applicationController.get('mapInstance')) {
+      yield timeout(100);
+    }
 
-      applicationController.get('mapInstance')
-        .fitBounds(turfBbox(turfBuffer(geometry, 0.05)), {
-          padding: 50,
-        });
+    applicationController.get('mapInstance')
+      .fitBounds(turfBbox(turfBuffer(geometry, 0.05)), {
+        padding: 50,
+      });
 
-      applicationController.set('highlightedFeature', geometry);
-    },
-  )
-  fitBoundsWhenReady;
-
+    applicationController.set('highlightedFeature', geometry);
+  }
 
   @action
   didTransition() {

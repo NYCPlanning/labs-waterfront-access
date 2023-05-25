@@ -1,9 +1,9 @@
 import Controller from '@ember/controller';
-import { action } from '@ember/object';
-import { alias } from '@ember/object/computed';
+import { action } from '@ember-decorators/object';
+import { alias } from '@ember-decorators/object/computed';
 import mapboxgl from 'mapbox-gl';
 import { next } from '@ember/runloop';
-import { inject as service } from '@ember/service';
+import { service } from '@ember-decorators/service';
 
 export default class ApplicationController extends Controller {
   constructor(...args) {

@@ -1,10 +1,11 @@
 import DS from 'ember-data';
 import fetch from 'fetch';
+import { attr } from '@ember-decorators/data';
 import convert from 'xml-js';
 import { isArray } from '@ember/array';
-import { task } from 'ember-concurrency';
+import { restartableTask } from 'ember-concurrency-decorators';
 
-const { Model, attr } = DS;
+const { Model } = DS;
 
 const S3_BUCKET_HOST = 'https://waterfront-access-photos.nyc3.digitaloceanspaces.com';
 
@@ -81,10 +82,11 @@ export default class ProfileModel extends Model {
 
   @attr('boolean') activity_swimming;
 
-  @task(function* () {
+  @restartableTask()
+  images = function* () { // eslint-disable-line
     const id = this.get('id');
 
-    return yield fetch(`${S3_BUCKET_HOST}/?prefix=${id}`)
+    return fetch(`${S3_BUCKET_HOST}/?prefix=${id}`)
       .then(d => d.text())
       .then((xml) => {
         const json = convert.xml2js(xml, { compact: true });
@@ -97,6 +99,5 @@ export default class ProfileModel extends Model {
           return `${S3_BUCKET_HOST}/${filename}`;
         });
       });
-  })
-  images;
+  }
 }
