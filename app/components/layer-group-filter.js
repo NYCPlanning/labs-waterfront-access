@@ -1,7 +1,5 @@
 import Component from '@ember/component';
 import { computed, action } from '@ember/object';
-import { argument } from '@ember-decorators/argument';
-import { required } from '@ember-decorators/argument/validation';
 import { assert } from '@ember/debug';
 
 const DECISION_TYPE = 'all'; // logical AND
@@ -26,8 +24,6 @@ export default class LayerGroupFilterComponent extends Component {
     if (filter) this.delegateFilters(filter);
   }
 
-  @required
-  @argument
   layerGroup;
 
   /*
@@ -39,8 +35,7 @@ export default class LayerGroupFilterComponent extends Component {
     ]
     ```
   */
-  @argument
-  @required
+
   lookupTable = null;
 
   delegateFilters(expression) {
