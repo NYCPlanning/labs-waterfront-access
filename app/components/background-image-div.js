@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { argument } from '@ember-decorators/argument';
-import { computed } from '@ember/object';
+import { computed } from '@ember-decorators/object';
 import { htmlSafe } from '@ember/template';
 
 export default class BackgroundImageDivComponent extends Component {

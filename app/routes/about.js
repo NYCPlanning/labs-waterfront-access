@@ -1,6 +1,6 @@
 import Route from '@ember/routing/route';
 import carto from 'cartobox-promises-utility/utils/carto';
-import { action } from '@ember/object';
+import { action } from '@ember-decorators/object'; // eslint-disable-line
 
 const query = `
   WITH

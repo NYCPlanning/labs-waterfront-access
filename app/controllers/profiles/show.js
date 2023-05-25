@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { computed } from '@ember/object';
+import { computed } from '@ember-decorators/object';
 import numeral from 'numeral';
 
 export default class ProfileShowController extends Controller {

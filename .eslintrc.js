@@ -7,8 +7,12 @@ module.exports = {
   root: true,
   parser: 'babel-eslint',
   parserOptions: {
-    ecmaVersion: 2018,
+    ecmaVersion: 2017,
     sourceType: 'module',
+    ecmaFeatures: {
+      legacyDecorators: true,
+      experimentalObjectRestSpread: true,
+    },
   },
   plugins: [
     'ember',
