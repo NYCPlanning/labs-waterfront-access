@@ -25,4 +25,5 @@ before_install:
   - npm config set spin false
 
 script:
-  - yarn test
+  - npm run lint:js
+  - npm test
