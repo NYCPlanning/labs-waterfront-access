@@ -3,12 +3,11 @@ import { next, scheduleOnce } from '@ember/runloop';
 import { inject as service } from '@ember/service';
 import config from './config/environment';
 
-export default class Router extends EmberRouter {
-  metrics = service();
+const Router = EmberRouter.extend({
+  metrics: service(),
 
-  location = config.locationType;
-
-  rootURL = config.rootURL;
+  location: config.locationType,
+  rootURL: config.rootURL,
 
   didTransition(...args) {
     this._super(...args);
@@ -21,7 +20,7 @@ export default class Router extends EmberRouter {
       resizeEvent.initUIEvent('resize', true, false, window, 0);
       window.dispatchEvent(resizeEvent);
     });
-  }
+  },
 
   _trackPage() {
     scheduleOnce('afterRender', this, () => {
@@ -29,8 +28,9 @@ export default class Router extends EmberRouter {
       const title = this.getWithDefault('currentRouteName', 'unknown');
       this.metrics.trackPage({ page, title });
     });
-  }
-}
+  },
+
+});
 
 Router.map(function() { // eslint-disable-line
   this.route('about');
@@ -40,3 +40,5 @@ Router.map(function() { // eslint-disable-line
   this.route('waterfront-zoning-for-public-access');
   this.route('data');
 });
+
+export default Router;
