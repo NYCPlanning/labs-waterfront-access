@@ -32,7 +32,7 @@ export default class Router extends EmberRouter {
   }
 }
 
-Router.map(function() { // eslint-disable-line array-callback-return
+Router.map(function() { // eslint-disable-line
   this.route('about');
   this.route('profiles', function () {
     this.route('show', { path: ':id' });
