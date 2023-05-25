@@ -1,7 +1,7 @@
 import EmberRouter from '@ember/routing/router';
 import { next, scheduleOnce } from '@ember/runloop';
 import { inject as service } from '@ember/service';
-import config from 'labs-waterfront-access/config/environment';
+import config from './config/environment';
 
 export default class Router extends EmberRouter {
   @service metrics;
