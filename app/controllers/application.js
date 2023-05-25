@@ -164,12 +164,9 @@ export default class ApplicationController extends Controller {
   }
 
   @action
-  popupClosed() {
-    this.set('popupFeature', false);
-  }
-
-  @action
   handleLayerClick(feature) {
+    this.set('popupFeature', false);
+
     if (feature) {
       const { wpaa_id } = feature.properties;
 
