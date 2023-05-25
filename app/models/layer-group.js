@@ -1,6 +1,6 @@
 import DS from 'ember-data';
 import { alias } from '@ember/object/computed';
-import LayerGroup from '@nycplanning/ember/models/layer-group';
+import LayerGroup from 'ember-mapbox-composer/models/layer-group';
 
 const { attr } = DS;
 
