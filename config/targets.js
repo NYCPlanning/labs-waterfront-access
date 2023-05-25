@@ -6,7 +6,7 @@ const browsers = [
   'last 1 Safari versions',
 ];
 
-const isCI = Boolean(process.env.CI);
+const isCI = !!process.env.CI;
 const isStaging = process.env.EMBER_ENV === 'staging';
 const isProduction = process.env.EMBER_ENV === 'production';
 
