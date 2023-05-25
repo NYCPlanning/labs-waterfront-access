@@ -47,10 +47,4 @@ export default class ShowProjectRoute extends Route {
       this.get('fitBoundsWhenReady').perform(model.get('geometry'));
     });
   }
-
-  @action
-  willTransition() {
-    const applicationController = this.controllerFor('application');
-    applicationController.set('highlightedFeature', null);
-  }
 }
