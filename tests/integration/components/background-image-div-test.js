@@ -16,6 +16,6 @@ module('Integration | Component | background-image-div', function(hooks) {
     if (this.element.children[0].children[0].style['background-image']) {
       bgimgExists = true;
     }
-    assert.true(bgimgExists);
+    assert.equal(bgimgExists, true);
   });
 });
