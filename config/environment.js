@@ -101,8 +101,9 @@ module.exports = function (environment) {
     };
   }
 
-  // if (environment === 'staging') {
-  // }
+  if (environment === 'staging') {
+    ENV['labs-search'].host = 'https://search-api-staging.herokuapp.com';
+  }
 
   if (environment === 'devlocal') {
     ENV.host = 'http://localhost:3000';
