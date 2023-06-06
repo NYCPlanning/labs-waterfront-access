@@ -18,6 +18,7 @@
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "start": "ember serve",
+    "start:prod": "ember serve --environment=production",
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test",
     "browserstack-connect": "ember browserstack:connect",
