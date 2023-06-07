@@ -1,16 +1,11 @@
 [build]
 command = "yarn build --environment=staging"
-environment = {}
 
 [context.develop]
-  environment = {}
 
 [context.staging]
-  environment = {}
 
 [context.deploy-preview]
-  environment = {}
 
 [context.master]
-  environment = {}
   command = "yarn build --environment=production"
