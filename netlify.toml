@@ -1,11 +1,5 @@
 [build]
-command = "yarn build --environment=staging"
-
-[context.develop]
+command = "yarn build"
 
 [context.staging]
-
-[context.deploy-preview]
-
-[context.master]
-  command = "yarn build --environment=production"
+command = "LABS_SEARCH_HOST=https://search-api-staging.herokuapp.com yarn build"
