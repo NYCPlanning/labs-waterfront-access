@@ -1,5 +1,7 @@
 'use strict';
 
+const LABS_SEARCH_HOST = process.env.LABS_SEARCH_HOST || 'https://search-api-production.herokuapp.com';
+
 module.exports = function (environment) {
   const ENV = {
     modulePrefix: 'labs-waterfront-access',
@@ -19,7 +21,7 @@ module.exports = function (environment) {
     },
 
     'labs-search': {
-      host: 'https://search-api-production.herokuapp.com',
+      host: LABS_SEARCH_HOST,
       route: 'search',
       helpers: ['geosearch-v2', 'waterfront-park-name'],
     },
@@ -100,9 +102,6 @@ module.exports = function (environment) {
       host: 'https://layers-api.planninglabs.nyc',
     };
   }
-
-  // if (environment === 'staging') {
-  // }
 
   if (environment === 'devlocal') {
     ENV.host = 'http://localhost:3000';
