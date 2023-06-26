@@ -148,7 +148,7 @@ export default class ApplicationController extends Controller {
 
     // handle park name search results
     if (result.type === 'waterfront-park-name') {
-      this.transitionToRoute('profiles.show', result.paws_id);
+      this.transitionToRoute('profiles.show', result.wpaa_id);
     }
   }
 
