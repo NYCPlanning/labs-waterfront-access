@@ -1,5 +1,5 @@
 [build]
 command = "yarn build"
 
-[context.staging]
+[context.develop]
 command = "LABS_SEARCH_HOST=https://search-api-staging.herokuapp.com yarn build"
