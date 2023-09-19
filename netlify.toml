@@ -2,4 +2,4 @@
 command = "yarn build"
 
 [context.develop]
-command = "LABS_SEARCH_HOST=https://search-api-staging.herokuapp.com yarn build"
+command = "API_HOST=https://layers-api-staging.planninglabs.nyc LABS_SEARCH_HOST=https://search-api-staging.herokuapp.com yarn build"

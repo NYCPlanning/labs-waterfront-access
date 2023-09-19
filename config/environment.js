@@ -1,6 +1,7 @@
 'use strict';
 
 const LABS_SEARCH_HOST = process.env.LABS_SEARCH_HOST || 'https://search-api-production.herokuapp.com';
+const HOST = process.env.API_HOST || 'https://layers-api.planninglabs.nyc';
 
 module.exports = function (environment) {
   const ENV = {
@@ -8,7 +9,7 @@ module.exports = function (environment) {
     environment,
     rootURL: '/',
     locationType: 'auto',
-    host: 'https://layers-api-staging.planninglabs.nyc',
+    host: HOST,
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -27,14 +28,14 @@ module.exports = function (environment) {
     },
 
     'ember-mapbox-composer': {
-      host: 'https://layers-api-staging.planninglabs.nyc',
+      host: HOST,
       namespace: 'v1',
     },
 
     'mapbox-gl': {
       accessToken: '',
       map: {
-        style: 'https://layers-api-staging.planninglabs.nyc/v1/base/style.json',
+        style: `${HOST}/v1/base/style.json`,
       },
     },
 
@@ -54,7 +55,8 @@ module.exports = function (environment) {
           debug: environment === 'development',
           trace: environment === 'development',
           // Ensure development env hits aren't sent to GA
-          sendHitTask: (environment !== 'development' && environment !== 'devlocal'),
+          sendHitTask:
+            environment !== 'development' && environment !== 'devlocal',
         },
       },
       {
@@ -93,14 +95,6 @@ module.exports = function (environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
-  }
-
-  if (environment === 'production') {
-    ENV.host = 'https://layers-api.planninglabs.nyc';
-    ENV['mapbox-gl'].map.style = 'https://layers-api.planninglabs.nyc/v1/base/style.json';
-    ENV['ember-mapbox-composer'] = {
-      host: 'https://layers-api.planninglabs.nyc',
-    };
   }
 
   if (environment === 'devlocal') {
